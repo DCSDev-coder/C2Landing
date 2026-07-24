@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+:root {
+  --coffee-header: rgba(176, 176, 176, 0.2);
+  --coffee-accent: #c7672f;
+  --coffee-header-solid: rgba(94, 86, 79, 0.96);
+}
+
+.c2-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  --coffee-header-current: var(--coffee-header);
+}
+
+.c2-nav__shell {
+  width: 100%;
+  background: var(--coffee-header-current);
+  transition: background 180ms ease;
+}
+
+.c2-nav__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 113px;
+  padding: 0 24px;
+}
+
+.c2-nav__logo {
+  width: auto;
+  height: 58px;
+  object-fit: contain;
+}
+
+.c2-nav__desktop {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+
+.c2-nav__link {
+  position: relative;
+  padding-bottom: 12px;
+  color: #ede3d4;
+  font-family: 'Marcellus', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.c2-nav__link:hover {
+  color: #fff;
+}
+
+.c2-nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--coffee-accent);
+  transition: width 180ms ease;
+}
+
+.c2-nav__link--active::after,
+.c2-nav__link:hover::after {
+  width: 100%;
+}
+
+.c2-nav__toggle {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 8px;
+  color: #f1e7da;
+  background: transparent;
+}
+
+.c2-nav__toggleIcon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.c2-nav__mobile {
+  margin-top: 0;
+  overflow: hidden;
+  background: var(--coffee-header-current);
+  transition: opacity 300ms ease, transform 300ms ease, background 180ms ease;
+}
+
+.c2-nav__mobile--open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.c2-nav__mobile--closed {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-16px);
+}
+
+.c2-nav__mobileList {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+}
+
+.c2-nav__mobileLink {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 0;
+  color: #efe6da;
+  font-family: 'Marcellus', serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.c2-nav__mobileLink:last-child {
+  border-bottom: 0;
+}
+
+.c2-nav--past-hero {
+  --coffee-header-current: var(--coffee-header-solid);
+}
+
+@media (min-width: 768px) {
+  .c2-nav__bar {
+    padding: 0 64px;
+  }
+
+  .c2-nav__desktop {
+    display: flex;
+  }
+
+  .c2-nav__toggle {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .c2-nav__bar {
+    padding: 0 132px;
+  }
+
+  .c2-nav__desktop {
+    gap: 44px;
+  }
+}

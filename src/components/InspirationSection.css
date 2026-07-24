@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400;1,700&family=Recoleta:wght@700&display=swap');
+
+:root {
+  --coffee-orange: #ef5b23;
+  --coffee-brown-900: #28130d;
+  --coffee-brown-800: #3a241c;
+  --coffee-brown-700: #6b3a2a;
+  --coffee-cream: #fff9ef;
+}
+
+.inspiration-section {
+  background: var(--coffee-cream);
+  position: relative;
+}
+
+/* Craft Strip */
+.craft-strip {
+  background: var(--coffee-brown-900);
+  overflow: hidden;
+}
+
+.craft-strip__viewport {
+  overflow: hidden;
+}
+
+.craft-strip__track {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  min-height: 91px;
+  width: max-content;
+  padding: 0 24px;
+  animation: craft-strip-scroll 35s linear infinite;
+}
+
+.craft-strip__item {
+  color: #fff;
+  font-family: 'Recoleta', 'Georgia', serif;
+  font-size: clamp(1rem, 1.65vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.craft-strip__star {
+  color: var(--coffee-orange);
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+@keyframes craft-strip-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .craft-strip__track {
+    animation: none;
+  }
+}
+
+/* Inspiration Section - Mobile First */
+.inspiration {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 80px 24px;
+  max-width: 100%;
+}
+
+.inspiration__visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #dac4b0;
+}
+
+.inspiration__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.inspiration__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(97, 97, 97, 0.3);
+  /* Dark overlay for mobile text readability */
+}
+
+.inspiration__content {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+}
+
+.inspiration__eyebrow {
+  margin: 0 0 12px;
+  color: var(--coffee-orange);
+  font-family: 'Recoleta', 'Georgia', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.inspiration__title {
+  margin: 0 0 24px;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(3.2rem, 12vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.inspiration__title-our {
+  color: #72b944;
+  /* Light green */
+}
+
+.inspiration__title-insp {
+  color: var(--coffee-orange);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.inspiration__copy {
+  color: #ffffff;
+  /* White text on mobile */
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.inspiration__copy p {
+  margin: 0 0 24px;
+}
+
+.inspiration__copy p:last-child {
+  margin-bottom: 0;
+}
+
+/* Inspiration Section - Desktop */
+@media (min-width: 900px) {
+  .inspiration {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: auto;
+    padding: 0;
+    /* Remove padding to let image hit edges */
+  }
+
+  .inspiration__content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 5% 80px 10%;
+    /* Add internal padding */
+    max-width: none;
+  }
+
+  .inspiration__eyebrow {
+    color: #a94417;
+    /* Darker red-orange for desktop */
+    font-size: 1.375rem;
+  }
+
+  .inspiration__title {
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
+  }
+
+  .inspiration__copy {
+    color: #201613;
+    /* Dark text for desktop */
+    font-size: 1.375rem;
+    line-height: 1.45;
+  }
+
+  .inspiration__visual {
+    position: relative;
+    width: 50%;
+    min-height: 850px;
+    background: #dac4b000;
+    overflow: hidden;
+  }
+
+  .inspiration__image {
+    object-position: left center;
+  }
+
+  .inspiration__overlay {
+    display: none;
+    /* No overlay on desktop */
+  }
+}
+
+@media (min-width: 1200px) {
+  .inspiration__content {
+    padding: 120px 8% 120px 10%;
+  }
+
+  .craft-strip__track {
+    padding: 0 26px;
+  }
+}
