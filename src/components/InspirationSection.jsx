@@ -6,7 +6,7 @@ const craftItems = [
   'C2 COFFEE CRAFT',
   'C2 BARISTA CRAFT',
   'C2 MOCKTAILS',
-  'C2 MACHA',
+  'C2 MATCHA',
   'C2 CHOCOLATE',
   'C2 POUR OVER',
   'C2 COFFEE',
