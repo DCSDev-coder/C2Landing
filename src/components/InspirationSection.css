@@ -195,11 +195,17 @@
     width: 50%;
     min-height: 850px;
     background: #dac4b000;
-    overflow: hidden;
   }
 
   .inspiration__image {
     object-position: left center;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000' preserveAspectRatio='none'><path d='M 100,0 L 15,0 L 25.0,15 L 24.3,35 L 26.1,55 L 26.2,75 L 20.2,95 L 15.9,115 L 19.3,135 L 23.3,155 L 22.5,175 L 22.7,195 L 25.5,215 L 23.4,235 L 17.5,255 L 17.4,275 L 23.1,295 L 25.7,315 L 25.6,335 L 28.4,355 L 29.9,375 L 23.8,395 L 17.1,415 L 17.3,435 L 18.7,455 L 15.9,475 L 14.3,495 L 15.7,515 L 12.2,535 L 3.1,555 L 1.0,575 L 1.0,595 L 1.0,615 L 1.0,635 L 4.6,655 L 9.4,675 L 7.2,695 L 3.0,715 L 5.3,735 L 9.9,755 L 11.1,775 L 14.1,795 L 21.2,815 L 23.6,835 L 18.5,855 L 15.1,875 L 16.8,895 L 16.9,915 L 15.4,935 L 19.2,955 L 24.6,975 L 23.0,995 L 100,1000 Z' fill='black'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000' preserveAspectRatio='none'><path d='M 100,0 L 15,0 L 25.0,15 L 24.3,35 L 26.1,55 L 26.2,75 L 20.2,95 L 15.9,115 L 19.3,135 L 23.3,155 L 22.5,175 L 22.7,195 L 25.5,215 L 23.4,235 L 17.5,255 L 17.4,275 L 23.1,295 L 25.7,315 L 25.6,335 L 28.4,355 L 29.9,375 L 23.8,395 L 17.1,415 L 17.3,435 L 18.7,455 L 15.9,475 L 14.3,495 L 15.7,515 L 12.2,535 L 3.1,555 L 1.0,575 L 1.0,595 L 1.0,615 L 1.0,635 L 4.6,655 L 9.4,675 L 7.2,695 L 3.0,715 L 5.3,735 L 9.9,755 L 11.1,775 L 14.1,795 L 21.2,815 L 23.6,835 L 18.5,855 L 15.1,875 L 16.8,895 L 16.9,915 L 15.4,935 L 19.2,955 L 24.6,975 L 23.0,995 L 100,1000 Z' fill='black'/></svg>");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    filter: drop-shadow(-10px 0 12px rgba(40, 19, 13, 0.15));
   }
 
   .inspiration__overlay {
