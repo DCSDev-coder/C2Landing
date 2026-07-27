@@ -50,9 +50,7 @@ export default function ExploreSection() {
           <div className="blend-card__info">
             <h3 className="blend-card__title">Dato Blend</h3>
             <p className="blend-card__description">Bold & Dark Chocolatey</p>
-            <span className="blend-card__link">
-              {selectedBlend === 'dato' ? 'Active Selection' : 'View Details →'}
-            </span>
+            <span className="blend-card__link">View Details →</span>
           </div>
         </div>
 
@@ -183,9 +181,7 @@ export default function ExploreSection() {
           <div className="blend-card__info">
             <h3 className="blend-card__title">Datin Blend</h3>
             <p className="blend-card__description">Citrus & Fruity</p>
-            <span className="blend-card__link">
-              {selectedBlend === 'datin' ? 'Active Selection' : 'View Details →'}
-            </span>
+            <span className="blend-card__link">View Details →</span>
           </div>
         </div>
 

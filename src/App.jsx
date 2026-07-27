@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import InspirationSection from './components/InspirationSection'
 import ExploreSection from './components/ExploreSection'
+import CoffeeCandleSection from './components/CoffeeCandleSection'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <InspirationSection />
       <ExploreSection />
+      <CoffeeCandleSection />
     </div>
   )
 }

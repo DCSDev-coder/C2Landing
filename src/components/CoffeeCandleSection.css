@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Libre+Caslon+Text:wght@400;700&display=swap');
+
+:root {
+  --pillar-ink: #28130d;
+  --pillar-copy: #9f4f21;
+  --pillar-cream: #f6e6c5;
+  --pillar-blush: #f2e1d6;
+  --pillar-soft-orange: #ffc35a;
+  --pillar-bright-orange: #ff8a43;
+  --pillar-gold: #ffb11c;
+}
+
+.coffee-candle {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 24px 88px;
+  background:
+    radial-gradient(circle at top center, rgba(255, 199, 117, 0.12), transparent 34%),
+    linear-gradient(180deg, #fffdf9 0%, #fffaf3 100%);
+}
+
+.coffee-candle__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.coffee-candle__header {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.coffee-candle__title {
+  margin: 0;
+  color: var(--pillar-ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.35rem, 8vw, 5rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.coffee-candle__subtitle {
+  margin: 14px 0 0;
+  color: #b35421;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.coffee-candle__grid {
+  display: none;
+}
+
+.coffee-candle__mobileCarousel {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.coffee-candle__mobileFrame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+}
+
+.coffee-candle__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 52px;
+  height: 52px;
+  border: 0;
+  padding: 0;
+  color: #b46024;
+  background: transparent;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  touch-action: manipulation;
+}
+
+.coffee-candle__nav span {
+  display: block;
+  transform: translateY(-2px);
+}
+
+.coffee-candle__nav--prev {
+  left: -8px;
+}
+
+.coffee-candle__nav--next {
+  right: -8px;
+}
+
+.coffee-candle__dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.coffee-candle__dot {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: #f0dfc5;
+  cursor: pointer;
+}
+
+.coffee-candle__dot.is-active {
+  background: #b46b2f;
+}
+
+.pillar-card {
+  min-height: 640px;
+  border-radius: 42px;
+  padding: 34px 26px 34px;
+  text-align: center;
+  box-shadow: 0 18px 36px rgba(70, 35, 18, 0.06);
+}
+
+.pillar-card--mobile {
+  width: 100%;
+  min-height: 0;
+  padding: 28px 10px 26px;
+  border-radius: 40px;
+  touch-action: pan-y;
+  will-change: transform, opacity;
+}
+
+.pillar-card--slide-right {
+  animation: pillar-card-slide-right 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pillar-card--slide-left {
+  animation: pillar-card-slide-left 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pillar-card--cream {
+  background: linear-gradient(180deg, #f7e7c5 0%, #f4e1bc 100%);
+}
+
+.pillar-card--blush {
+  background: linear-gradient(180deg, #f2e1d6 0%, #f0ddd2 100%);
+}
+
+.pillar-card__cupWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pillar-card__cup {
+  width: min(220px, 72%);
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 22px rgba(62, 24, 11, 0.14));
+  animation: pillar-cup-spin 20s linear infinite;
+}
+
+@keyframes pillar-cup-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pillar-card-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pillar-card-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pillar-card__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 94px;
+  margin: 0 auto 26px;
+  padding: 14px 24px;
+  border-radius: 999px;
+}
+
+.pillar-card__badge--soft {
+  background: linear-gradient(180deg, #ffcb73 0%, #ffc04d 100%);
+}
+
+.pillar-card__badge--warm {
+  background: linear-gradient(180deg, #ff9850 0%, #ff8a43 100%);
+}
+
+.pillar-card__badge--bold {
+  background: linear-gradient(180deg, #ffbc2a 0%, #ffad19 100%);
+}
+
+.pillar-card__badgeTitle {
+  margin: 0;
+  color: #a34c1d;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.pillar-card__copy {
+  max-width: 11.5em;
+  margin: 0 auto;
+  color: var(--pillar-copy);
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  line-height: 1.38;
+}
+
+@media (min-width: 768px) {
+  .coffee-candle {
+    padding: 88px 32px 108px;
+  }
+
+  .coffee-candle__header {
+    margin-bottom: 46px;
+  }
+
+  .coffee-candle__mobileCarousel {
+    display: none;
+  }
+
+  .coffee-candle__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .pillar-card {
+    min-height: 660px;
+    padding: 38px 28px 40px;
+  }
+
+  .pillar-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1100px) {
+  .coffee-candle {
+    padding: 96px 40px 116px;
+  }
+
+  .coffee-candle__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px;
+  }
+
+  .pillar-card {
+    min-height: 636px;
+    border-radius: 40px;
+    padding: 36px 26px 34px;
+  }
+
+  .pillar-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  .pillar-card__cup {
+    width: 198px;
+  }
+
+  .pillar-card__badge {
+    width: calc(100% - 24px);
+    min-height: 96px;
+    margin-bottom: 24px;
+  }
+
+  .pillar-card__badgeTitle {
+    font-size: 1.08rem;
+  }
+
+  .pillar-card__copy {
+    font-size: 0.92rem;
+    line-height: 1.36;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-card__cup {
+    animation: none;
+  }
+
+  .pillar-card--slide-right,
+  .pillar-card--slide-left {
+    animation: none;
+  }
+}
