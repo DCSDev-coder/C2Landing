@@ -1,0 +1,146 @@
+.collaboration-section {
+  position: relative;
+  background:
+    linear-gradient(180deg, #f8f3ea 0%, #f3ebdc 58%, #fbf7f0 100%);
+  padding: 52px 24px 72px;
+}
+
+.collaboration-section__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+  align-items: center;
+}
+
+.collaboration-section__copy {
+  max-width: 660px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.collaboration-section__title {
+  margin: 0;
+  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3.3rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  color: #24140d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  letter-spacing: -0.03em;
+}
+
+.collaboration-section__title-line {
+  display: block;
+}
+
+.collaboration-section__title-line--accent {
+  font-style: italic;
+  color: #ef5b23;
+  font-weight: 600;
+  margin-left: 0;
+}
+
+.collaboration-section__divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 24rem);
+  margin: 18px auto 20px;
+}
+
+.collaboration-section__divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(36, 20, 13, 0.8);
+}
+
+.collaboration-section__star {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.collaboration-section__text {
+  margin: 0 auto;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(1rem, 1.18vw, 1.1rem);
+  line-height: 1.45;
+  color: #5e3d26;
+  max-width: 30.75rem;
+}
+
+.collaboration-section__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.collaboration-section__frame {
+  width: min(100%, 423px);
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: none;
+  background: transparent;
+}
+
+.collaboration-section__image {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 1024px) {
+  .collaboration-section {
+    padding: 64px 48px 112px;
+  }
+
+  .collaboration-section__inner {
+    grid-template-columns: minmax(460px, 1fr) 526px;
+    gap: 92px;
+    align-items: start;
+  }
+
+  .collaboration-section__copy {
+    margin: 0;
+    text-align: left;
+  }
+
+  .collaboration-section__title {
+    align-items: flex-start;
+  }
+
+  .collaboration-section__title-line--accent {
+    margin-left: clamp(2.8rem, 8vw, 3.5rem);
+  }
+
+  .collaboration-section__frame {
+    width: 526px;
+    min-height: 526px;
+  }
+
+  .collaboration-section__image {
+    height: 526px;
+  }
+
+  .collaboration-section__divider {
+    width: 398px;
+    margin: 12px 0 26px 14px;
+  }
+
+  .collaboration-section__star {
+    width: 28px;
+    height: 28px;
+  }
+
+  .collaboration-section__text {
+    margin: 0 0 0 18px;
+  }
+}

@@ -96,6 +96,9 @@
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   box-shadow: 0 10px 30px rgba(40, 19, 13, 0.06);
   border: 0;
+  z-index: 2;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .blend-card--mobile {
@@ -166,6 +169,14 @@
   z-index: 2;
 }
 
+.blend-card__avatar-container,
+.blend-card__info,
+.blend-card__title,
+.blend-card__description,
+.blend-card__link {
+  pointer-events: none;
+}
+
 .blend-card__title {
   font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
   font-size: 1.55rem;
@@ -231,6 +242,7 @@
     box-shadow 0.64s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 10px 30px rgba(40, 19, 13, 0.04);
   will-change: opacity, transform, max-height;
+  pointer-events: none;
 }
 
 .detail-panel.is-active {
@@ -240,6 +252,7 @@
   padding: 32px 24px;
   transform: translateY(0) scale(1);
   box-shadow: 0 22px 48px rgba(40, 19, 13, 0.08);
+  pointer-events: auto;
 }
 
 .detail-panel__content {
@@ -263,21 +276,31 @@
 
 .detail-panel__close {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
+  top: -14px;
+  right: -14px;
+  width: 68px;
+  height: 68px;
+  background: transparent;
   border: none;
-  font-size: 1.75rem;
+  border-radius: 999px;
+  font-size: 2rem;
   color: #28130d;
   cursor: pointer;
-  padding: 8px;
-  z-index: 50;
-  transition: transform 0.2s ease;
+  padding: 0;
+  z-index: 80;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
 }
 
 .detail-panel__close:hover {
-  transform: scale(1.1) rotate(90deg);
+  transform: scale(1.06);
+  color: #5c3a21;
 }
 
 .detail-panel__title {
@@ -286,7 +309,7 @@
   font-weight: 700;
   color: #28130d;
   margin-bottom: 12px;
-  padding-right: 40px;
+  padding-right: 70px;
 }
 
 .detail-panel__title-highlight {
@@ -474,7 +497,7 @@
     height: 440px;
     opacity: 1;
     margin: 0 24px;
-    padding: 28px 24px;
+    padding: 32px 28px;
     transform: translateY(0) scale(1);
   }
 

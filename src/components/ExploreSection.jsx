@@ -18,7 +18,7 @@ const blends = [
     tone: 'dato',
     about:
       'Inspired by heritage and leadership, Dato blend delivers a bold character with rich note of dark chocolate and a smooth, lasting finish. Perfect for those who prefer a stronger, more intense experience.',
-    origin: 'Kenya • Indonesia',
+    origin: 'Kenya \u2022 Indonesia',
     notes: [
       {
         title: 'DARK CHOCOLATE',
@@ -49,7 +49,7 @@ const blends = [
     tone: 'datin',
     about:
       'Inspired by grace and tradition, Datin blend features a bright and refreshing character. It boasts prominent citrus notes and a sweet, fruity undertone, leaving a clean, crisp finish. Ideal for those who enjoy a lively, aromatic cup.',
-    origin: 'Ethiopia • Colombia',
+    origin: 'Ethiopia \u2022 Colombia',
     notes: [
       {
         title: 'CITRUS',
@@ -86,17 +86,49 @@ const blends = [
 ]
 
 function DetailPanel({ blend, isActive, onClose, onTouchStart, onTouchEnd }) {
+  const handlePanelTouchStart = (event) => {
+    if (event.target.closest('.detail-panel__close')) {
+      return
+    }
+
+    onTouchStart?.(event)
+  }
+
+  const handlePanelTouchEnd = (event) => {
+    if (event.target.closest('.detail-panel__close')) {
+      return
+    }
+
+    onTouchEnd?.(event)
+  }
+
   return (
     <div
       className={`detail-panel ${isActive ? 'is-active' : ''}`}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      onTouchStart={handlePanelTouchStart}
+      onTouchEnd={handlePanelTouchEnd}
     >
       {blend && (
         <div className="detail-panel__content">
-          <button type="button" className="detail-panel__close" onClick={onClose} aria-label="Close details">
-            ×
+          <button
+            type="button"
+            className="detail-panel__close"
+            onClick={onClose}
+            onMouseDown={(event) => event.stopPropagation()}
+            onTouchStart={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+            }}
+            onTouchEnd={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+              onClose(event)
+            }}
+            aria-label="Close details"
+          >
+            {'\u00D7'}
           </button>
+
           <h3 className="detail-panel__title">
             About <em className="detail-panel__title-highlight">This Blends.</em>
           </h3>
@@ -151,10 +183,11 @@ function BlendCard({ blend, isDimmed, onSelect, mobile = false, slideDirection =
       <div className="blend-card__avatar-container">
         <img src={blend.avatar} alt="" className="blend-card__avatar" />
       </div>
+
       <div className="blend-card__info">
         <h3 className="blend-card__title">{blend.title}</h3>
         <p className="blend-card__description">{blend.description}</p>
-        <span className="blend-card__link">View Details →</span>
+        <span className="blend-card__link">{'View Details \u2192'}</span>
       </div>
     </button>
   )
@@ -165,7 +198,7 @@ export default function ExploreSection() {
   const [mobileIndex, setMobileIndex] = useState(0)
   const [slideDirection, setSlideDirection] = useState('right')
   const touchStartXRef = useRef(null)
-  const didSwipeRef = useRef(false)
+  const suppressTapRef = useRef(false)
 
   const activeMobileBlend = blends[mobileIndex]
   const selectedBlend = useMemo(
@@ -174,8 +207,8 @@ export default function ExploreSection() {
   )
 
   const handleSelect = (blendId) => {
-    if (didSwipeRef.current) {
-      didSwipeRef.current = false
+    if (suppressTapRef.current) {
+      suppressTapRef.current = false
       return
     }
 
@@ -183,7 +216,8 @@ export default function ExploreSection() {
   }
 
   const handleClose = (event) => {
-    event?.stopPropagation()
+    event?.preventDefault?.()
+    event?.stopPropagation?.()
     setSelectedBlendId(null)
   }
 
@@ -209,7 +243,7 @@ export default function ExploreSection() {
 
   const handleTouchStart = (event) => {
     touchStartXRef.current = event.changedTouches[0].clientX
-    didSwipeRef.current = false
+    suppressTapRef.current = false
   }
 
   const handleTouchEnd = (event) => {
@@ -220,11 +254,11 @@ export default function ExploreSection() {
     const deltaX = touchStartXRef.current - event.changedTouches[0].clientX
     touchStartXRef.current = null
 
-    if (Math.abs(deltaX) < 40) {
+    if (Math.abs(deltaX) < 42) {
       return
     }
 
-    didSwipeRef.current = true
+    suppressTapRef.current = true
 
     if (deltaX > 0) {
       syncMobileBlend(mobileIndex + 1, 'right')

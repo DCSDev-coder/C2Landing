@@ -5,7 +5,7 @@ import './Footer.css'
 const exploreLinks = [
   { label: 'About Us', href: '/' },
   { label: 'Get In Touch', href: '/get-in-touch' },
-  { label: 'Collaborations', href: '/' },
+  { label: 'Collaborations', href: '/collaborations' },
   { label: 'Tiers', href: '/' },
   { label: 'Download', href: '/' },
 ]

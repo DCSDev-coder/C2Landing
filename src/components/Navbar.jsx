@@ -9,7 +9,7 @@ export default function Navbar() {
   const navItems = [
     { label: 'ABOUT', href: '/' },
     { label: 'GET IN TOUCH', href: '/get-in-touch' },
-    { label: 'COLLABORATIONS', href: '/' },
+    { label: 'COLLABORATIONS', href: '/collaborations' },
     { label: 'TIERS', href: '/' },
     { label: 'DOWNLOAD', href: '/' },
   ]
@@ -78,7 +78,8 @@ export default function Navbar() {
                 onClick={(event) => navigate(event, item.href)}
                 className={`c2-nav__link ${
                   (item.label === 'ABOUT' && currentPath === '/') ||
-                  (item.label === 'GET IN TOUCH' && currentPath === '/get-in-touch')
+                  (item.label === 'GET IN TOUCH' && currentPath === '/get-in-touch') ||
+                  (item.label === 'COLLABORATIONS' && currentPath === '/collaborations')
                     ? 'c2-nav__link--active'
                     : ''
                 }`}
