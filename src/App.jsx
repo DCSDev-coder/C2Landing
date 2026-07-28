@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import InspirationSection from './components/InspirationSection'
 import ExploreSection from './components/ExploreSection'
 import CoffeeCandleSection from './components/CoffeeCandleSection'
+import CurrentModeSection from './components/CurrentModeSection'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <InspirationSection />
       <ExploreSection />
       <CoffeeCandleSection />
+      <CurrentModeSection />
+      <Footer />
     </div>
   )
 }
