@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import datoBg from '../assets/Explore/image 47.png'
-import datinBg from '../assets/Explore/image 45.png'
-import datoAvatar from '../assets/Explore/dato 2.png'
-import datinAvatar from '../assets/Explore/image 46.png'
-import almondIcon from '../assets/Explore/Almond.png'
-import chocolateIcon from '../assets/Explore/Chocolate Bar.png'
-import cocoaIcon from '../assets/Explore/Cocoa.png'
+import React, { useMemo, useRef, useState } from 'react'
+import datoBg from '../assets/About Us/Explore/image 47.png'
+import datinBg from '../assets/About Us/Explore/image 45.png'
+import datoAvatar from '../assets/About Us/Explore/dato 2.png'
+import datinAvatar from '../assets/About Us/Explore/image 46.png'
+import almondIcon from '../assets/About Us/Explore/Almond.png'
+import chocolateIcon from '../assets/About Us/Explore/Chocolate Bar.png'
+import cocoaIcon from '../assets/About Us/Explore/Cocoa.png'
 import './ExploreSection.css'
 
 const blends = [
@@ -85,12 +85,16 @@ const blends = [
   },
 ]
 
-function DetailPanel({ blend, isActive, onClose }) {
+function DetailPanel({ blend, isActive, onClose, onTouchStart, onTouchEnd }) {
   return (
-    <div className={`detail-panel ${isActive ? 'is-active' : ''}`}>
+    <div
+      className={`detail-panel ${isActive ? 'is-active' : ''}`}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       {blend && (
         <div className="detail-panel__content">
-          <button className="detail-panel__close" onClick={onClose} aria-label="Close details">
+          <button type="button" className="detail-panel__close" onClick={onClose} aria-label="Close details">
             ×
           </button>
           <h3 className="detail-panel__title">
@@ -100,7 +104,7 @@ function DetailPanel({ blend, isActive, onClose }) {
           <div className="detail-panel__scroll-area">
             <p className="detail-panel__description">{blend.about}</p>
 
-            <div className="detail-panel__divider"></div>
+            <div className="detail-panel__divider" />
 
             <h4 className="detail-panel__section-title">Tasting Notes</h4>
 
@@ -122,7 +126,7 @@ function DetailPanel({ blend, isActive, onClose }) {
               ))}
             </div>
 
-            <div className="detail-panel__divider"></div>
+            <div className="detail-panel__divider" />
 
             <h4 className="detail-panel__section-title">Origin</h4>
             <p className="detail-panel__origin-value">{blend.origin}</p>
@@ -137,7 +141,9 @@ function BlendCard({ blend, isDimmed, onSelect, mobile = false, slideDirection =
   return (
     <button
       type="button"
-      className={`blend-card blend-card--${blend.tone} ${isDimmed ? 'is-dull' : ''} ${mobile ? `blend-card--mobile blend-card--slide-${slideDirection}` : ''}`}
+      className={`blend-card blend-card--${blend.tone} ${isDimmed ? 'is-dull' : ''} ${
+        mobile ? `blend-card--mobile blend-card--slide-${slideDirection}` : ''
+      }`}
       onClick={() => onSelect(blend.id)}
       style={{ backgroundImage: `url(${blend.backgroundImage})` }}
       aria-label={`${blend.title}: ${blend.description}`}
@@ -155,21 +161,30 @@ function BlendCard({ blend, isDimmed, onSelect, mobile = false, slideDirection =
 }
 
 export default function ExploreSection() {
-  const [selectedBlend, setSelectedBlend] = useState(null)
+  const [selectedBlendId, setSelectedBlendId] = useState(null)
   const [mobileIndex, setMobileIndex] = useState(0)
   const [slideDirection, setSlideDirection] = useState('right')
-  const [touchStartX, setTouchStartX] = useState(null)
+  const touchStartXRef = useRef(null)
+  const didSwipeRef = useRef(false)
 
   const activeMobileBlend = blends[mobileIndex]
-  const selectedBlendData = blends.find((blend) => blend.id === selectedBlend) ?? null
+  const selectedBlend = useMemo(
+    () => blends.find((blend) => blend.id === selectedBlendId) ?? null,
+    [selectedBlendId],
+  )
 
   const handleSelect = (blendId) => {
-    setSelectedBlend((current) => (current === blendId ? null : blendId))
+    if (didSwipeRef.current) {
+      didSwipeRef.current = false
+      return
+    }
+
+    setSelectedBlendId((current) => (current === blendId ? null : blendId))
   }
 
   const handleClose = (event) => {
-    event.stopPropagation()
-    setSelectedBlend(null)
+    event?.stopPropagation()
+    setSelectedBlendId(null)
   }
 
   const syncMobileBlend = (nextIndex, direction) => {
@@ -179,17 +194,9 @@ export default function ExploreSection() {
     setSlideDirection(direction)
     setMobileIndex(normalizedIndex)
 
-    if (selectedBlend) {
-      setSelectedBlend(nextBlend.id)
+    if (selectedBlendId) {
+      setSelectedBlendId(nextBlend.id)
     }
-  }
-
-  const goPrev = () => {
-    syncMobileBlend(mobileIndex - 1, 'left')
-  }
-
-  const goNext = () => {
-    syncMobileBlend(mobileIndex + 1, 'right')
   }
 
   const handleDotSelect = (index) => {
@@ -201,27 +208,30 @@ export default function ExploreSection() {
   }
 
   const handleTouchStart = (event) => {
-    setTouchStartX(event.changedTouches[0].clientX)
+    touchStartXRef.current = event.changedTouches[0].clientX
+    didSwipeRef.current = false
   }
 
   const handleTouchEnd = (event) => {
-    if (touchStartX === null) {
+    if (touchStartXRef.current === null) {
       return
     }
 
-    const deltaX = touchStartX - event.changedTouches[0].clientX
-    setTouchStartX(null)
+    const deltaX = touchStartXRef.current - event.changedTouches[0].clientX
+    touchStartXRef.current = null
 
     if (Math.abs(deltaX) < 40) {
       return
     }
 
+    didSwipeRef.current = true
+
     if (deltaX > 0) {
-      goNext()
+      syncMobileBlend(mobileIndex + 1, 'right')
       return
     }
 
-    goPrev()
+    syncMobileBlend(mobileIndex - 1, 'left')
   }
 
   return (
@@ -231,27 +241,24 @@ export default function ExploreSection() {
           Explore Our <em className="explore-header__title-highlight">Blends</em>
         </h2>
         <p className="explore-header__subtitle">
-          Crafted With Intention, Inspired By Our Roots,<br />
+          Crafted With Intention, Inspired By Our Roots,
+          <br />
           Made For Your Moments.
         </p>
       </div>
 
-        <div className="explore-mobileCarousel">
-          <div className="explore-mobileFrame">
-            <div
-              className="explore-mobileCardWrap"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
-              <BlendCard
-                key={activeMobileBlend.id}
-                blend={activeMobileBlend}
-                onSelect={handleSelect}
-                mobile
-                slideDirection={slideDirection}
-              />
-            </div>
+      <div className="explore-mobileCarousel">
+        <div className="explore-mobileFrame">
+          <div className="explore-mobileCardWrap" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            <BlendCard
+              key={activeMobileBlend.id}
+              blend={activeMobileBlend}
+              onSelect={handleSelect}
+              mobile
+              slideDirection={slideDirection}
+            />
           </div>
+        </div>
 
         <div className="explore-mobileDots" aria-label="Blend selection">
           {blends.map((blend, index) => (
@@ -266,23 +273,27 @@ export default function ExploreSection() {
           ))}
         </div>
 
-        <DetailPanel blend={selectedBlendData} isActive={Boolean(selectedBlend)} onClose={handleClose} />
+        <DetailPanel
+          key={selectedBlend?.id ?? 'mobile-empty'}
+          blend={selectedBlend}
+          isActive={Boolean(selectedBlend)}
+          onClose={handleClose}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        />
       </div>
 
       <div className={`explore-grid ${selectedBlend ? 'has-selection' : ''}`}>
-        <BlendCard
-          blend={blends[0]}
-          isDimmed={selectedBlend === 'datin'}
-          onSelect={handleSelect}
+        <BlendCard blend={blends[0]} isDimmed={selectedBlendId === 'datin'} onSelect={handleSelect} />
+
+        <DetailPanel
+          key={selectedBlend?.id ?? 'desktop-empty'}
+          blend={selectedBlend}
+          isActive={Boolean(selectedBlend)}
+          onClose={handleClose}
         />
 
-        <DetailPanel blend={selectedBlendData} isActive={Boolean(selectedBlend)} onClose={handleClose} />
-
-        <BlendCard
-          blend={blends[1]}
-          isDimmed={selectedBlend === 'dato'}
-          onSelect={handleSelect}
-        />
+        <BlendCard blend={blends[1]} isDimmed={selectedBlendId === 'dato'} onSelect={handleSelect} />
       </div>
     </section>
   )

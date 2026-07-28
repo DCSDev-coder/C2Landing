@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import currentModeDrink from '../assets/CurrentMode/currentmode-drink.png'
+import currentModeDrink from '../assets/About Us/CurrentMode/currentmode-drink.png'
 import './CurrentModeSection.css'
 
 const drinks = [

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import matchaCup from '../assets/Coffee+Candle/ChatGPT Image Jul 21, 2026, 11_01_23 AM (2) 1.png'
-import icedCoffeeCup from '../assets/Coffee+Candle/ChatGPT Image Jul 21, 2026, 11_01_23 AM (3) 1.png'
-import latteCup from '../assets/Coffee+Candle/ChatGPT Image Jul 21, 2026, 11_01_23 AM (1) 1.png'
+import matchaCup from '../assets/About Us/Coffee+Candle/ChatGPT Image Jul 21, 2026, 11_01_23 AM (2) 1.png'
+import icedCoffeeCup from '../assets/About Us/Coffee+Candle/ChatGPT Image Jul 21, 2026, 11_01_23 AM (3) 1.png'
+import latteCup from '../assets/About Us/Coffee+Candle/ChatGPT Image Jul 21, 2026, 11_01_23 AM (1) 1.png'
 import './CoffeeCandleSection.css'
 
 const pillars = [

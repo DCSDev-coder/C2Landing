@@ -1,24 +1,28 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import InspirationSection from './components/InspirationSection'
-import ExploreSection from './components/ExploreSection'
-import CoffeeCandleSection from './components/CoffeeCandleSection'
-import CurrentModeSection from './components/CurrentModeSection'
-import Footer from './components/Footer'
+import React, { useEffect, useState } from 'react'
+import Home from './pages/Home'
+import GetInTouch from './pages/GetInTouch'
 
 function App() {
-  return (
-    <div className="min-h-screen bg-[#f4ede3] text-[#23150c] font-sans">
-      <Navbar />
-      <Hero />
-      <InspirationSection />
-      <ExploreSection />
-      <CoffeeCandleSection />
-      <CurrentModeSection />
-      <Footer />
-    </div>
-  )
+  const getCurrentPath = () => window.location.pathname.replace(/\/+$/, '') || '/'
+  const [path, setPath] = useState(getCurrentPath)
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setPath(getCurrentPath())
+    }
+
+    window.addEventListener('popstate', handleLocationChange)
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange)
+    }
+  }, [])
+
+  if (path === '/get-in-touch') {
+    return <GetInTouch />
+  }
+
+  return <Home />
 }
 
 export default App

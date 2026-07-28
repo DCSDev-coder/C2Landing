@@ -220,8 +220,17 @@
   position: relative;
   background-color: #f3ebd6;
   border-radius: 16px;
-  transition: opacity 0.35s ease, max-height 0.35s ease, margin-top 0.35s ease, padding 0.35s ease;
+  transform: translateY(24px) scale(0.978);
+  transform-origin: top center;
+  transition:
+    opacity 0.64s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.64s cubic-bezier(0.22, 1, 0.36, 1),
+    max-height 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-top 0.64s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.64s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.64s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 10px 30px rgba(40, 19, 13, 0.04);
+  will-change: opacity, transform, max-height;
 }
 
 .detail-panel.is-active {
@@ -229,11 +238,23 @@
   opacity: 1;
   margin-top: 16px;
   padding: 32px 24px;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 22px 48px rgba(40, 19, 13, 0.08);
 }
 
 .detail-panel__content {
   position: relative;
   width: 100%;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.48s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+    transform 0.52s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.detail-panel.is-active .detail-panel__content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .detail-panel__scroll-area {
@@ -438,7 +459,14 @@
     overflow: hidden;
     border-radius: 16px;
     flex-shrink: 0;
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(10px) scale(0.975);
+    transition:
+      width 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.56s cubic-bezier(0.22, 1, 0.36, 1),
+      margin 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.68s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .detail-panel.is-active {
@@ -447,6 +475,7 @@
     opacity: 1;
     margin: 0 24px;
     padding: 28px 24px;
+    transform: translateY(0) scale(1);
   }
 
   .detail-panel__content {
@@ -498,9 +527,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .blend-card--slide-right,
-  .blend-card--slide-left {
+  .blend-card--slide-left,
+  .detail-panel,
+  .detail-panel__content {
     animation: none;
+    transition: none;
   }
 }

@@ -5,11 +5,37 @@ import './Navbar.css'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isPastHero, setIsPastHero] = useState(false)
-  const navItems = ['ABOUT', 'GET IN TOUCH', 'COLLABORATIONS', 'TIERS', 'DOWNLOAD']
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+  const navItems = [
+    { label: 'ABOUT', href: '/' },
+    { label: 'GET IN TOUCH', href: '/get-in-touch' },
+    { label: 'COLLABORATIONS', href: '/' },
+    { label: 'TIERS', href: '/' },
+    { label: 'DOWNLOAD', href: '/' },
+  ]
+
+  const navigate = (event, href) => {
+    if (event) {
+      event.preventDefault()
+    }
+
+    if (href === currentPath) {
+      setIsOpen(false)
+      if (href === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+      return
+    }
+
+    window.history.pushState({}, '', href)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+    window.scrollTo({ top: 0, behavior: 'auto' })
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const syncHeroState = () => {
-      const hero = document.querySelector('.hero')
+      const hero = document.querySelector('.hero, .get-in-touch-hero')
 
       if (!hero) {
         setIsPastHero(false)
@@ -35,21 +61,29 @@ export default function Navbar() {
       <div className="c2-nav__shell">
         <div className="c2-nav__bar">
           <div className="c2-nav__brand">
-            <img
-              src={logo}
-              alt="C2 Coffee Logo"
-              className="c2-nav__logo"
-            />
+            <a href="/" onClick={(event) => navigate(event, '/')} aria-label="Go to home">
+              <img
+                src={logo}
+                alt="C2 Coffee Logo"
+                className="c2-nav__logo"
+              />
+            </a>
           </div>
 
           <div className="c2-nav__desktop">
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                className={`c2-nav__link ${item === 'ABOUT' ? 'c2-nav__link--active' : ''}`}
+                key={item.label}
+                href={item.href}
+                onClick={(event) => navigate(event, item.href)}
+                className={`c2-nav__link ${
+                  (item.label === 'ABOUT' && currentPath === '/') ||
+                  (item.label === 'GET IN TOUCH' && currentPath === '/get-in-touch')
+                    ? 'c2-nav__link--active'
+                    : ''
+                }`}
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>
@@ -85,12 +119,12 @@ export default function Navbar() {
         <div className="c2-nav__mobileList">
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-              onClick={() => setIsOpen(false)}
+              key={item.label}
+              href={item.href}
+              onClick={(event) => navigate(event, item.href)}
               className="c2-nav__mobileLink"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </div>

@@ -1,0 +1,28 @@
+.get-in-touch-hero {
+  position: relative;
+  min-height: 42svh;
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.get-in-touch-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 10, 6, 0.22);
+}
+
+@media (min-width: 768px) {
+  .get-in-touch-hero {
+    min-height: 48vh;
+    background-position: center 44%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .get-in-touch-hero {
+    min-height: 52vh;
+    background-position: center 46%;
+  }
+}

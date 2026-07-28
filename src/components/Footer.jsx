@@ -1,11 +1,24 @@
 import React from 'react'
-import footerLogo from '../assets/Footer/FA C2 LOGO (OUTLINE)-02 3.svg'
+import footerLogo from '../assets/About Us/Footer/FA C2 LOGO (OUTLINE)-02 3.svg'
 import './Footer.css'
 
-const exploreLinks = ['About Us', 'Get In Touch', 'Collaborations', 'Tiers', 'Download']
+const exploreLinks = [
+  { label: 'About Us', href: '/' },
+  { label: 'Get In Touch', href: '/get-in-touch' },
+  { label: 'Collaborations', href: '/' },
+  { label: 'Tiers', href: '/' },
+  { label: 'Download', href: '/' },
+]
 const legalLinks = ['Privacy Policy', 'Terms Of Service', 'Contact Us']
 
 export default function Footer() {
+  const navigate = (event, href) => {
+    event.preventDefault()
+    window.history.pushState({}, '', href)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }
+
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
@@ -17,9 +30,9 @@ export default function Footer() {
           <h2 className="site-footer__heading">Explore</h2>
           <ul className="site-footer__links">
             {exploreLinks.map((item) => (
-              <li key={item}>
-                <a href="/" onClick={(event) => event.preventDefault()} className="site-footer__link">
-                  {item}
+              <li key={item.label}>
+                <a href={item.href} onClick={(event) => navigate(event, item.href)} className="site-footer__link">
+                  {item.label}
                 </a>
               </li>
             ))}
@@ -59,14 +72,14 @@ export default function Footer() {
               autoComplete="email"
             />
             <button type="button" className="site-footer__submit" aria-label="Submit email">
-              <span aria-hidden="true">›</span>
+              <span aria-hidden="true">&rsaquo;</span>
             </button>
           </form>
         </section>
       </div>
 
       <div className="site-footer__bottom">
-        <p className="site-footer__fineprint">© 2024 C2 Coffee + Candle. All right reserved.</p>
+        <p className="site-footer__fineprint">&copy; 2024 C2 Coffee + Candle. All right reserved.</p>
         <p className="site-footer__fineprint">Crafted with love in Malaysia</p>
       </div>
     </footer>
