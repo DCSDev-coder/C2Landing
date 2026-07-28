@@ -56,47 +56,19 @@
 }
 
 .coffee-candle__mobileCarousel {
-  max-width: 480px;
+  max-width: 560px;
   margin: 0 auto;
 }
 
 .coffee-candle__mobileFrame {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 28px;
 }
 
-.coffee-candle__nav {
-  position: absolute;
-  top: 50%;
-  z-index: 3;
-  width: 52px;
-  height: 52px;
-  border: 0;
-  padding: 0;
-  color: #b46024;
-  background: transparent;
-  font-family: 'Libre Caslon Text', Georgia, serif;
-  font-size: 3rem;
-  line-height: 1;
-  cursor: pointer;
-  transform: translateY(-50%);
-  touch-action: manipulation;
-}
-
-.coffee-candle__nav span {
-  display: block;
-  transform: translateY(-2px);
-}
-
-.coffee-candle__nav--prev {
-  left: -8px;
-}
-
-.coffee-candle__nav--next {
-  right: -8px;
+.coffee-candle__mobileCardWrap {
+  width: 100%;
+  max-width: 390px;
 }
 
 .coffee-candle__dots {
@@ -131,7 +103,8 @@
 .pillar-card--mobile {
   width: 100%;
   min-height: 0;
-  padding: 28px 10px 26px;
+  max-width: none;
+  padding: 28px 14px 26px;
   border-radius: 40px;
   touch-action: pan-y;
   will-change: transform, opacity;
@@ -310,7 +283,7 @@
   }
 
   .pillar-card__copy {
-    font-size: 0.92rem;
+    font-size: 1.2rem;
     line-height: 1.36;
   }
 }

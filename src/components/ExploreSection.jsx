@@ -8,20 +8,220 @@ import chocolateIcon from '../assets/Explore/Chocolate Bar.png'
 import cocoaIcon from '../assets/Explore/Cocoa.png'
 import './ExploreSection.css'
 
+const blends = [
+  {
+    id: 'dato',
+    title: 'Dato Blend',
+    description: 'Bold & Dark Chocolatey',
+    backgroundImage: datoBg,
+    avatar: datoAvatar,
+    tone: 'dato',
+    about:
+      'Inspired by heritage and leadership, Dato blend delivers a bold character with rich note of dark chocolate and a smooth, lasting finish. Perfect for those who prefer a stronger, more intense experience.',
+    origin: 'Kenya • Indonesia',
+    notes: [
+      {
+        title: 'DARK CHOCOLATE',
+        description: 'Rich & indulgent chocolate notes.',
+        icon: chocolateIcon,
+        alt: 'Dark Chocolate',
+      },
+      {
+        title: 'ROASTED COCOA',
+        description: 'Deep cocoa-like warmth.',
+        icon: cocoaIcon,
+        alt: 'Roasted Cocoa',
+      },
+      {
+        title: 'TOASTED NUTS',
+        description: 'Suitable nuttiness for a balanced finish.',
+        icon: almondIcon,
+        alt: 'Toasted Nuts',
+      },
+    ],
+  },
+  {
+    id: 'datin',
+    title: 'Datin Blend',
+    description: 'Citrus & Fruity',
+    backgroundImage: datinBg,
+    avatar: datinAvatar,
+    tone: 'datin',
+    about:
+      'Inspired by grace and tradition, Datin blend features a bright and refreshing character. It boasts prominent citrus notes and a sweet, fruity undertone, leaving a clean, crisp finish. Ideal for those who enjoy a lively, aromatic cup.',
+    origin: 'Ethiopia • Colombia',
+    notes: [
+      {
+        title: 'CITRUS',
+        description: 'Bright lemon and orange zestiness.',
+        svg: (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2v20M2 12h20M12 12l7.07-7.07M12 12l-7.07 7.07M12 12l-7.07-7.07M12 12l7.07 7.07" />
+          </svg>
+        ),
+      },
+      {
+        title: 'FRUITY',
+        description: 'Sweet berry-like undertones.',
+        svg: (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 3a9 9 0 0 0-3 3" />
+          </svg>
+        ),
+      },
+      {
+        title: 'FLORAL',
+        description: 'Delicate jasmine aroma.',
+        svg: (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4z" />
+            <circle cx="12" cy="6" r="1.5" />
+          </svg>
+        ),
+      },
+    ],
+  },
+]
+
+function DetailPanel({ blend, isActive, onClose }) {
+  return (
+    <div className={`detail-panel ${isActive ? 'is-active' : ''}`}>
+      {blend && (
+        <div className="detail-panel__content">
+          <button className="detail-panel__close" onClick={onClose} aria-label="Close details">
+            ×
+          </button>
+          <h3 className="detail-panel__title">
+            About <em className="detail-panel__title-highlight">This Blends.</em>
+          </h3>
+
+          <div className="detail-panel__scroll-area">
+            <p className="detail-panel__description">{blend.about}</p>
+
+            <div className="detail-panel__divider"></div>
+
+            <h4 className="detail-panel__section-title">Tasting Notes</h4>
+
+            <div className="detail-panel__notes-grid">
+              {blend.notes.map((note) => (
+                <div className="tasting-note" key={note.title}>
+                  <div className="tasting-note__icon">
+                    {note.icon ? (
+                      <img src={note.icon} alt={note.alt} className="tasting-note__png" />
+                    ) : (
+                      note.svg
+                    )}
+                  </div>
+                  <div className="tasting-note__info">
+                    <span className="tasting-note__name">{note.title}</span>
+                    <span className="tasting-note__desc">{note.description}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="detail-panel__divider"></div>
+
+            <h4 className="detail-panel__section-title">Origin</h4>
+            <p className="detail-panel__origin-value">{blend.origin}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function BlendCard({ blend, isDimmed, onSelect, mobile = false, slideDirection = 'right' }) {
+  return (
+    <button
+      type="button"
+      className={`blend-card blend-card--${blend.tone} ${isDimmed ? 'is-dull' : ''} ${mobile ? `blend-card--mobile blend-card--slide-${slideDirection}` : ''}`}
+      onClick={() => onSelect(blend.id)}
+      style={{ backgroundImage: `url(${blend.backgroundImage})` }}
+      aria-label={`${blend.title}: ${blend.description}`}
+    >
+      <div className="blend-card__avatar-container">
+        <img src={blend.avatar} alt="" className="blend-card__avatar" />
+      </div>
+      <div className="blend-card__info">
+        <h3 className="blend-card__title">{blend.title}</h3>
+        <p className="blend-card__description">{blend.description}</p>
+        <span className="blend-card__link">View Details →</span>
+      </div>
+    </button>
+  )
+}
+
 export default function ExploreSection() {
   const [selectedBlend, setSelectedBlend] = useState(null)
+  const [mobileIndex, setMobileIndex] = useState(0)
+  const [slideDirection, setSlideDirection] = useState('right')
+  const [touchStartX, setTouchStartX] = useState(null)
 
-  const handleSelect = (blend, e) => {
-    if (selectedBlend === blend) {
-      setSelectedBlend(null)
-    } else {
-      setSelectedBlend(blend)
+  const activeMobileBlend = blends[mobileIndex]
+  const selectedBlendData = blends.find((blend) => blend.id === selectedBlend) ?? null
+
+  const handleSelect = (blendId) => {
+    setSelectedBlend((current) => (current === blendId ? null : blendId))
+  }
+
+  const handleClose = (event) => {
+    event.stopPropagation()
+    setSelectedBlend(null)
+  }
+
+  const syncMobileBlend = (nextIndex, direction) => {
+    const normalizedIndex = (nextIndex + blends.length) % blends.length
+    const nextBlend = blends[normalizedIndex]
+
+    setSlideDirection(direction)
+    setMobileIndex(normalizedIndex)
+
+    if (selectedBlend) {
+      setSelectedBlend(nextBlend.id)
     }
   }
 
-  const handleClose = (e) => {
-    e.stopPropagation()
-    setSelectedBlend(null)
+  const goPrev = () => {
+    syncMobileBlend(mobileIndex - 1, 'left')
+  }
+
+  const goNext = () => {
+    syncMobileBlend(mobileIndex + 1, 'right')
+  }
+
+  const handleDotSelect = (index) => {
+    if (index === mobileIndex) {
+      return
+    }
+
+    syncMobileBlend(index, index > mobileIndex ? 'right' : 'left')
+  }
+
+  const handleTouchStart = (event) => {
+    setTouchStartX(event.changedTouches[0].clientX)
+  }
+
+  const handleTouchEnd = (event) => {
+    if (touchStartX === null) {
+      return
+    }
+
+    const deltaX = touchStartX - event.changedTouches[0].clientX
+    setTouchStartX(null)
+
+    if (Math.abs(deltaX) < 40) {
+      return
+    }
+
+    if (deltaX > 0) {
+      goNext()
+      return
+    }
+
+    goPrev()
   }
 
   return (
@@ -36,155 +236,53 @@ export default function ExploreSection() {
         </p>
       </div>
 
-      <div className={`explore-grid ${selectedBlend ? 'has-selection' : ''}`}>
-        
-        {/* DATO CARD */}
-        <div 
-          className={`blend-card blend-card--dato ${selectedBlend === 'dato' ? 'is-active' : ''} ${selectedBlend === 'datin' ? 'is-dull' : ''}`}
-          onClick={(e) => handleSelect('dato', e)}
-          style={{ gridArea: 'dato', backgroundImage: `url(${datoBg})` }}
-        >
-          <div className="blend-card__avatar-container">
-            <img src={datoAvatar} alt="Dato Avatar" className="blend-card__avatar" />
-          </div>
-          <div className="blend-card__info">
-            <h3 className="blend-card__title">Dato Blend</h3>
-            <p className="blend-card__description">Bold & Dark Chocolatey</p>
-            <span className="blend-card__link">View Details →</span>
-          </div>
-        </div>
-
-        {/* DETAIL PANEL */}
-        <div 
-          className={`detail-panel ${selectedBlend ? 'is-active' : ''}`}
-          style={{ gridArea: 'details' }}
-        >
-          {selectedBlend && (
-            <div className="detail-panel__content">
-              <button className="detail-panel__close" onClick={handleClose} aria-label="Close details">
-                ✕
-              </button>
-              <h3 className="detail-panel__title">
-                About <em className="detail-panel__title-highlight">This Blends.</em>
-              </h3>
-              
-              <div className="detail-panel__scroll-area">
-                <p className="detail-panel__description">
-                  {selectedBlend === 'dato' ? (
-                    "Inspired by heritage and leadership, Dato blend delivers a bold character with rich note of dark chocolate and a smooth, lasting finish. Perfect for those who prefer a stronger, more intense experience."
-                  ) : (
-                    "Inspired by grace and tradition, Datin blend features a bright and refreshing character. It boasts prominent citrus notes and a sweet, fruity undertone, leaving a clean, crisp finish. Ideal for those who enjoy a lively, aromatic cup."
-                  )}
-                </p>
-                
-                <div className="detail-panel__divider"></div>
-                
-                <h4 className="detail-panel__section-title">Tasting Notes</h4>
-                
-                <div className="detail-panel__notes-grid">
-                  {selectedBlend === 'dato' ? (
-                    <>
-                      <div className="tasting-note">
-                        <div className="tasting-note__icon">
-                          <img src={chocolateIcon} alt="Dark Chocolate" className="tasting-note__png" />
-                        </div>
-                        <div className="tasting-note__info">
-                          <span className="tasting-note__name">DARK CHOCOLATE</span>
-                          <span className="tasting-note__desc">Rich & indulgent chocolate notes.</span>
-                        </div>
-                      </div>
-                      
-                      <div className="tasting-note">
-                        <div className="tasting-note__icon">
-                          <img src={cocoaIcon} alt="Roasted Cocoa" className="tasting-note__png" />
-                        </div>
-                        <div className="tasting-note__info">
-                          <span className="tasting-note__name">ROASTED COCOA</span>
-                          <span className="tasting-note__desc">Deep cocoa-like warmth.</span>
-                        </div>
-                      </div>
-                      
-                      <div className="tasting-note">
-                        <div className="tasting-note__icon">
-                          <img src={almondIcon} alt="Toasted Nuts" className="tasting-note__png" />
-                        </div>
-                        <div className="tasting-note__info">
-                          <span className="tasting-note__name">TOASTED NUTS</span>
-                          <span className="tasting-note__desc">Suitable nuttiness for a balanced finish.</span>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="tasting-note">
-                        <div className="tasting-note__icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 2v20M2 12h20M12 12l7.07-7.07M12 12l-7.07 7.07M12 12l-7.07-7.07M12 12l7.07 7.07" />
-                          </svg>
-                        </div>
-                        <div className="tasting-note__info">
-                          <span className="tasting-note__name">CITRUS</span>
-                          <span className="tasting-note__desc">Bright lemon and orange zestiness.</span>
-                        </div>
-                      </div>
-                      
-                      <div className="tasting-note">
-                        <div className="tasting-note__icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 3a9 9 0 0 0-3 3" />
-                          </svg>
-                        </div>
-                        <div className="tasting-note__info">
-                          <span className="tasting-note__name">FRUITY</span>
-                          <span className="tasting-note__desc">Sweet berry-like undertones.</span>
-                        </div>
-                      </div>
-                      
-                      <div className="tasting-note">
-                        <div className="tasting-note__icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 2a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4z" />
-                            <circle cx="12" cy="6" r="1.5" />
-                          </svg>
-                        </div>
-                        <div className="tasting-note__info">
-                          <span className="tasting-note__name">FLORAL</span>
-                          <span className="tasting-note__desc">Delicate jasmine aroma.</span>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-                
-                <div className="detail-panel__divider"></div>
-                
-                <h4 className="detail-panel__section-title">Origin</h4>
-                <p className="detail-panel__origin-value">
-                  {selectedBlend === 'dato' ? 'Kenya • Indonesia' : 'Ethiopia • Colombia'}
-                </p>
-              </div>
+        <div className="explore-mobileCarousel">
+          <div className="explore-mobileFrame">
+            <div
+              className="explore-mobileCardWrap"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <BlendCard
+                key={activeMobileBlend.id}
+                blend={activeMobileBlend}
+                onSelect={handleSelect}
+                mobile
+                slideDirection={slideDirection}
+              />
             </div>
-          )}
+          </div>
+
+        <div className="explore-mobileDots" aria-label="Blend selection">
+          {blends.map((blend, index) => (
+            <button
+              key={blend.id}
+              type="button"
+              className={`explore-mobileDot ${index === mobileIndex ? 'is-active' : ''}`}
+              onClick={() => handleDotSelect(index)}
+              aria-label={`Show blend ${index + 1}`}
+              aria-pressed={index === mobileIndex}
+            />
+          ))}
         </div>
 
-        {/* DATIN CARD */}
-        <div 
-          className={`blend-card blend-card--datin ${selectedBlend === 'datin' ? 'is-active' : ''} ${selectedBlend === 'dato' ? 'is-dull' : ''}`}
-          onClick={(e) => handleSelect('datin', e)}
-          style={{ gridArea: 'datin', backgroundImage: `url(${datinBg})` }}
-        >
-          <div className="blend-card__avatar-container">
-            <img src={datinAvatar} alt="Datin Avatar" className="blend-card__avatar" />
-          </div>
-          <div className="blend-card__info">
-            <h3 className="blend-card__title">Datin Blend</h3>
-            <p className="blend-card__description">Citrus & Fruity</p>
-            <span className="blend-card__link">View Details →</span>
-          </div>
-        </div>
+        <DetailPanel blend={selectedBlendData} isActive={Boolean(selectedBlend)} onClose={handleClose} />
+      </div>
 
+      <div className={`explore-grid ${selectedBlend ? 'has-selection' : ''}`}>
+        <BlendCard
+          blend={blends[0]}
+          isDimmed={selectedBlend === 'datin'}
+          onSelect={handleSelect}
+        />
+
+        <DetailPanel blend={selectedBlendData} isActive={Boolean(selectedBlend)} onClose={handleClose} />
+
+        <BlendCard
+          blend={blends[1]}
+          isDimmed={selectedBlend === 'dato'}
+          onSelect={handleSelect}
+        />
       </div>
     </section>
   )

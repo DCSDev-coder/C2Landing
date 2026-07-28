@@ -96,44 +96,30 @@ export default function CoffeeCandleSection() {
 
         <div className="coffee-candle__mobileCarousel">
           <div className="coffee-candle__mobileFrame">
-            <button
-              type="button"
-              className="coffee-candle__nav coffee-candle__nav--prev"
-              onClick={goPrev}
-              aria-label="Show previous pillar"
-            >
-              <span aria-hidden="true">&#8249;</span>
-            </button>
-
-            <article
-              key={activePillar.title}
-              className={`pillar-card pillar-card--mobile pillar-card--${activePillar.tone} pillar-card--slide-${slideDirection}`}
+            <div
+              className="coffee-candle__mobileCardWrap"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              <div className="pillar-card__cupWrap">
-                <img
-                  src={activePillar.image}
-                  alt=""
-                  className="pillar-card__cup"
-                />
-              </div>
+              <article
+                key={activePillar.title}
+                className={`pillar-card pillar-card--mobile pillar-card--${activePillar.tone} pillar-card--slide-${slideDirection}`}
+              >
+                <div className="pillar-card__cupWrap">
+                  <img
+                    src={activePillar.image}
+                    alt=""
+                    className="pillar-card__cup"
+                  />
+                </div>
 
-              <div className={`pillar-card__badge pillar-card__badge--${activePillar.accent}`}>
-                <h3 className="pillar-card__badgeTitle">{activePillar.title}</h3>
-              </div>
+                <div className={`pillar-card__badge pillar-card__badge--${activePillar.accent}`}>
+                  <h3 className="pillar-card__badgeTitle">{activePillar.title}</h3>
+                </div>
 
-              <p className="pillar-card__copy">{activePillar.description}</p>
-            </article>
-
-            <button
-              type="button"
-              className="coffee-candle__nav coffee-candle__nav--next"
-              onClick={goNext}
-              aria-label="Show next pillar"
-            >
-              <span aria-hidden="true">&#8250;</span>
-            </button>
+                <p className="pillar-card__copy">{activePillar.description}</p>
+              </article>
+            </div>
           </div>
 
           <div className="coffee-candle__dots" aria-label="Pillar selection">
