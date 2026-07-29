@@ -140,6 +140,8 @@
 .partner-inquiry__field {
   display: grid;
   gap: 8px;
+  position: relative;
+  z-index: 1;
 }
 
 .partner-inquiry__label {
@@ -152,6 +154,8 @@
 
 .partner-inquiry__input,
 .partner-inquiry__textarea {
+  position: relative;
+  z-index: 2;
   width: 100%;
   border: 1px solid rgba(58, 36, 28, 0.14);
   border-radius: 18px;
@@ -162,6 +166,9 @@
   font-size: 1rem;
   outline: none;
   transition: border-color 180ms ease, box-shadow 180ms ease;
+  appearance: none;
+  -webkit-appearance: none;
+  pointer-events: auto;
 }
 
 .partner-inquiry__input:focus,
@@ -177,6 +184,27 @@
 
 .partner-inquiry__submit {
   justify-self: start;
+}
+
+.partner-inquiry__submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.partner-inquiry__feedback {
+  margin: 0;
+  color: #5e3d26;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.partner-inquiry__feedback--success {
+  color: #7a4d2d;
+}
+
+.partner-inquiry__feedback--error {
+  color: #a94417;
 }
 
 @media (min-width: 720px) {

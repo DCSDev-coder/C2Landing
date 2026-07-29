@@ -2,9 +2,7 @@
   position: relative;
   overflow: hidden;
   padding: 72px 24px 96px;
-  background:
-    radial-gradient(circle at top center, rgba(255, 196, 121, 0.12), transparent 36%),
-    linear-gradient(180deg, #fffefd 0%, #fffaf4 100%);
+  background: #ffffff;
 }
 
 .current-mode__inner {

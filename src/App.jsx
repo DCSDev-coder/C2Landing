@@ -5,30 +5,35 @@ import Collaboration from './pages/Collaboration'
 import Tier from './pages/Tier'
 
 function App() {
-  const getCurrentPath = () => window.location.pathname.replace(/\/+$/, '') || '/'
-  const [path, setPath] = useState(getCurrentPath)
+  const getCurrentLocation = () => ({
+    pathname: window.location.pathname.replace(/\/+$/, '') || '/',
+    hash: window.location.hash,
+  })
+  const [location, setLocation] = useState(getCurrentLocation)
 
   useEffect(() => {
     const handleLocationChange = () => {
-      setPath(getCurrentPath())
+      setLocation(getCurrentLocation())
     }
 
     window.addEventListener('popstate', handleLocationChange)
+    window.addEventListener('hashchange', handleLocationChange)
 
     return () => {
       window.removeEventListener('popstate', handleLocationChange)
+      window.removeEventListener('hashchange', handleLocationChange)
     }
   }, [])
 
-  if (path === '/get-in-touch') {
+  if (location.pathname === '/get-in-touch') {
     return <GetInTouch />
   }
 
-  if (path === '/collaborations') {
+  if (location.pathname === '/collaborations') {
     return <Collaboration />
   }
 
-  if (path === '/tiers') {
+  if (location.pathname === '/tiers') {
     return <Tier />
   }
 
