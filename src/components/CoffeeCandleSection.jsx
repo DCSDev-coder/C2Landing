@@ -83,7 +83,7 @@ export default function CoffeeCandleSection() {
   }
 
   return (
-    <section className="coffee-candle" aria-labelledby="coffee-candle-title">
+    <section className="coffee-candle" id="craft" aria-labelledby="coffee-candle-title">
       <div className="coffee-candle__inner">
         <header className="coffee-candle__header">
           <h2 className="coffee-candle__title" id="coffee-candle-title">

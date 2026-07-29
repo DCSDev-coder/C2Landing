@@ -1,7 +1,7 @@
 import React from 'react'
 import milkChocolate from '../assets/images/MILK CHOCOLATE 1.png'
 import poccoLocco from '../assets/images/POCCO LOCCO 1.png'
-import directionMap from '../assets/GetInTouch/Location/direction-map.png'
+import directionMap from '../assets/optimized/direction-map.webp'
 import './DirectionSection.css'
 
 const mapQuery = encodeURIComponent('42, Jalan Eco Forest 6/1C, Eco Forest, 43500 Semenyih, Selangor, Malaysia')

@@ -1,5 +1,5 @@
 import React from 'react'
-import inspirationProducts from '../assets/images/InspirationProducts.png'
+import inspirationProducts from '../assets/optimized/inspiration-products.webp'
 import './InspirationSection.css'
 
 const craftItems = [

@@ -1,0 +1,113 @@
+.tier-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(188, 87, 31, 0.06), transparent 26%),
+    linear-gradient(180deg, #fff8f5 0%, #f4ebe4 100%);
+}
+
+.tier-hero__inner {
+  display: grid;
+  gap: 36px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 48px) 24px 72px;
+}
+
+.tier-hero__copyBlock {
+  max-width: 720px;
+}
+
+.tier-hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #9c3f04;
+  font-family: 'Marcellus', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.tier-hero__title {
+  margin: 0;
+  color: #24140d;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.6rem, 11vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.tier-hero__titleAccent {
+  display: block;
+  font-style: italic;
+  font-weight: 600;
+  color: #bc571f;
+}
+
+.tier-hero__rule {
+  width: 108px;
+  height: 1px;
+  margin-top: 24px;
+  background: rgba(156, 63, 4, 0.24);
+}
+
+.tier-hero__aside {
+  display: grid;
+  gap: 24px;
+}
+
+.tier-hero__copy {
+  margin: 0;
+  max-width: 24rem;
+  color: #705a49;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  line-height: 1.65;
+  border-left: 2px solid rgba(156, 63, 4, 0.12);
+  padding-left: 18px;
+}
+
+.tier-hero__visualFrame {
+  width: min(100%, 260px);
+  aspect-ratio: 1 / 1;
+  margin-left: auto;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 22px 56px rgba(156, 63, 4, 0.12);
+  transform: rotate(3deg);
+}
+
+.tier-hero__visual {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  .tier-hero__inner {
+    padding: calc(var(--nav-height) + 64px) 32px 88px;
+  }
+
+  .tier-hero__visualFrame {
+    width: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tier-hero__inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.28fr);
+    align-items: end;
+    gap: 56px;
+    padding: calc(var(--nav-height) + 76px) 40px 108px;
+  }
+
+  .tier-hero__aside {
+    align-self: end;
+  }
+
+  .tier-hero__visualFrame {
+    width: min(100%, 360px);
+  }
+}

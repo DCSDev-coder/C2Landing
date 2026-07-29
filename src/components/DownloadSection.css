@@ -1,0 +1,226 @@
+.download-section {
+  overflow: hidden;
+  padding: 72px 24px 88px;
+  background: #fdf4f0;
+}
+
+.download-section__inner {
+  display: grid;
+  gap: 40px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.download-section__media {
+  position: relative;
+  padding-bottom: 72px;
+}
+
+.download-section__imageFrame {
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(156, 63, 4, 0.08);
+}
+
+.download-section__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.download-section__badge {
+  position: absolute;
+  right: -8px;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: min(220px, 48vw);
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 35% 65% 75% 25% / 35% 35% 65% 65%;
+  background: rgba(255, 248, 245, 0.8);
+  box-shadow: 0 20px 50px -10px rgba(156, 63, 4, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.download-section__badgeRing {
+  display: grid;
+  place-items: center;
+  width: 74%;
+  height: 74%;
+  border: 1px solid rgba(156, 63, 4, 0.2);
+  border-radius: 999px;
+  color: #9c3f04;
+  font-family: 'Marcellus', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.download-section__content {
+  align-self: center;
+}
+
+.download-section__title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--coffee-brown-900);
+}
+
+.download-section__titlePrimary {
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(3rem, 10vw, 4.65rem);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.download-section__titleAccent {
+  color: var(--coffee-orange);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 10vw, 4.75rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.download-section__copy,
+.download-section__status {
+  margin: 0;
+  color: #705a49;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+}
+
+.download-section__copy {
+  max-width: 28rem;
+  margin-top: 26px;
+  font-size: clamp(1.05rem, 2.9vw, 1.22rem);
+  line-height: 1.62;
+}
+
+.download-section__status {
+  margin-top: 18px;
+  font-size: clamp(1.1rem, 2.7vw, 1.22rem);
+  line-height: 1.4;
+}
+
+.download-section__actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  max-width: 430px;
+}
+
+.download-section__store {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 68px;
+  padding: 0 30px;
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+}
+
+.download-section__store--primary {
+  border: 0;
+  background: #9c3f04;
+  color: #fff8f5;
+}
+
+.download-section__store--secondary {
+  border: 1px solid #705a49;
+  color: #705a49;
+}
+
+.download-section__storeIcon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.download-section__storeLabel {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Marcellus', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1;
+  text-transform: none;
+}
+
+.download-section__storePng {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+@media (min-width: 900px) {
+  .download-section {
+    padding: 96px 40px 104px;
+  }
+
+  .download-section__inner {
+    grid-template-columns: minmax(0, 58%) minmax(0, 42%);
+    align-items: center;
+    gap: 38px;
+  }
+
+  .download-section__media {
+    padding-bottom: 18px;
+    padding-right: 48px;
+  }
+
+  .download-section__badge {
+    right: 0;
+    bottom: -18px;
+    width: 256px;
+  }
+
+  .download-section__titlePrimary {
+    font-size: clamp(4rem, 5.2vw, 5.2rem);
+  }
+
+  .download-section__titleAccent {
+    font-size: clamp(4.1rem, 5.4vw, 5.3rem);
+  }
+
+  .download-section__copy {
+    margin-top: 24px;
+    font-size: 1.18rem;
+    line-height: 1.62;
+  }
+
+  .download-section__status {
+    margin-top: 12px;
+    font-size: 1.18rem;
+  }
+
+  .download-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 18px;
+    max-width: none;
+  }
+
+  .download-section__store {
+    min-width: 195px;
+  }
+
+  .download-section__store--primary {
+    width: 202px;
+  }
+
+  .download-section__store--secondary {
+    width: 195px;
+  }
+}

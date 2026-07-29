@@ -5,17 +5,19 @@ import InspirationSection from '../components/InspirationSection'
 import ExploreSection from '../components/ExploreSection'
 import CoffeeCandleSection from '../components/CoffeeCandleSection'
 import CurrentModeSection from '../components/CurrentModeSection'
+import DownloadSection from '../components/DownloadSection'
 import Footer from '../components/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f4ede3] text-[#23150c] font-sans">
+    <div className="c2-page">
       <Navbar />
       <Hero />
       <InspirationSection />
       <ExploreSection />
       <CoffeeCandleSection />
       <CurrentModeSection />
+      <DownloadSection />
       <Footer />
     </div>
   )

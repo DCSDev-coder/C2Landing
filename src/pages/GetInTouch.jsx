@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 
 export default function GetInTouch() {
   return (
-    <div className="min-h-screen bg-[#f4ede3] text-[#23150c] font-sans">
+    <div className="c2-page">
       <Navbar />
       <GetInTouchHero />
       <DirectionSection />

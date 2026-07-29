@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Libre+Caslon+Text:wght@400;700&display=swap');
-
-:root {
+.coffee-candle {
   --pillar-ink: #28130d;
   --pillar-copy: #9f4f21;
   --pillar-cream: #f6e6c5;
@@ -8,9 +6,6 @@
   --pillar-soft-orange: #ffc35a;
   --pillar-bright-orange: #ff8a43;
   --pillar-gold: #ffb11c;
-}
-
-.coffee-candle {
   position: relative;
   overflow: hidden;
   padding: 64px 24px 88px;

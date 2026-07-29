@@ -1,17 +1,15 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import GetInTouchHero from '../components/GetInTouchHero'
-import CollaborationSection from '../components/CollaborationSection'
-import PartnerShowcaseSection from '../components/PartnerShowcaseSection'
+import TierOverviewSection from '../components/TierOverviewSection'
 import Footer from '../components/Footer'
 
-export default function Collaboration() {
+export default function Tier() {
   return (
     <div className="c2-page">
       <Navbar />
       <GetInTouchHero />
-      <CollaborationSection />
-      <PartnerShowcaseSection />
+      <TierOverviewSection />
       <Footer />
     </div>
   )

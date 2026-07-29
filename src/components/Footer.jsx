@@ -1,24 +1,12 @@
 import React from 'react'
 import footerLogo from '../assets/About Us/Footer/FA C2 LOGO (OUTLINE)-02 3.svg'
+import { footerExploreLinks } from '../data/navigation'
+import { navigateTo } from '../utils/navigation'
 import './Footer.css'
 
-const exploreLinks = [
-  { label: 'About Us', href: '/' },
-  { label: 'Get In Touch', href: '/get-in-touch' },
-  { label: 'Collaborations', href: '/collaborations' },
-  { label: 'Tiers', href: '/' },
-  { label: 'Download', href: '/' },
-]
 const legalLinks = ['Privacy Policy', 'Terms Of Service', 'Contact Us']
 
 export default function Footer() {
-  const navigate = (event, href) => {
-    event.preventDefault()
-    window.history.pushState({}, '', href)
-    window.dispatchEvent(new PopStateEvent('popstate'))
-    window.scrollTo({ top: 0, behavior: 'auto' })
-  }
-
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
@@ -29,9 +17,9 @@ export default function Footer() {
         <nav className="site-footer__column" aria-label="Explore">
           <h2 className="site-footer__heading">Explore</h2>
           <ul className="site-footer__links">
-            {exploreLinks.map((item) => (
+            {footerExploreLinks.map((item) => (
               <li key={item.label}>
-                <a href={item.href} onClick={(event) => navigate(event, item.href)} className="site-footer__link">
+                <a href={item.href} onClick={(event) => navigateTo(event, item.href)} className="site-footer__link">
                   {item.label}
                 </a>
               </li>

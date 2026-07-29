@@ -1,49 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../assets/images/C2HeaderLogo.png'
+import { primaryNavItems } from '../data/navigation'
+import { isHrefActive, navigateTo, normalizePath } from '../utils/navigation'
 import './Navbar.css'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isPastHero, setIsPastHero] = useState(false)
-  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
-  const navItems = [
-    { label: 'ABOUT', href: '/' },
-    { label: 'GET IN TOUCH', href: '/get-in-touch' },
-    { label: 'COLLABORATIONS', href: '/collaborations' },
-    { label: 'TIERS', href: '/' },
-    { label: 'DOWNLOAD', href: '/' },
-  ]
+  const currentPath = normalizePath(window.location.pathname)
+  const currentHash = window.location.hash
 
-  const navigate = (event, href) => {
-    if (event) {
-      event.preventDefault()
-    }
-
-    if (href === currentPath) {
-      setIsOpen(false)
-      if (href === '/') {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
-      return
-    }
-
-    window.history.pushState({}, '', href)
-    window.dispatchEvent(new PopStateEvent('popstate'))
-    window.scrollTo({ top: 0, behavior: 'auto' })
+  const handleNavigate = (event, href) => {
+    navigateTo(event, href)
     setIsOpen(false)
   }
 
   useEffect(() => {
     const syncHeroState = () => {
-      const hero = document.querySelector('.hero, .get-in-touch-hero')
+      const hero = document.querySelector('[data-nav-hero]')
 
       if (!hero) {
         setIsPastHero(false)
         return
       }
 
+      const navHeight = document.querySelector('.c2-nav__shell')?.getBoundingClientRect().height ?? 0
       const heroBottom = hero.getBoundingClientRect().bottom
-      setIsPastHero(heroBottom <= 113)
+      setIsPastHero(heroBottom <= navHeight)
     }
 
     syncHeroState()
@@ -61,7 +44,7 @@ export default function Navbar() {
       <div className="c2-nav__shell">
         <div className="c2-nav__bar">
           <div className="c2-nav__brand">
-            <a href="/" onClick={(event) => navigate(event, '/')} aria-label="Go to home">
+            <a href="/" onClick={(event) => handleNavigate(event, '/')} aria-label="Go to home">
               <img
                 src={logo}
                 alt="C2 Coffee Logo"
@@ -71,21 +54,22 @@ export default function Navbar() {
           </div>
 
           <div className="c2-nav__desktop">
-            {navItems.map((item) => (
+            {primaryNavItems.map((item) => (
+              (() => {
+                const isActive = isHrefActive(item.href, currentPath, currentHash)
+                const isDownload = item.href === '/#download'
+
+                return (
               <a
                 key={item.label}
                 href={item.href}
-                onClick={(event) => navigate(event, item.href)}
-                className={`c2-nav__link ${
-                  (item.label === 'ABOUT' && currentPath === '/') ||
-                  (item.label === 'GET IN TOUCH' && currentPath === '/get-in-touch') ||
-                  (item.label === 'COLLABORATIONS' && currentPath === '/collaborations')
-                    ? 'c2-nav__link--active'
-                    : ''
-                }`}
+                onClick={(event) => handleNavigate(event, item.href)}
+                className={`c2-nav__link ${isActive ? 'c2-nav__link--active' : ''} ${isDownload ? 'c2-nav__link--pill' : ''}`}
               >
                 {item.label}
               </a>
+                )
+              })()
             ))}
           </div>
 
@@ -118,12 +102,12 @@ export default function Navbar() {
 
       <div className={`c2-nav__mobile ${isOpen ? 'c2-nav__mobile--open' : 'c2-nav__mobile--closed'}`}>
         <div className="c2-nav__mobileList">
-          {navItems.map((item) => (
+          {primaryNavItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              onClick={(event) => navigate(event, item.href)}
-              className="c2-nav__mobileLink"
+              onClick={(event) => handleNavigate(event, item.href)}
+              className={`c2-nav__mobileLink ${item.href === '/#download' ? 'c2-nav__mobileLink--pill' : ''}`}
             >
               {item.label}
             </a>

@@ -1,22 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap');
-
-:root {
-  --coffee-paper: #f6f0e7;
-  --coffee-ink: #f9f5f0;
-  --coffee-shadow: rgba(30, 16, 9, 0.3);
-  --craft-strip-height: 91px;
-}
-
 body {
   background: var(--coffee-paper);
 }
 
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--craft-strip-height) - 20px);
+  min-height: 100svh;
   overflow: hidden;
   background-size: cover;
-  background-position: center;
+  background-position: center 38%;
   background-repeat: no-repeat;
   user-select: none;
 }
@@ -32,17 +23,35 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: calc(100svh - var(--craft-strip-height) - 20px);
-  padding: 113px 24px 48px;
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + 28px) 24px 48px;
 }
 
 .hero__stage {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100svh - var(--craft-strip-height) - 133px);
-  max-width: 1280px;
+  min-height: calc(100svh - var(--nav-height) - 76px);
+  max-width: 1120px;
   margin: 0 auto;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 18px;
+  text-align: center;
+}
+
+.hero__eyebrow {
+  margin: 0;
+  color: rgba(249, 245, 240, 0.92);
+  font-family: 'Marcellus', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .hero__textDesktop {
@@ -81,21 +90,21 @@ body {
 
 .hero__word {
   display: block;
-  color: var(--coffee-ink);
+  color: #f6ead7;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4.4rem, 10vw, 8rem);
+  font-size: clamp(5.1rem, 11vw, 8.9rem);
   font-weight: 1000;
   line-height: 1;
   letter-spacing: -0.05em;
-  text-shadow: 0 1px 0 rgba(92, 57, 23, 0.8), 0 4px 14px var(--coffee-shadow);
+  text-shadow: 0 2px 0 rgba(82, 47, 22, 0.78), 0 10px 26px rgba(18, 10, 6, 0.42);
 }
 
 .hero__wordGroup--leftBottom .hero__word {
-  color: #8f3e2a;
+  color: #d86c42;
 }
 
 .hero__wordGroup--rightBottom .hero__word {
-  color: #7f5633;
+  color: #e7bd8a;
 }
 
 .hero__textMobile {
@@ -107,20 +116,20 @@ body {
 }
 
 .hero__wordMobile {
-  color: var(--coffee-ink);
+  color: #f6ead7;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 13vw, 4.8rem);
+  font-size: clamp(3.5rem, 15vw, 5.5rem);
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.05em;
-  text-shadow: 0 1px 0 rgba(92, 57, 23, 0.8), 0 4px 10px var(--coffee-shadow);
+  text-shadow: 0 2px 0 rgba(82, 47, 22, 0.78), 0 8px 22px rgba(18, 10, 6, 0.38);
 }
 
 .hero__wordMobile--pair {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 0.18em;
+  gap: 0.12em;
 }
 
 .hero__wordMobilePart {
@@ -128,25 +137,47 @@ body {
 }
 
 .hero__wordMobilePart--perfect {
-  color: #8f3e2a;
+  color: #d86c42;
 }
 
 .hero__wordMobilePart--scent {
-  color: #7f5633;
+  color: #e7bd8a;
+}
+
+.hero__lede {
+  max-width: 34rem;
+  margin: 0;
+  color: rgba(249, 245, 240, 0.92);
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.55;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.hero__actions .c2-button {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .hero {
-    min-height: calc(100vh - var(--craft-strip-height) - 20px);
+    min-height: 100vh;
   }
 
   .hero__inner {
-    min-height: calc(100vh - var(--craft-strip-height) - 20px);
-    padding: 113px 32px 36px;
+    min-height: 100vh;
+    padding: calc(var(--nav-height) + 36px) 32px 40px;
   }
 
   .hero__stage {
-    min-height: calc(100vh - var(--craft-strip-height) - 133px);
+    min-height: calc(100vh - var(--nav-height) - 88px);
   }
 
   .hero__textDesktop {
@@ -161,19 +192,33 @@ body {
   .hero__textMobile {
     display: none;
   }
+
+  .hero__actions {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+
+  .hero__actions .c2-button {
+    width: auto;
+  }
 }
 
 @media (min-width: 1024px) {
-  .hero {
-    min-height: calc(100vh - var(--craft-strip-height) - 20px);
-  }
-
   .hero__inner {
     padding-left: 40px;
     padding-right: 40px;
   }
 
   .hero__word {
-    font-size: clamp(4.8rem, 6.8vw, 6rem);
+    font-size: clamp(5.6rem, 7.6vw, 7.1rem);
+  }
+
+  .hero__content {
+    gap: 22px;
+  }
+
+  .hero__lede {
+    font-size: 1.2rem;
   }
 }

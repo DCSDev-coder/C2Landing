@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
-
-:root {
-  --coffee-header: rgba(176, 176, 176, 0.2);
-  --coffee-accent: #c7672f;
-  --coffee-header-solid: rgba(94, 86, 79, 0.96);
-}
-
 .c2-nav {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
+  --coffee-header: rgba(176, 176, 176, 0.2);
+  --coffee-header-solid: rgba(94, 86, 79, 0.96);
   --coffee-header-current: var(--coffee-header);
 }
 
@@ -25,6 +19,8 @@
   justify-content: space-between;
   height: 85px;
   padding: 0 24px;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .c2-nav__logo {
@@ -42,11 +38,16 @@
 
 .c2-nav__link {
   position: relative;
-  padding-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0;
   color: #ede3d4;
   font-family: 'Marcellus', serif;
   font-size: 0.9rem;
   letter-spacing: 0.06em;
+  line-height: 1;
   text-decoration: none;
   transition: color 180ms ease;
 }
@@ -55,13 +56,39 @@
   color: #fff;
 }
 
+.c2-nav__link--pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.3rem;
+  padding-bottom: 0;
+  border: 1px solid rgba(255, 248, 238, 0.56);
+  border-radius: 999px;
+  background: rgba(255, 248, 238, 0.1);
+  line-height: 1;
+}
+
+.c2-nav__link--pill::after {
+  display: none;
+}
+
+.c2-nav__link--pill:hover,
+.c2-nav__link--pill.c2-nav__link--active {
+  color: #fff7ef;
+  border-color: rgba(255, 248, 238, 0.9);
+  background: rgba(255, 248, 238, 0.18);
+}
+
 .c2-nav__link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0;
+  right: 0;
+  bottom: -8px;
   height: 2px;
   width: 0;
+  margin: 0 auto;
   background: var(--coffee-accent);
   transition: width 180ms ease;
 }
@@ -122,6 +149,16 @@
 
 .c2-nav__mobileLink:last-child {
   border-bottom: 0;
+}
+
+.c2-nav__mobileLink--pill {
+  margin-top: 10px;
+  border-bottom: 0;
+  border: 1px solid rgba(255, 248, 238, 0.32);
+  border-radius: 999px;
+  padding: 14px 18px;
+  text-align: center;
+  background: rgba(255, 248, 238, 0.08);
 }
 
 .c2-nav--past-hero {

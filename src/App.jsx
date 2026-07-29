@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import GetInTouch from './pages/GetInTouch'
 import Collaboration from './pages/Collaboration'
+import Tier from './pages/Tier'
 
 function App() {
   const getCurrentPath = () => window.location.pathname.replace(/\/+$/, '') || '/'
@@ -25,6 +26,10 @@ function App() {
 
   if (path === '/collaborations') {
     return <Collaboration />
+  }
+
+  if (path === '/tiers') {
+    return <Tier />
   }
 
   return <Home />
