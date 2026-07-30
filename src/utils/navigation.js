@@ -2,6 +2,12 @@ export function normalizePath(pathname) {
   return pathname.replace(/\/+$/, '') || '/'
 }
 
+export function getSectionIds(items) {
+  return items
+    .map((item) => item.sectionId)
+    .filter(Boolean)
+}
+
 function getNavOffset() {
   const navShell = document.querySelector('.c2-nav__shell')
   return navShell ? navShell.getBoundingClientRect().height : 0
@@ -51,11 +57,38 @@ export function navigateTo(event, href, sectionId = null) {
   })
 }
 
-export function isHrefActive(href, currentPath, sectionId = null) {
+export function getActiveHomeSection(sectionIds) {
+  if (typeof window === 'undefined') {
+    return sectionIds[0] ?? null
+  }
+
+  const navOffset = getNavOffset()
+  let activeSection = sectionIds[0] ?? null
+
+  sectionIds.forEach((sectionId) => {
+    const section = document.getElementById(sectionId)
+
+    if (!section) {
+      return
+    }
+
+    const rect = section.getBoundingClientRect()
+
+    const isVisibleInViewport = rect.bottom >= navOffset + 24 && rect.top <= window.innerHeight - 24
+
+    if (isVisibleInViewport) {
+      activeSection = sectionId
+    }
+  })
+
+  return activeSection
+}
+
+export function isHrefActive(href, currentPath, sectionId = null, activeSectionId = null) {
   const path = normalizePath(new URL(href, window.location.origin).pathname)
   if (path !== currentPath) {
     return false
   }
 
-  return sectionId ? currentPath === '/' && sectionId === 'about' : true
+  return sectionId ? currentPath === '/' && sectionId === activeSectionId : true
 }

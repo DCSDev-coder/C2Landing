@@ -26,8 +26,9 @@ export default function Hero() {
         <div className="hero__stage">
           <div className="hero__content">
             <p className="hero__eyebrow">Coffee, candles, and comfort in Eco Forest</p>
+            <h1 className="c2-srOnly">C2 Coffee + Candle in Eco Forest, Semenyih</h1>
 
-            <div className="hero__textDesktop">
+            <div className="hero__textDesktop" aria-hidden="true">
               <div className="hero__column hero__column--left">
                 <div className="hero__wordGroup hero__wordGroup--leftTop">
                   <span className="hero__word">a latte</span>
@@ -47,7 +48,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero__textMobile">
+            <div className="hero__textMobile" aria-hidden="true">
               <span className="hero__wordMobile">a latte</span>
               <span className="hero__wordMobile">love makes</span>
               <span className="hero__wordMobile hero__wordMobile--pair">

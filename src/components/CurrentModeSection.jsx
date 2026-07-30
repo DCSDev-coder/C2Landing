@@ -64,8 +64,9 @@ export default function CurrentModeSection() {
     <section className="current-mode" id="current-mood" aria-labelledby="current-mode-title">
       <div className="current-mode__inner">
         <header className="current-mode__header">
-          <h2 className="current-mode__title" id="current-mode-title">
+          <h2 className="current-mode__title" id="current-mode-title" aria-label="Pick Your Current Mood.">
             <span className="current-mode__title-top">Pick Your</span>
+            {' '}
             <em className="current-mode__title-accent">Current Mood.</em>
           </h2>
         </header>

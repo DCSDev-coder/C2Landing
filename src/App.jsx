@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import GetInTouch from './pages/GetInTouch'
 import Collaboration from './pages/Collaboration'
 import Tier from './pages/Tier'
+import NotFound from './pages/NotFound'
 
 function scrollToSection(sectionId) {
   if (!sectionId) {
@@ -57,19 +58,17 @@ function App() {
     })
   }, [location])
 
-  if (location.pathname === '/get-in-touch') {
-    return <GetInTouch />
+  if (location.pathname === '/') {
+    return <Home />
   }
 
-  if (location.pathname === '/collaborations') {
-    return <Collaboration />
+  const routes = {
+    '/get-in-touch': <GetInTouch />,
+    '/collaborations': <Collaboration />,
+    '/tiers': <Tier />,
   }
 
-  if (location.pathname === '/tiers') {
-    return <Tier />
-  }
-
-  return <Home />
+  return routes[location.pathname] ?? <NotFound />
 }
 
 export default App

@@ -10,6 +10,20 @@ function buildDefaultEndpoint() {
   return `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_RECEIVER_EMAIL)}`
 }
 
+function getProviderErrorMessage(responseBody) {
+  const rawMessage = responseBody?.message?.trim()
+
+  if (!rawMessage) {
+    return null
+  }
+
+  if (/activate form/i.test(rawMessage) || /needs activation/i.test(rawMessage)) {
+    return 'Form inbox setup is still pending. Activate the receiver email in FormSubmit before submissions can be delivered.'
+  }
+
+  return rawMessage
+}
+
 export function getContactConfigurationError() {
   if (CONTACT_FORM_ENDPOINT || CONTACT_RECEIVER_EMAIL) {
     return null
@@ -55,11 +69,11 @@ export async function submitContactForm({ subject, payload }) {
   }
 
   if (!response.ok) {
-    throw new Error(responseBody?.message || 'Unable to send the form right now. Please try again.')
+    throw new Error(getProviderErrorMessage(responseBody) || 'Unable to send the form right now. Please try again.')
   }
 
   if (responseBody && `${responseBody.success}`.toLowerCase() === 'false') {
-    throw new Error(responseBody.message || 'Form provider rejected the submission.')
+    throw new Error(getProviderErrorMessage(responseBody) || 'Form provider rejected the submission.')
   }
 
   return {

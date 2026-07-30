@@ -42,7 +42,7 @@ export default function Footer() {
       setEmail('')
     } catch (error) {
       setStatus('error')
-      setFeedback(error.message)
+      setFeedback(error instanceof Error ? error.message : 'Unable to send the form right now. Please try again.')
     }
   }
 

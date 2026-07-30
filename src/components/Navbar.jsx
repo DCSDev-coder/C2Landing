@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../assets/images/C2HeaderLogo.png'
 import { primaryNavItems } from '../data/navigation'
-import { isHrefActive, navigateTo, normalizePath } from '../utils/navigation'
+import {
+  getActiveHomeSection,
+  getSectionIds,
+  isHrefActive,
+  navigateTo,
+  normalizePath,
+} from '../utils/navigation'
 import './Navbar.css'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isPastHero, setIsPastHero] = useState(false)
+  const [activeSectionId, setActiveSectionId] = useState(primaryNavItems[0]?.sectionId ?? null)
   const currentPath = normalizePath(window.location.pathname)
+  const homeSectionIds = getSectionIds(primaryNavItems)
 
   const handleNavigate = (event, href, sectionId = null) => {
     navigateTo(event, href, sectionId)
@@ -38,6 +46,26 @@ export default function Navbar() {
     }
   }, [])
 
+  useEffect(() => {
+    if (currentPath !== '/') {
+      setActiveSectionId(null)
+      return undefined
+    }
+
+    const syncActiveSection = () => {
+      setActiveSectionId(getActiveHomeSection(homeSectionIds))
+    }
+
+    syncActiveSection()
+    window.addEventListener('scroll', syncActiveSection, { passive: true })
+    window.addEventListener('resize', syncActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', syncActiveSection)
+      window.removeEventListener('resize', syncActiveSection)
+    }
+  }, [currentPath, homeSectionIds])
+
   return (
     <nav className={`c2-nav ${isPastHero ? 'c2-nav--past-hero' : 'c2-nav--in-hero'}`}>
       <div className="c2-nav__shell">
@@ -55,7 +83,7 @@ export default function Navbar() {
           <div className="c2-nav__desktop">
             {primaryNavItems.map((item) => (
               (() => {
-                const isActive = isHrefActive(item.href, currentPath, item.sectionId)
+                const isActive = isHrefActive(item.href, currentPath, item.sectionId, activeSectionId)
                 const isDownload = item.sectionId === 'download'
 
                 return (

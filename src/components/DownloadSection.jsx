@@ -20,8 +20,9 @@ export default function DownloadSection() {
         </div>
 
         <div className="download-section__content">
-          <h2 className="download-section__title" id="download-title">
+          <h2 className="download-section__title" id="download-title" aria-label="Take the C2 Experience With You">
             <span className="download-section__titlePrimary">Take the C2 Experience</span>
+            {' '}
             <em className="download-section__titleAccent">With You</em>
           </h2>
 
