@@ -65,6 +65,9 @@
   align-items: center;
   width: 100%;
   margin-bottom: 40px;
+  padding: 28px 24px;
+  background: var(--coffee-brown-900);
+  border-radius: 28px;
 }
 
 .partner-logo {
@@ -79,8 +82,8 @@
   width: auto;
   height: 88px;
   object-fit: contain;
-  opacity: 0.9;
-  filter: sepia(0.12) saturate(0.7) brightness(0.92);
+  opacity: 1;
+  filter: none;
 }
 
 .partner-inquiry {
