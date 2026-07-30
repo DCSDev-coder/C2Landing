@@ -91,8 +91,8 @@ export default function DirectionSection() {
                   <MailIcon />
                 </div>
                 <div className="direction__infoBody direction__infoBody--email">
-                  <a className="direction__email" href="mailto:c2coffeandcandle@c2coffeandcandle.com">
-                    c2coffeandcandle@c2coffeandcandle.com
+                  <a className="direction__email" href="mailto:partnerships@c2coffeeandcandle.com">
+                    partnerships@c2coffeeandcandle.com
                   </a>
                 </div>
               </div>
