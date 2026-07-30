@@ -8,10 +8,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isPastHero, setIsPastHero] = useState(false)
   const currentPath = normalizePath(window.location.pathname)
-  const currentHash = window.location.hash
 
-  const handleNavigate = (event, href) => {
-    navigateTo(event, href)
+  const handleNavigate = (event, href, sectionId = null) => {
+    navigateTo(event, href, sectionId)
     setIsOpen(false)
   }
 
@@ -56,14 +55,14 @@ export default function Navbar() {
           <div className="c2-nav__desktop">
             {primaryNavItems.map((item) => (
               (() => {
-                const isActive = isHrefActive(item.href, currentPath, currentHash)
-                const isDownload = item.href === '/#download'
+                const isActive = isHrefActive(item.href, currentPath, item.sectionId)
+                const isDownload = item.sectionId === 'download'
 
                 return (
               <a
                 key={item.label}
                 href={item.href}
-                onClick={(event) => handleNavigate(event, item.href)}
+                onClick={(event) => handleNavigate(event, item.href, item.sectionId)}
                 className={`c2-nav__link ${isActive ? 'c2-nav__link--active' : ''} ${isDownload ? 'c2-nav__link--pill' : ''}`}
               >
                 {item.label}
@@ -106,8 +105,8 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              onClick={(event) => handleNavigate(event, item.href)}
-              className={`c2-nav__mobileLink ${item.href === '/#download' ? 'c2-nav__mobileLink--pill' : ''}`}
+              onClick={(event) => handleNavigate(event, item.href, item.sectionId)}
+              className={`c2-nav__mobileLink ${item.sectionId === 'download' ? 'c2-nav__mobileLink--pill' : ''}`}
             >
               {item.label}
             </a>

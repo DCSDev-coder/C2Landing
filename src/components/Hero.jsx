@@ -62,8 +62,8 @@ export default function Hero() {
 
             <div className="hero__actions">
               <a
-                href="/#explore"
-                onClick={(event) => navigateTo(event, '/#explore')}
+                href="/"
+                onClick={(event) => navigateTo(event, '/', 'explore')}
                 className="c2-button c2-button--primary"
               >
                 Explore Blends

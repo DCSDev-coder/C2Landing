@@ -58,7 +58,11 @@ export default function Footer() {
           <ul className="site-footer__links">
             {footerExploreLinks.map((item) => (
               <li key={item.label}>
-                <a href={item.href} onClick={(event) => navigateTo(event, item.href)} className="site-footer__link">
+                <a
+                  href={item.href}
+                  onClick={(event) => navigateTo(event, item.href, item.sectionId)}
+                  className="site-footer__link"
+                >
                   {item.label}
                 </a>
               </li>
