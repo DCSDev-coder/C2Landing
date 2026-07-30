@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import starIcon from '../assets/Collaboration/star.png'
-import c2Logo from '../assets/images/C2HeaderLogo.png'
 import { submitContactForm } from '../utils/contactForms'
 import './PartnerShowcaseSection.css'
-
-const partners = [
-  { id: 'partner-a', alt: 'Partner placeholder logo' },
-]
 
 export default function PartnerShowcaseSection() {
   const [formData, setFormData] = useState({
@@ -72,17 +67,6 @@ export default function PartnerShowcaseSection() {
             <span className="partner-showcase__divider-line" />
           </div>
         </header>
-
-        <div className="partner-showcase__logos" aria-label="Partner logo showcase">
-            {partners.map((partner) => (
-              <div
-                key={partner.id}
-                className="partner-logo"
-              >
-                <img src={c2Logo} alt={partner.alt} className="partner-logo__image" />
-              </div>
-            ))}
-        </div>
 
         <section className="partner-inquiry" aria-labelledby="partner-inquiry-title">
           <div className="partner-inquiry__content">
