@@ -42,7 +42,7 @@ export default function Hero() {
                   <span className="hero__word">love makes</span>
                 </div>
                 <div className="hero__wordGroup hero__wordGroup--rightBottom">
-                  <span className="hero__word">scent</span>
+                  <span className="hero__word">scents</span>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function Hero() {
               <span className="hero__wordMobile">love makes</span>
               <span className="hero__wordMobile hero__wordMobile--pair">
                 <span className="hero__wordMobilePart hero__wordMobilePart--perfect">perfect</span>
-                <span className="hero__wordMobilePart hero__wordMobilePart--scent">scent</span>
+                <span className="hero__wordMobilePart hero__wordMobilePart--scent">scents</span>
               </span>
             </div>
 
