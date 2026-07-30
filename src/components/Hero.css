@@ -6,10 +6,17 @@ body {
   position: relative;
   min-height: 93svh;
   overflow: hidden;
-  background-size: cover;
-  background-position: center 38%;
-  background-repeat: no-repeat;
+  background: #241811;
   user-select: none;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
 }
 
 .hero::before {

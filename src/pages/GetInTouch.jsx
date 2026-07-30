@@ -3,12 +3,13 @@ import Navbar from '../components/Navbar'
 import GetInTouchHero from '../components/GetInTouchHero'
 import DirectionSection from '../components/DirectionSection'
 import Footer from '../components/Footer'
+import insideCafeHero from '../assets/images/InsideC2Cafe.jpeg'
 
 export default function GetInTouch() {
   return (
     <div className="c2-page">
       <Navbar />
-      <GetInTouchHero />
+      <GetInTouchHero backgroundImage={insideCafeHero} />
       <DirectionSection />
       <Footer />
     </div>

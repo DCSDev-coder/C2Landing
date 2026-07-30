@@ -1,11 +1,22 @@
 import React from 'react'
 import cafeBg from '../assets/optimized/hero-cafe.webp'
+import cafeTimelapse from '../assets/images/C2CafeTimeLapse.mp4'
 import { navigateTo } from '../utils/navigation'
 import './Hero.css'
 
 export default function Hero() {
   return (
-    <section className="hero" id="top" data-nav-hero style={{ backgroundImage: `url(${cafeBg})` }}>
+    <section className="hero" id="top" data-nav-hero>
+      <video
+        className="hero__video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={cafeBg}
+      >
+        <source src={cafeTimelapse} type="video/mp4" />
+      </video>
       <div className="hero__inner">
         <div className="hero__stage">
           <div className="hero__content">
