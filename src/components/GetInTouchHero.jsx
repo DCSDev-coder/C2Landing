@@ -15,7 +15,6 @@ export default function GetInTouchHero({ backgroundImage = heroImage, background
           muted
           loop
           playsInline
-          poster={backgroundImage}
         >
           <source src={backgroundVideo} type="video/mp4" />
         </video>

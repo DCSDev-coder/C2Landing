@@ -23,7 +23,7 @@
 
 .current-mode__title-top {
   color: #28130d;
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(3.1rem, 11vw, 4.3rem);
   font-weight: 700;
   line-height: 0.95;
@@ -32,7 +32,7 @@
 
 .current-mode__title-accent {
   color: #f05d24;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(3rem, 11vw, 4.6rem);
   font-style: italic;
   font-weight: 700;
@@ -126,7 +126,7 @@
 .current-mode-card__name {
   margin: 0;
   color: #28130d;
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
   line-height: 1;
@@ -137,7 +137,7 @@
   margin: 0 auto;
   max-width: 13.5em;
   color: #b35421;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1.12rem, 3vw, 1.45rem);
   font-style: italic;
   line-height: 1.06;

@@ -25,7 +25,7 @@
 
 .craft-strip__item {
   color: #fff;
-  font-family: 'Recoleta', 'Georgia', serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1rem, 1.65vw, 1.875rem);
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -34,7 +34,7 @@
 
 .craft-strip__star {
   color: var(--coffee-orange);
-  font-family: 'Georgia', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.85rem;
   line-height: 1;
 }
@@ -102,14 +102,14 @@
 .inspiration__eyebrow {
   margin: 0 0 12px;
   color: var(--coffee-orange);
-  font-family: 'Recoleta', 'Georgia', serif;
+  font-family: var(--font-recoleta);
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 .inspiration__title {
   margin: 0 0 24px;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(3.2rem, 12vw, 4.5rem);
   font-weight: 700;
   line-height: 1.05;
@@ -129,7 +129,7 @@
 .inspiration__copy {
   color: #ffffff;
   /* White text on mobile */
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.6;

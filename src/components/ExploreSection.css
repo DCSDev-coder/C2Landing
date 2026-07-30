@@ -11,7 +11,7 @@
 }
 
 .explore-header__title {
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(2.5rem, 5vw, 3.8rem);
   font-weight: 700;
   color: #28130d;
@@ -21,14 +21,14 @@
 }
 
 .explore-header__title-highlight {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-style: italic;
   color: #ef5b23;
   font-weight: 600;
 }
 
 .explore-header__subtitle {
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   color: #a94417;
   line-height: 1.5;
@@ -178,7 +178,7 @@
 }
 
 .blend-card__title {
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.55rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -193,7 +193,7 @@
 }
 
 .blend-card__description {
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.92rem;
   margin-bottom: 14px;
 }
@@ -207,7 +207,7 @@
 }
 
 .blend-card__link {
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.05rem;
   font-weight: 700;
   color: #ef5b23;
@@ -304,7 +304,7 @@
 }
 
 .detail-panel__title {
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.75rem;
   font-weight: 700;
   color: #28130d;
@@ -313,14 +313,14 @@
 }
 
 .detail-panel__title-highlight {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-style: italic;
   color: #ef5b23;
   font-weight: 600;
 }
 
 .detail-panel__description {
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.95rem;
   line-height: 1.55;
   color: #5c3a21;
@@ -334,7 +334,7 @@
 }
 
 .detail-panel__section-title {
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.2rem;
   font-weight: 700;
   color: #28130d;
@@ -382,7 +382,7 @@
 }
 
 .tasting-note__name {
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.95rem;
   font-weight: 700;
   color: #28130d;
@@ -390,14 +390,14 @@
 }
 
 .tasting-note__desc {
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.88rem;
   color: #6b4a3a;
   line-height: 1.4;
 }
 
 .detail-panel__origin-value {
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.35rem;
   font-weight: 700;
   color: #a94417;

@@ -1,5 +1,4 @@
 import React from 'react'
-import cafeBg from '../assets/optimized/hero-cafe.webp'
 import cafeTimelapse from '../assets/images/C2CafeTimeLapse.mp4'
 import useVideoBackgroundEnabled from '../hooks/useVideoBackgroundEnabled'
 import { navigateTo } from '../utils/navigation'
@@ -17,7 +16,6 @@ export default function Hero() {
           muted
           loop
           playsInline
-          poster={cafeBg}
         >
           <source src={cafeTimelapse} type="video/mp4" />
         </video>

@@ -52,7 +52,7 @@
 .tier-overview__eyebrow {
   margin: 0 0 18px;
   color: #bc571f;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.88rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -62,7 +62,7 @@
   max-width: 28rem;
   margin: 24px auto 0;
   color: #695242;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.08rem;
   line-height: 1.6;
 }
@@ -83,7 +83,7 @@
   top: 0.4rem;
   right: 1rem;
   color: #d0a987;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -100,7 +100,7 @@
 
 .tier-card__name {
   margin: 0;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(2.6rem, 8vw, 4rem);
   line-height: 0.95;
 }
@@ -122,14 +122,14 @@
 .tier-card__amount,
 .tier-card__darkPrice {
   color: #2f1a12;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(2rem, 6vw, 3rem);
   line-height: 1;
 }
 
 .tier-card__period {
   color: #9f8c7e;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -150,7 +150,7 @@
 .tier-card__asideCopy,
 .tier-card__vvipCopy {
   color: #695242;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -180,7 +180,7 @@
   padding: 0.85rem 1.65rem;
   background: transparent;
   color: #7d6555;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.76rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -199,7 +199,7 @@
 .tier-card__eyebrow--subtle {
   display: inline-block;
   color: #bc571f;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.8rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -214,14 +214,14 @@
 .tier-overview__title {
   margin: 0;
   color: #24140d;
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(3.4rem, 11vw, 5.8rem);
   line-height: 0.9;
 }
 
 .tier-card__featuredAmount {
   color: #b35316;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(2.8rem, 8vw, 4rem);
   line-height: 0.95;
 }
@@ -254,7 +254,7 @@
   padding: 1.15rem 1.35rem;
   background: #ab4c0a;
   color: #fff6ef;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.94rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -274,7 +274,7 @@
 .tier-card__darkTitle {
   margin: 2rem 0 0;
   color: #fff8ef;
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(2.8rem, 8vw, 4.3rem);
   line-height: 0.95;
 }
@@ -319,7 +319,7 @@
   padding: 1rem 1.2rem;
   background: transparent;
   color: #fff5eb;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -348,7 +348,7 @@
   margin: 0;
   color: #24140d;
   text-align: center;
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(2.3rem, 7vw, 3.6rem);
   line-height: 0.95;
 }
@@ -362,7 +362,7 @@
 .tier-card__vvipCaption {
   margin: 0.7rem 0 0;
   color: #b1a293;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -380,7 +380,7 @@
   padding: 0;
   background: transparent;
   color: #bc571f;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.94rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;

@@ -31,7 +31,7 @@
   padding-bottom: 0.5rem;
   border-bottom: 2px solid rgba(255, 250, 242, 0.92);
   color: #fffaf2;
-  font-family: 'Recoleta', 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1.65rem, 6vw, 2.35rem);
   font-weight: 700;
   line-height: 0.92;
@@ -50,7 +50,7 @@
 .site-footer__link:visited {
   color: #fffaf2;
   text-decoration: none;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1rem, 3.5vw, 1.35rem);
   font-weight: 700;
   line-height: 1.15;
@@ -65,7 +65,7 @@
   margin: 0 0 0.95rem;
   max-width: 14ch;
   color: #fffaf2;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1rem, 3.5vw, 1.35rem);
   font-weight: 700;
   line-height: 1.12;
@@ -90,7 +90,7 @@
   padding: 0.74rem 0.82rem 0.7rem;
   background: transparent;
   color: #a5a09b;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.88rem;
   font-weight: 700;
   outline: none;
@@ -106,7 +106,7 @@
   padding: 0;
   background: transparent;
   color: #b46931;
-  font-family: Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 1.65rem;
   line-height: 1;
   cursor: pointer;
@@ -120,7 +120,7 @@
 .site-footer__formFeedback {
   margin: 0;
   max-width: 18rem;
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.74rem;
   line-height: 1.35;
 }
@@ -141,7 +141,7 @@
 .site-footer__fineprint {
   margin: 0.2rem 0;
   color: rgba(255, 250, 242, 0.92);
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: 0.64rem;
   line-height: 1.35;
 }
