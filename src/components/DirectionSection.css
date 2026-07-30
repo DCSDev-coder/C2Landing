@@ -74,8 +74,7 @@
   height: 1.3rem;
   margin-top: 0.35rem;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 24' fill='none'%3E%3Cpath d='M3 10c31 18 76 18 109 9 37-11 74-1 111 4 30 4 55-1 94-17' stroke='%23F05D24' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")
-    center / contain no-repeat;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 24' fill='none'%3E%3Cpath d='M3 10c31 18 76 18 109 9 37-11 74-1 111 4 30 4 55-1 94-17' stroke='%23F05D24' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .direction__infoRows {
@@ -95,7 +94,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 999px;
-  background: #eda078;
+  background: #f05d24;
   color: #fff9f3;
 }
 

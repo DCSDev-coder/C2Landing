@@ -17,14 +17,6 @@ export default function DownloadSection() {
               loading="lazy"
             />
           </div>
-
-          <div className="download-section__badge" aria-hidden="true">
-            <div className="download-section__badgeRing">
-              <span>Crafted for</span>
-              <span>Intentional</span>
-              <span>Living</span>
-            </div>
-          </div>
         </div>
 
         <div className="download-section__content">
