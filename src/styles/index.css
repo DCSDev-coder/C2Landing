@@ -8,6 +8,7 @@
 @layer base {
   :root {
     --nav-height: 85px;
+    --font-recoleta: 'Recoleta', 'Cormorant Garamond', 'Libre Caslon Text', Georgia, serif;
     --coffee-paper: #f6f0e7;
     --coffee-cream: #fff9ef;
     --coffee-ink: #23150c;
@@ -28,7 +29,7 @@
     margin: 0;
     background: var(--coffee-paper);
     color: var(--coffee-ink);
-    font-family: 'Libre Caslon Text', Georgia, serif;
+    font-family: var(--font-recoleta);
   }
 
   * {
@@ -54,7 +55,7 @@
   padding: 0.95rem 1.4rem;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-decoration: none;

@@ -55,7 +55,7 @@ body {
 .hero__eyebrow {
   margin: 0;
   color: rgba(249, 245, 240, 0.92);
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.9rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -98,7 +98,7 @@ body {
 .hero__word {
   display: block;
   color: #f6ead7;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(5.1rem, 11vw, 8.9rem);
   font-weight: 1000;
   line-height: 1;
@@ -124,7 +124,7 @@ body {
 
 .hero__wordMobile {
   color: #f6ead7;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(3.5rem, 15vw, 5.5rem);
   font-weight: 700;
   line-height: 0.9;
@@ -155,7 +155,7 @@ body {
   max-width: 34rem;
   margin: 0;
   color: rgba(249, 245, 240, 0.92);
-  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-family: var(--font-recoleta);
   font-size: clamp(1rem, 2vw, 1.18rem);
   line-height: 1.55;
 }

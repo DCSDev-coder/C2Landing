@@ -47,8 +47,9 @@
   min-height: 3rem;
   padding: 0;
   color: #ede3d4;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 0.9rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   line-height: 1;
   text-decoration: none;
@@ -146,8 +147,9 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   padding: 14px 0;
   color: #f6eee3;
-  font-family: 'Marcellus', serif;
+  font-family: var(--font-recoleta);
   font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
