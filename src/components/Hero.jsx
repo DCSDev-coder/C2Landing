@@ -1,25 +1,20 @@
 import React from 'react'
 import cafeTimelapse from '../assets/images/C2CafeTimeLapse.mp4'
-import useVideoBackgroundEnabled from '../hooks/useVideoBackgroundEnabled'
 import { navigateTo } from '../utils/navigation'
 import './Hero.css'
 
 export default function Hero() {
-  const shouldUseVideo = useVideoBackgroundEnabled()
-
   return (
     <section className="hero" id="top" data-nav-hero>
-      {shouldUseVideo ? (
-        <video
-          className="hero__video"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src={cafeTimelapse} type="video/mp4" />
-        </video>
-      ) : null}
+      <video
+        className="hero__video"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src={cafeTimelapse} type="video/mp4" />
+      </video>
       <div className="hero__inner">
         <div className="hero__stage">
           <div className="hero__content">
