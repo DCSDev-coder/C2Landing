@@ -1,5 +1,5 @@
 import React from 'react'
-import heroImage from '../assets/optimized/get-in-touch-hero.`webp`'
+import heroImage from '../assets/optimized/get-in-touch-hero.webp'
 import './GetInTouchHero.css'
 
 export default function GetInTouchHero({ backgroundImage = heroImage, backgroundVideo = null }) {

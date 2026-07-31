@@ -105,12 +105,15 @@
   .collaboration-section__inner {
     grid-template-columns: minmax(460px, 1fr) 526px;
     gap: 92px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .collaboration-section__copy {
     margin: 0;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .collaboration-section__title {
@@ -123,11 +126,11 @@
 
   .collaboration-section__frame {
     width: 526px;
-    min-height: 526px;
+    height: 100%;
   }
 
   .collaboration-section__image {
-    height: 526px;
+    height: 100%;
   }
 
   .collaboration-section__divider {
