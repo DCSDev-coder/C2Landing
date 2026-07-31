@@ -12,72 +12,72 @@ const blends = [
   {
     id: 'dato',
     title: 'Dato Blend',
-    description: 'Bold & Dark Chocolatey',
+    description: 'Bold & Smoky',
     backgroundImage: datoBg,
     avatar: datoAvatar,
     tone: 'dato',
     about:
-      'Inspired by heritage and leadership, Dato blend delivers a bold character with rich note of dark chocolate and a smooth, lasting finish. Perfect for those who prefer a stronger, more intense experience.',
+      'Dato Blend is a medium-dark roast crafted from beans sourced from Kenya and Indonesia. It delivers a bold, smoky cup with chocolatey depth, nutty warmth, and a strong finish for drinkers who prefer a fuller-bodied profile.',
     origin: 'Kenya \u2022 Indonesia',
     notes: [
       {
-        title: 'DARK CHOCOLATE',
-        description: 'Rich & indulgent chocolate notes.',
-        icon: chocolateIcon,
-        alt: 'Dark Chocolate',
-      },
-      {
-        title: 'ROASTED COCOA',
-        description: 'Deep cocoa-like warmth.',
+        title: 'SMOKY',
+        description: 'Deep roasted character with a bold, smoky finish.',
         icon: cocoaIcon,
-        alt: 'Roasted Cocoa',
+        alt: 'Smoky',
       },
       {
-        title: 'TOASTED NUTS',
-        description: 'Suitable nuttiness for a balanced finish.',
+        title: 'CHOCOLATEY',
+        description: 'Rich chocolate notes that round out the cup.',
+        icon: chocolateIcon,
+        alt: 'Chocolatey',
+      },
+      {
+        title: 'NUTTY & BOLD',
+        description: 'Toasted nut character with a strong, lingering body.',
         icon: almondIcon,
-        alt: 'Toasted Nuts',
+        alt: 'Nutty and bold',
       },
     ],
   },
   {
     id: 'datin',
     title: 'Datin Blend',
-    description: 'Citrus & Fruity',
+    description: 'Chocolatey & Medium Acidity',
     backgroundImage: datinBg,
     avatar: datinAvatar,
     tone: 'datin',
     about:
-      'Inspired by grace and tradition, Datin blend features a bright and refreshing character. It boasts prominent citrus notes and a sweet, fruity undertone, leaving a clean, crisp finish. Ideal for those who enjoy a lively, aromatic cup.',
-    origin: 'Ethiopia \u2022 Colombia',
+      'Datin Blend is a medium-light roast made from beans sourced from Kenya and Papua New Guinea. It offers a chocolate-forward profile with a hint of dark grape, balanced by medium acidity and a clean finish.',
+    origin: 'Kenya \u2022 Papua New Guinea',
     notes: [
       {
-        title: 'CITRUS',
-        description: 'Bright lemon and orange zestiness.',
+        title: 'CHOCOLATE',
+        description: 'Smooth chocolate notes at the front of the cup.',
+        icon: chocolateIcon,
+        alt: 'Chocolate',
+      },
+      {
+        title: 'HINT OF DARK GRAPE',
+        description: 'A subtle dark grape note that adds brightness and depth.',
         svg: (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2v20M2 12h20M12 12l7.07-7.07M12 12l-7.07 7.07M12 12l-7.07-7.07M12 12l7.07 7.07" />
+            <circle cx="9" cy="9" r="3" />
+            <circle cx="15" cy="9" r="3" />
+            <circle cx="7" cy="14" r="3" />
+            <circle cx="12" cy="14" r="3" />
+            <circle cx="17" cy="14" r="3" />
+            <path d="M12 5c0-2 1.2-3 3-3" />
+            <path d="M12 2c-1.5 0-2.5.6-3.5 1.8" />
           </svg>
         ),
       },
       {
-        title: 'FRUITY',
-        description: 'Sweet berry-like undertones.',
+        title: 'CLEAN',
+        description: 'A tidy finish with medium acidity and good clarity.',
         svg: (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 3a9 9 0 0 0-3 3" />
-          </svg>
-        ),
-      },
-      {
-        title: 'FLORAL',
-        description: 'Delicate jasmine aroma.',
-        svg: (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4z" />
-            <circle cx="12" cy="6" r="1.5" />
+            <path d="M5 12l4 4L19 6" />
           </svg>
         ),
       },

@@ -1,5 +1,5 @@
 import React from 'react'
-import heroImage from '../assets/optimized/get-in-touch-hero.webp'
+import heroImage from '../assets/images/GetInTouch_Hero.jpeg'
 import './TierHero.css'
 
 export default function TierHero() {

@@ -39,10 +39,10 @@ export default function InspirationSection() {
           </h2>
           <div className="inspiration__copy">
             <p>
-              At C2 Coffee & Candle, our inspiration comes from the warmth and comfort of coffee culture — from slow mornings and rich coffee aromas to cozy moments shared with others.
+              At C2 Coffee & Candle, our inspiration comes from the warmth and comfort of coffee culture from slow mornings and rich coffee aromas to cozy moments shared with others.
             </p>
             <p>
-              We believe coffee is more than just a drink; it’s an experience that brings comfort, connection and relaxation into everyday life.
+              We believe coffee is more than just a drink, its an experience that brings comfort, connection and relaxation into everyday life.
             </p>
           </div>
         </div>
