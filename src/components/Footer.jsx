@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import footerLogo from '../assets/About Us/Footer/FA C2 LOGO (OUTLINE)-02 3.svg'
+import footerLogo from '../assets/images/C2_Logo.svg'
 import { footerExploreLinks } from '../data/navigation'
 import { submitContactForm } from '../utils/contactForms'
 import { navigateTo } from '../utils/navigation'

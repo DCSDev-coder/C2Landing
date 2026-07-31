@@ -61,42 +61,77 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80vh;
+  min-height: auto;
   padding: 80px 24px;
   max-width: 100%;
-}
-
-.inspiration__visual {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background: #dac4b0;
-}
-
-.inspiration__image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.inspiration__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(97, 97, 97, 0.3);
-  /* Dark overlay for mobile text readability */
+  background: linear-gradient(180deg, #f7f0e3 0%, #f1e6d7 100%);
+  gap: 36px;
 }
 
 .inspiration__content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.inspiration__visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inspiration__imageFrame {
+  position: relative;
+  width: min(100%, 620px);
+  min-height: 320px;
+  overflow: hidden;
+  background: #dfcfbe;
+  box-shadow: 0 24px 60px rgba(62, 31, 14, 0.14);
+  isolation: isolate;
+}
+
+.inspiration__image {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center 45%;
+  transform: scale(1.04);
+}
+
+.inspiration__image--blurred {
+  display: none;
+}
+
+.inspiration__blur {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.inspiration__blur--mobile-top,
+.inspiration__blur--mobile-bottom {
+  left: 0;
+  width: 100%;
+  height: 56px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.inspiration__blur--mobile-top {
+  top: 0;
+  background: linear-gradient(180deg, rgba(247, 240, 227, 0.96) 0%, rgba(247, 240, 227, 0.72) 42%, rgba(247, 240, 227, 0) 100%);
+}
+
+.inspiration__blur--mobile-bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(247, 240, 227, 0.96) 0%, rgba(247, 240, 227, 0.72) 42%, rgba(247, 240, 227, 0) 100%);
+}
+
+.inspiration__blur--desktop {
+  display: none;
 }
 
 .inspiration__eyebrow {
@@ -127,8 +162,7 @@
 }
 
 .inspiration__copy {
-  color: #ffffff;
-  /* White text on mobile */
+  color: #201613;
   font-family: var(--font-recoleta);
   font-size: 1.125rem;
   font-weight: 500;
@@ -146,26 +180,22 @@
 /* Inspiration Section - Desktop */
 @media (min-width: 900px) {
   .inspiration {
-    flex-direction: row;
-    align-items: stretch;
-    min-height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 46%);
+    align-items: center;
+    gap: 0;
     padding: 0;
-    /* Remove padding to let image hit edges */
   }
 
   .inspiration__content {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 5% 80px 10%;
-    /* Add internal padding */
     max-width: none;
+    margin: 0;
+    padding: 96px 6% 96px 9%;
+    text-align: left;
   }
 
   .inspiration__eyebrow {
     color: #a94417;
-    /* Darker red-orange for desktop */
     font-size: 1.375rem;
   }
 
@@ -174,39 +204,85 @@
   }
 
   .inspiration__copy {
-    color: #201613;
-    /* Dark text for desktop */
     font-size: 1.375rem;
     line-height: 1.45;
   }
 
   .inspiration__visual {
     position: relative;
-    width: 50%;
-    min-height: 850px;
-    background: #dac4b000;
+    height: 100%;
+    justify-content: stretch;
+  }
+
+  .inspiration__imageFrame {
+    width: 100%;
+    min-height: 100%;
+    box-shadow: none;
   }
 
   .inspiration__image {
-    object-position: left center;
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000' preserveAspectRatio='none'><path d='M 100,0 L 15,0 L 25.0,15 L 24.3,35 L 26.1,55 L 26.2,75 L 20.2,95 L 15.9,115 L 19.3,135 L 23.3,155 L 22.5,175 L 22.7,195 L 25.5,215 L 23.4,235 L 17.5,255 L 17.4,275 L 23.1,295 L 25.7,315 L 25.6,335 L 28.4,355 L 29.9,375 L 23.8,395 L 17.1,415 L 17.3,435 L 18.7,455 L 15.9,475 L 14.3,495 L 15.7,515 L 12.2,535 L 3.1,555 L 1.0,575 L 1.0,595 L 1.0,615 L 1.0,635 L 4.6,655 L 9.4,675 L 7.2,695 L 3.0,715 L 5.3,735 L 9.9,755 L 11.1,775 L 14.1,795 L 21.2,815 L 23.6,835 L 18.5,855 L 15.1,875 L 16.8,895 L 16.9,915 L 15.4,935 L 19.2,955 L 24.6,975 L 23.0,995 L 100,1000 Z' fill='black'/></svg>");
-    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000' preserveAspectRatio='none'><path d='M 100,0 L 15,0 L 25.0,15 L 24.3,35 L 26.1,55 L 26.2,75 L 20.2,95 L 15.9,115 L 19.3,135 L 23.3,155 L 22.5,175 L 22.7,195 L 25.5,215 L 23.4,235 L 17.5,255 L 17.4,275 L 23.1,295 L 25.7,315 L 25.6,335 L 28.4,355 L 29.9,375 L 23.8,395 L 17.1,415 L 17.3,435 L 18.7,455 L 15.9,475 L 14.3,495 L 15.7,515 L 12.2,535 L 3.1,555 L 1.0,575 L 1.0,595 L 1.0,615 L 1.0,635 L 4.6,655 L 9.4,675 L 7.2,695 L 3.0,715 L 5.3,735 L 9.9,755 L 11.1,775 L 14.1,795 L 21.2,815 L 23.6,835 L 18.5,855 L 15.1,875 L 16.8,895 L 16.9,915 L 15.4,935 L 19.2,955 L 24.6,975 L 23.0,995 L 100,1000 Z' fill='black'/></svg>");
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    filter: drop-shadow(-10px 0 12px rgba(40, 19, 13, 0.15));
+    height: 100%;
+    min-height: 720px;
+    object-position: center;
+    transform: scale(1.02);
   }
 
-  .inspiration__overlay {
+  .inspiration__image--blurred {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: block;
+    filter: blur(30px);
+    transform: scale(1.09);
+    opacity: 0.94;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      #000 0%,
+      #000 18%,
+      rgba(0, 0, 0, 0.94) 28%,
+      rgba(0, 0, 0, 0.7) 38%,
+      rgba(0, 0, 0, 0.34) 48%,
+      transparent 62%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      #000 0%,
+      #000 18%,
+      rgba(0, 0, 0, 0.94) 28%,
+      rgba(0, 0, 0, 0.7) 38%,
+      rgba(0, 0, 0, 0.34) 48%,
+      transparent 62%
+    );
+  }
+
+  .inspiration__blur--mobile-top,
+  .inspiration__blur--mobile-bottom {
     display: none;
-    /* No overlay on desktop */
+  }
+
+  .inspiration__blur--desktop {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    z-index: 2;
+    width: 52%;
+    background: linear-gradient(
+      90deg,
+      #f7f0e3 0%,
+      rgba(247, 240, 227, 0.99) 12%,
+      rgba(247, 240, 227, 0.94) 26%,
+      rgba(247, 240, 227, 0.76) 43%,
+      rgba(247, 240, 227, 0.45) 62%,
+      rgba(247, 240, 227, 0.16) 82%,
+      transparent 100%
+    );
   }
 }
 
 @media (min-width: 1200px) {
   .inspiration__content {
-    padding: 120px 8% 120px 10%;
+    padding: 120px 7% 120px 10%;
   }
 
   .craft-strip__track {

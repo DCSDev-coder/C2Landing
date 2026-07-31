@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import logo from '../assets/images/C2HeaderLogo.png'
+import logo from '../assets/images/C2_Logo.svg'
 import { primaryNavItems } from '../data/navigation'
 import {
   getActiveHomeSection,

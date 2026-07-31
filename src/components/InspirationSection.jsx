@@ -1,5 +1,5 @@
 import React from 'react'
-import inspirationProducts from '../assets/optimized/inspiration-products.webp'
+import inspirationImage from '../assets/images/Collab.jpeg'
 import './InspirationSection.css'
 
 const craftItems = [
@@ -47,13 +47,22 @@ export default function InspirationSection() {
           </div>
         </div>
 
-        <div className="inspiration__visual">
-          <img
-            src={inspirationProducts}
-            alt="C2 coffee drinks and products styled on a table"
-            className="inspiration__image"
-          />
-          <div className="inspiration__overlay"></div>
+        <div className="inspiration__visual" aria-hidden="true">
+          <div className="inspiration__imageFrame">
+            <img
+              src={inspirationImage}
+              alt=""
+              className="inspiration__image"
+            />
+            <img
+              src={inspirationImage}
+              alt=""
+              className="inspiration__image inspiration__image--blurred"
+            />
+            <span className="inspiration__blur inspiration__blur--desktop" />
+            <span className="inspiration__blur inspiration__blur--mobile-top" />
+            <span className="inspiration__blur inspiration__blur--mobile-bottom" />
+          </div>
         </div>
       </div>
     </section>
