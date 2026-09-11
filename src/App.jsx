@@ -3,6 +3,8 @@ import Home from './pages/Home'
 import GetInTouch from './pages/GetInTouch'
 import Collaboration from './pages/Collaboration'
 import Tier from './pages/Tier'
+import Download from './pages/Download'
+import RefundPolicy from './pages/RefundPolicy'
 import NotFound from './pages/NotFound'
 
 function scrollToSection(sectionId) {
@@ -66,6 +68,8 @@ function App() {
     '/get-in-touch': <GetInTouch />,
     '/collaborations': <Collaboration />,
     '/tiers': <Tier />,
+    '/download': <Download />,
+    '/refund-policy': <RefundPolicy />,
   }
 
   return routes[location.pathname] ?? <NotFound />

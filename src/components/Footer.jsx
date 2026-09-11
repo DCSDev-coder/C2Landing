@@ -8,6 +8,7 @@ import './Footer.css'
 const legalLinks = [
   { label: 'Privacy Policy', href: null },
   { label: 'Terms Of Service', href: null },
+  { label: 'Refund Policy', href: '/refund-policy' },
   { label: 'Contact Us', href: '/get-in-touch' },
 ]
 

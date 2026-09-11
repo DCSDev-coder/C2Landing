@@ -48,6 +48,9 @@
 
 .site-footer__link,
 .site-footer__link:visited {
+  position: relative;
+  z-index: 10;
+  display: inline-block;
   color: #fffaf2;
   text-decoration: none;
   font-family: var(--font-recoleta);
