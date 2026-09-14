@@ -6,28 +6,25 @@ import './CoffeeCandleSection.css'
 
 const pillars = [
   {
-    title: 'A MULTISENSORY CRAFT',
+    bottomLine1: 'A MULTISENSORY CRAFT',
     description:
       'We go beyond taste. By pairing specialty coffee with artisan candles, we crafted a complete sensory journey where every cup and candle meets the highest quality standards.',
     image: matchaCup,
-    tone: 'cream',
-    accent: 'soft',
+    tone: 'primary-green',
   },
   {
-    title: 'CURATING COMFORT',
+    bottomLine1: 'CURATING COMFORT',
     description:
-      'Designed as your daily sanctuary in Eco Forest, our women-owned cafe is built on warmth. Whether you dine in or take our ambiance home, we bring comfort to your routine.',
+      'Designed as your daily sanctuary in Eco Forest, our Muslim-owned cafe is built on warmth. Whether you dine in or take our ambiance home, we bring comfort to your routine.',
     image: icedCoffeeCup,
-    tone: 'blush',
-    accent: 'warm',
+    tone: 'secondary-green',
   },
   {
-    title: 'EXPERTISE IN EVERY POUR',
+    bottomLine1: 'EXPERTISE IN EVERY POUR',
     description:
       'Building on the artistry of 5luxe Scents Co., we bring years of fragrance and design experience to our brews, ensuring the scent in the air perfectly complements the coffee in your cup.',
     image: latteCup,
-    tone: 'cream',
-    accent: 'bold',
+    tone: 'highlight-yellow',
   },
 ]
 
@@ -102,22 +99,25 @@ export default function CoffeeCandleSection() {
               onTouchEnd={handleTouchEnd}
             >
               <article
-                key={activePillar.title}
+                key={activePillar.bottomLine1}
                 className={`pillar-card pillar-card--mobile pillar-card--${activePillar.tone} pillar-card--slide-${slideDirection}`}
               >
                 <div className="pillar-card__cupWrap">
-                  <img
-                    src={activePillar.image}
-                    alt=""
-                    className="pillar-card__cup"
-                  />
+                  <img src={activePillar.image} alt="" className="pillar-card__cup" />
                 </div>
 
-                <div className={`pillar-card__badge pillar-card__badge--${activePillar.accent}`}>
-                  <h3 className="pillar-card__badgeTitle">{activePillar.title}</h3>
-                </div>
+                <div className="pillar-card__divider-vertical"></div>
 
                 <p className="pillar-card__copy">{activePillar.description}</p>
+
+                <div className="pillar-card__footer">
+                  <div className="pillar-card__divider-horizontal"></div>
+                  <div className="pillar-card__bottomText">
+                    <span>{activePillar.bottomLine1}</span>
+                    <br />
+                    <span>{activePillar.bottomLine2}</span>
+                  </div>
+                </div>
               </article>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function CoffeeCandleSection() {
           <div className="coffee-candle__dots" aria-label="Pillar selection">
             {pillars.map((pillar, index) => (
               <button
-                key={pillar.title}
+                key={pillar.bottomLine1}
                 type="button"
                 className={`coffee-candle__dot ${index === activeIndex ? 'is-active' : ''}`}
                 onClick={() => handleDotSelect(index)}
@@ -139,22 +139,25 @@ export default function CoffeeCandleSection() {
         <div className="coffee-candle__grid">
           {pillars.map((pillar) => (
             <article
-              key={pillar.title}
+              key={pillar.bottomLine1}
               className={`pillar-card pillar-card--${pillar.tone}`}
             >
               <div className="pillar-card__cupWrap">
-                <img
-                  src={pillar.image}
-                  alt=""
-                  className="pillar-card__cup"
-                />
+                <img src={pillar.image} alt="" className="pillar-card__cup" />
               </div>
 
-              <div className={`pillar-card__badge pillar-card__badge--${pillar.accent}`}>
-                <h3 className="pillar-card__badgeTitle">{pillar.title}</h3>
-              </div>
+              <div className="pillar-card__divider-vertical"></div>
 
               <p className="pillar-card__copy">{pillar.description}</p>
+
+              <div className="pillar-card__footer">
+                <div className="pillar-card__divider-horizontal"></div>
+                <div className="pillar-card__bottomText">
+                  <span>{pillar.bottomLine1}</span>
+                  <br />
+                  <span>{pillar.bottomLine2}</span>
+                </div>
+              </div>
             </article>
           ))}
         </div>

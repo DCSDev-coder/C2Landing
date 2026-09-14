@@ -46,7 +46,7 @@
   justify-content: center;
   min-height: 3rem;
   padding: 0;
-  color: #ede3d4;
+  color: #ffffff;
   font-family: var(--font-recoleta);
   font-size: 0.9rem;
   font-weight: 700;
@@ -89,11 +89,11 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -8px;
+  bottom: 12px;
   height: 2px;
   width: 0;
   margin: 0 auto;
-  background: var(--coffee-accent);
+  background: #ffffff;
   transition: width 180ms ease;
 }
 

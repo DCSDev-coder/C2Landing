@@ -1,10 +1,8 @@
 import React from 'react'
-import milkChocolate from '../assets/images/MILK CHOCOLATE 1.png'
-import poccoLocco from '../assets/images/POCCO LOCCO 1.png'
 import directionMap from '../assets/optimized/direction-map.webp'
 import './DirectionSection.css'
 
-const mapQuery = encodeURIComponent('42, Jalan Eco Forest 6/1C, Eco Forest, 43500 Semenyih, Selangor, Malaysia')
+const mapQuery = encodeURIComponent('C2 Coffee & Candle, Eco Forest, Semenyih, Selangor')
 const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
 
 function PinIcon() {
@@ -13,6 +11,17 @@ function PinIcon() {
       <path
         fill="currentColor"
         d="M12 2.75c-3.87 0-7 3.13-7 7 0 5.04 5.39 10.76 6.02 11.41a1.35 1.35 0 0 0 1.96 0c.63-.65 6.02-6.37 6.02-11.41 0-3.87-3.13-7-7-7Zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"
+      />
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="direction__iconSvg">
+      <path
+        fill="currentColor"
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
       />
     </svg>
   )
@@ -29,76 +38,25 @@ function MailIcon() {
   )
 }
 
+function PaperPlaneIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 2L11 13" />
+      <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+    </svg>
+  )
+}
+
 export default function DirectionSection() {
   return (
     <section className="direction" aria-labelledby="direction-title">
       <div className="direction__inner">
-        <div className="direction__top">
-          <div className="direction__intro">
-            <h1 className="direction__title" id="direction-title">
-              Get In Touch
-            </h1>
-            <p className="direction__lede">
-              Reach out and tell us what is on your mind. We would love to hear from you.
-            </p>
-
-            <div className="direction__drinks" aria-hidden="true">
-              <img src={milkChocolate} alt="" className="direction__drink direction__drink--iced" />
-              <img src={poccoLocco} alt="" className="direction__drink direction__drink--hot" />
-            </div>
-          </div>
-
-          <div className="direction__details">
-            <header className="direction__detailsHeader">
-              <h2 className="direction__visitTitle">Visit C2 Coffee</h2>
-              <div className="direction__underline" />
-            </header>
-
-            <div className="direction__infoRows">
-              <div className="direction__infoRow">
-                <div className="direction__iconWrap">
-                  <PinIcon />
-                </div>
-                <div className="direction__infoBody">
-                  <p className="direction__label">Address</p>
-                  <p className="direction__value">
-                    42, Jalan Eco Forest 6/1C,
-                    <br />
-                    Eco Forest, 43500 Semenyih,
-                    <br />
-                    Selangor
-                  </p>
-                </div>
-              </div>
-
-              <div className="direction__hours">
-                <h3 className="direction__hoursTitle">OPENING HOURS</h3>
-                <div className="direction__hoursGrid">
-                  <div className="direction__hoursBlock">
-                    <p className="direction__hoursLabel">Monday - Thursday</p>
-                    <p className="direction__hoursValue">7:00am - 8:00pm</p>
-                  </div>
-                  <div className="direction__hoursDivider" />
-                  <div className="direction__hoursBlock">
-                    <p className="direction__hoursLabel">Friday - Saturday</p>
-                    <p className="direction__hoursValue">7:00am - 10:00pm</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="direction__infoRow">
-                <div className="direction__iconWrap">
-                  <MailIcon />
-                </div>
-                <div className="direction__infoBody direction__infoBody--email">
-                  <a className="direction__email" href="mailto:partnerships@c2coffeeandcandle.com">
-                    partnerships@c2coffeeandcandle.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <header className="direction__header">
+          <p className="direction__eyebrow">VISIT US</p>
+          <h1 className="direction__title" id="direction-title">
+            Find Your Way to <span className="direction__titleHighlight">C2 Coffee &amp; Candle</span>
+          </h1>
+        </header>
 
         <div className="direction__mapWrap">
           <a
@@ -110,6 +68,58 @@ export default function DirectionSection() {
           >
             <img src={directionMap} alt="Map showing the cafe location area" className="direction__map" />
           </a>
+        </div>
+
+        <div className="direction__footer">
+          <div className="direction__footerCol">
+            <div className="direction__footerHeader">
+              <div className="direction__iconWrap direction__iconWrap--pin">
+                <PinIcon />
+              </div>
+              <h2 className="direction__label">ADDRESS</h2>
+            </div>
+            <div className="direction__footerBody">
+              <p className="direction__value">
+                42, Jalan Eco Forest 6/1C,<br />
+                Eco Forest, 43500 Semenyih,<br />
+                Selangor
+              </p>
+            </div>
+          </div>
+
+          <div className="direction__footerCol">
+            <div className="direction__footerHeader">
+              <div className="direction__iconWrap direction__iconWrap--clock">
+                <ClockIcon />
+              </div>
+              <h2 className="direction__label">OPENING HOURS</h2>
+            </div>
+            <div className="direction__footerBody">
+              <div className="direction__hoursBlock">
+                <p className="direction__hoursLabel">Monday - Thursday</p>
+                <p className="direction__hoursValue">7:00am - 8:00pm</p>
+              </div>
+              <div className="direction__hoursDivider" aria-hidden="true" />
+              <div className="direction__hoursBlock">
+                <p className="direction__hoursLabel">Friday - Saturday</p>
+                <p className="direction__hoursValue">7:00am - 10:00pm</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="direction__footerCol">
+            <div className="direction__footerHeader">
+              <div className="direction__iconWrap direction__iconWrap--mail">
+                <MailIcon />
+              </div>
+              <h2 className="direction__label">EMAIL</h2>
+            </div>
+            <div className="direction__footerBody">
+              <a className="direction__email" href="mailto:partnerships@c2coffeeandcandle.com">
+                partnerships@c2coffeeandcandle.com
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 .collaboration-section {
   position: relative;
-  background:
-    linear-gradient(180deg, #f8f3ea 0%, #f3ebdc 58%, #fbf7f0 100%);
+  background: #ffffff;
   padding: 52px 24px 72px;
 }
 
@@ -26,7 +25,7 @@
   font-family: var(--font-recoleta);
   font-size: clamp(3.3rem, 7vw, 5.5rem);
   line-height: 0.9;
-  color: #24140d;
+  color: #1a332f;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +39,7 @@
 
 .collaboration-section__title-line--accent {
   font-style: italic;
-  color: #ef5b23;
+  color: #6F9F96;
   font-weight: 600;
   margin-left: 0;
 }
@@ -121,7 +120,7 @@
   }
 
   .collaboration-section__title-line--accent {
-    margin-left: clamp(2.8rem, 8vw, 3.5rem);
+    margin-left: 0;
   }
 
   .collaboration-section__frame {

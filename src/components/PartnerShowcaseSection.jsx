@@ -57,7 +57,7 @@ export default function PartnerShowcaseSection() {
       <div className="partner-showcase__inner">
         <header className="partner-showcase__header">
           <span className="partner-showcase__eyebrow">OUR PARTNERS</span>
-          <h2 className="partner-showcase__title" id="partner-showcase-title">
+        <h2 className="partner-showcase__title" id="partner-showcase-title">
             Partner In <em className="partner-showcase__title-accent">Crime</em>
           </h2>
 
@@ -68,13 +68,14 @@ export default function PartnerShowcaseSection() {
           </div>
         </header>
 
-        <section className="partner-inquiry" aria-labelledby="partner-inquiry-title">
-          <div className="partner-inquiry__content">
-            <p className="partner-inquiry__eyebrow">Potential Partner</p>
-            <h3 className="partner-inquiry__title" id="partner-inquiry-title">
-              Start A Collaboration
-            </h3>
-            <p className="partner-inquiry__copy">
+        <div className="partner-inquiry-layout">
+          <section className="partner-inquiry" aria-labelledby="partner-inquiry-title">
+            <div className="partner-inquiry__content">
+              <p className="partner-inquiry__eyebrow">Potential Partner</p>
+              <h3 className="partner-inquiry__title" id="partner-inquiry-title">
+                Start A <em className="partner-inquiry__title-accent">Collaboration</em>
+              </h3>
+              <p className="partner-inquiry__copy">
               Share your brand, contact details, and a short note about the collaboration you have in mind.
             </p>
 
@@ -175,7 +176,7 @@ export default function PartnerShowcaseSection() {
                 className="c2-button c2-button--primary partner-inquiry__submit"
                 disabled={status === 'submitting'}
               >
-                Send Inquiry
+                SEND INQUIRY &rarr;
               </button>
 
               {feedback ? (
@@ -185,7 +186,8 @@ export default function PartnerShowcaseSection() {
               ) : null}
             </form>
           </div>
-        </section>
+          </section>
+        </div>
       </div>
     </section>
   )

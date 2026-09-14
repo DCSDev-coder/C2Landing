@@ -5,7 +5,6 @@ import InspirationSection from '../components/InspirationSection'
 import ExploreSection from '../components/ExploreSection'
 import CoffeeCandleSection from '../components/CoffeeCandleSection'
 import CurrentModeSection from '../components/CurrentModeSection'
-import DownloadSection from '../components/DownloadSection'
 import Footer from '../components/Footer'
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
       <ExploreSection />
       <CoffeeCandleSection />
       <CurrentModeSection />
-      <DownloadSection />
       <Footer />
     </div>
   )

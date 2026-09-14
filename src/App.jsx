@@ -5,6 +5,8 @@ import Collaboration from './pages/Collaboration'
 import Tier from './pages/Tier'
 import Download from './pages/Download'
 import RefundPolicy from './pages/RefundPolicy'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
 import NotFound from './pages/NotFound'
 
 function scrollToSection(sectionId) {
@@ -70,6 +72,8 @@ function App() {
     '/tiers': <Tier />,
     '/download': <Download />,
     '/refund-policy': <RefundPolicy />,
+    '/privacy-policy': <PrivacyPolicy />,
+    '/terms-of-service': <TermsOfService />,
   }
 
   return routes[location.pathname] ?? <NotFound />

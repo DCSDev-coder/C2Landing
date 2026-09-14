@@ -3,7 +3,7 @@ export const primaryNavItems = [
   { label: 'GET IN TOUCH', href: '/get-in-touch' },
   { label: 'COLLABORATIONS', href: '/collaborations' },
   { label: 'TIERS', href: '/tiers' },
-  { label: 'DOWNLOAD', href: '/', sectionId: 'download' },
+  { label: 'DOWNLOAD', href: '/download' },
 ]
 
 export const footerExploreLinks = [
@@ -12,7 +12,7 @@ export const footerExploreLinks = [
   { label: 'Coffee + Candle', href: '/', sectionId: 'craft' },
   { label: 'Current Mood', href: '/', sectionId: 'current-mood' },
   { label: 'Tiers', href: '/tiers' },
-  { label: 'Download', href: '/', sectionId: 'download' },
+  { label: 'Download', href: '/download' },
   { label: 'Get In Touch', href: '/get-in-touch' },
   { label: 'Collaborations', href: '/collaborations' },
 ]

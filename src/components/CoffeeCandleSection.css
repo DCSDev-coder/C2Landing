@@ -3,15 +3,13 @@
   --pillar-copy: #9f4f21;
   --pillar-cream: #f6e6c5;
   --pillar-blush: #f2e1d6;
-  --pillar-soft-orange: #ffc35a;
-  --pillar-bright-orange: #ff8a43;
-  --pillar-gold: #ffb11c;
+  --pillar-soft-orange: #F9D676;
+  --pillar-bright-orange: #F9D676;
+  --pillar-gold: #F9D676;
   position: relative;
   overflow: hidden;
   padding: 64px 24px 88px;
-  background:
-    radial-gradient(circle at top center, rgba(255, 199, 117, 0.12), transparent 34%),
-    linear-gradient(180deg, #fffdf9 0%, #fffaf3 100%);
+  background: #ffffff;
 }
 
 .coffee-candle__inner {
@@ -28,7 +26,7 @@
 
 .coffee-candle__title {
   margin: 0;
-  color: var(--pillar-ink);
+  color: #2E5E58;
   font-family: var(--font-recoleta);
   font-size: clamp(3.35rem, 8vw, 5rem);
   font-style: italic;
@@ -39,7 +37,7 @@
 
 .coffee-candle__subtitle {
   margin: 14px 0 0;
-  color: #b35421;
+  color: #6B7280;
   font-family: var(--font-recoleta);
   font-size: clamp(1.05rem, 2vw, 1.45rem);
   font-weight: 700;
@@ -84,7 +82,7 @@
 }
 
 .coffee-candle__dot.is-active {
-  background: #b46b2f;
+  background: #F9D676;
 }
 
 .pillar-card {
@@ -113,12 +111,40 @@
   animation: pillar-card-slide-left 340ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pillar-card--cream {
-  background: linear-gradient(180deg, #f7e7c5 0%, #f4e1bc 100%);
+.pillar-card--primary-green {
+  background: #2E5E58;
+}
+.pillar-card--primary-green .pillar-card__copy,
+.pillar-card--primary-green .pillar-card__bottomText {
+  color: #FFFFFF;
+}
+.pillar-card--primary-green .pillar-card__divider-vertical,
+.pillar-card--primary-green .pillar-card__divider-horizontal {
+  background: #FFFFFF;
 }
 
-.pillar-card--blush {
-  background: linear-gradient(180deg, #f2e1d6 0%, #f0ddd2 100%);
+.pillar-card--secondary-green {
+  background: #6F9F96;
+}
+.pillar-card--secondary-green .pillar-card__copy,
+.pillar-card--secondary-green .pillar-card__bottomText {
+  color: #FFFFFF;
+}
+.pillar-card--secondary-green .pillar-card__divider-vertical,
+.pillar-card--secondary-green .pillar-card__divider-horizontal {
+  background: #FFFFFF;
+}
+
+.pillar-card--highlight-yellow {
+  background: #F9D676;
+}
+.pillar-card--highlight-yellow .pillar-card__copy,
+.pillar-card--highlight-yellow .pillar-card__bottomText {
+  color: #FFFFFF;
+}
+.pillar-card--highlight-yellow .pillar-card__divider-vertical,
+.pillar-card--highlight-yellow .pillar-card__divider-horizontal {
+  background: #FFFFFF;
 }
 
 .pillar-card__cupWrap {
@@ -169,42 +195,47 @@
   }
 }
 
-.pillar-card__badge {
+.pillar-card {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pillar-card__divider-vertical {
+  width: 2px;
+  height: 32px;
+  margin: 28px auto;
+}
+
+.pillar-card__footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 94px;
-  margin: 0 auto 26px;
-  padding: 14px 24px;
-  border-radius: 999px;
+  padding-top: 32px;
 }
 
-.pillar-card__badge--soft {
-  background: linear-gradient(180deg, #ffcb73 0%, #ffc04d 100%);
+.pillar-card__divider-horizontal {
+  width: 40px;
+  height: 3px;
+  margin-bottom: 16px;
 }
 
-.pillar-card__badge--warm {
-  background: linear-gradient(180deg, #ff9850 0%, #ff8a43 100%);
-}
-
-.pillar-card__badge--bold {
-  background: linear-gradient(180deg, #ffbc2a 0%, #ffad19 100%);
-}
-
-.pillar-card__badgeTitle {
-  margin: 0;
-  color: #a34c1d;
+.pillar-card__bottomText {
+  text-align: center;
   font-family: var(--font-recoleta);
-  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  font-size: clamp(0.8rem, 3.5vw, 1.05rem);
+  font-style: italic;
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .pillar-card__copy {
   max-width: 11.5em;
   margin: 0 auto;
-  color: var(--pillar-copy);
   font-family: var(--font-recoleta);
   font-size: clamp(0.98rem, 1.5vw, 1.12rem);
   line-height: 1.38;
@@ -267,19 +298,13 @@
     width: 198px;
   }
 
-  .pillar-card__badge {
-    width: calc(100% - 24px);
-    min-height: 96px;
-    margin-bottom: 24px;
-  }
-
-  .pillar-card__badgeTitle {
-    font-size: 1.08rem;
-  }
-
   .pillar-card__copy {
-    font-size: 1.2rem;
-    line-height: 1.36;
+    font-size: 1.35rem;
+    line-height: 1.4;
+  }
+
+  .pillar-card__bottomText {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
   }
 }
 

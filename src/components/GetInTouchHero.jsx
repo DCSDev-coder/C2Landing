@@ -2,10 +2,10 @@ import React from 'react'
 import heroImage from '../assets/optimized/get-in-touch-hero.webp'
 import './GetInTouchHero.css'
 
-export default function GetInTouchHero({ backgroundImage = heroImage, backgroundVideo = null }) {
+export default function GetInTouchHero({ backgroundImage = heroImage, backgroundVideo = null, className = '' }) {
   return (
     <section
-      className="get-in-touch-hero"
+      className={`get-in-touch-hero ${className}`}
       data-nav-hero
       style={backgroundVideo ? undefined : { backgroundImage: `url(${backgroundImage})` }}
       aria-label="Get in touch hero"

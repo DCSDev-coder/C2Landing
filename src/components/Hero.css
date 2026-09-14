@@ -105,13 +105,15 @@ body {
   letter-spacing: -0.05em;
   text-shadow: 0 2px 0 rgba(82, 47, 22, 0.78), 0 10px 26px rgba(18, 10, 6, 0.42);
 }
-
-.hero__wordGroup--leftBottom .hero__word {
-  color: #d86c42;
+.hero__wordGroup--leftBottom {
+  position: relative;
 }
 
+.hero__wordGroup--leftBottom .hero__word {
+  color: #6f9f96;
+}
 .hero__wordGroup--rightBottom .hero__word {
-  color: #e7bd8a;
+  color: #F9D676;
 }
 
 .hero__textMobile {
@@ -133,6 +135,7 @@ body {
 }
 
 .hero__wordMobile--pair {
+  position: relative;
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -144,11 +147,11 @@ body {
 }
 
 .hero__wordMobilePart--perfect {
-  color: #d86c42;
+  color: #6f9f96;
 }
 
 .hero__wordMobilePart--scent {
-  color: #e7bd8a;
+  color: #F9D676;
 }
 
 .hero__lede {

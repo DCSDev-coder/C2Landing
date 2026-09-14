@@ -2,7 +2,6 @@
   position: relative;
   overflow: hidden;
   padding: 72px 24px 96px;
-  background: #ffffff;
 }
 
 .current-mode__inner {
@@ -22,7 +21,7 @@
 }
 
 .current-mode__title-top {
-  color: #28130d;
+  color: #2E5E58;
   font-family: var(--font-recoleta);
   font-size: clamp(3.1rem, 11vw, 4.3rem);
   font-weight: 700;
@@ -31,13 +30,15 @@
 }
 
 .current-mode__title-accent {
-  color: #f05d24;
+  color: #25BB07;
   font-family: var(--font-recoleta);
   font-size: clamp(3rem, 11vw, 4.6rem);
   font-style: italic;
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.04em;
+  margin-left: 1.2em;
+  white-space: nowrap;
 }
 
 .current-mode__desktop {
@@ -55,25 +56,26 @@
   margin: 0 auto;
 }
 
-.current-mode__dots {
+.current-mode__cardWrap {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 14px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.current-mode__dot {
-  width: 14px;
-  height: 14px;
-  border: 0;
-  border-radius: 999px;
-  padding: 0;
-  background: #f0dfc5;
-  cursor: pointer;
+.current-mode__fraction {
+  margin: 24px auto 0;
+  text-align: center;
+  font-family: var(--font-recoleta);
+  font-size: 1.1rem;
+  color: #6B7280;
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
-.current-mode__dot.is-active {
-  background: #b46b2f;
+.current-mode__fraction-separator {
+  opacity: 0.5;
+  margin: 0 4px;
 }
 
 .current-mode-card {
@@ -103,29 +105,32 @@
 .current-mode-card__drink {
   display: block;
   width: min(320px, 88%);
-  height: auto;
+  height: 360px;
   object-fit: contain;
 }
 
 .current-mode-card__content {
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.current-mode-card__pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 86px;
-  margin: 4px auto 24px;
-  padding: 16px 22px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #f5e6c8 0%, #f1ddba 100%);
+.current-mode-card__category {
+  margin: 0;
+  color: #6F9F96;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .current-mode-card__name {
   margin: 0;
-  color: #28130d;
+  color: #2C2C2C;
   font-family: var(--font-recoleta);
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
@@ -136,7 +141,7 @@
 .current-mode-card__description {
   margin: 0 auto;
   max-width: 13.5em;
-  color: #b35421;
+  color: #6B7280;
   font-family: var(--font-recoleta);
   font-size: clamp(1.12rem, 3vw, 1.45rem);
   font-style: italic;
@@ -177,7 +182,8 @@
   }
 
   .current-mode__title {
-    max-width: 480px;
+    max-width: none;
+    gap: 0;
   }
 
   .current-mode__title-top {
@@ -196,43 +202,80 @@
     display: block;
   }
 
+  .current-mode__carousel {
+    width: 100%;
+    margin: 0 auto;
+  }
+
   .current-mode-card {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: clamp(2rem, 5vw, 5rem);
+    justify-content: flex-start;
+    gap: 40px;
+    width: 100%;
   }
 
   .current-mode-card__visual {
-    width: min(44%, 430px);
-    flex: 0 0 auto;
+    width: min(80%, 600px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  .current-mode__nav-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    padding: 10px;
+    flex-shrink: 0;
+  }
+  
+  .current-mode__nav-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+
+
   .current-mode-card__drink {
-    width: min(360px, 100%);
+    width: 100%;
+    max-width: 400px;
+    height: 480px;
   }
 
   .current-mode-card__content {
-    flex: 1 1 auto;
+    flex: 1;
     text-align: left;
-    padding-right: 1rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
-  .current-mode-card__pill {
-    width: min(100%, 360px);
-    min-height: 94px;
-    margin: 0 0 28px;
-  }
-
-  .current-mode-card__name {
-    font-size: clamp(2.4rem, 3.4vw, 3.3rem);
+  .current-mode-card__category {
+    font-size: 0.85rem;
   }
 
   .current-mode-card__description {
-    max-width: 13em;
+    max-width: 24em;
     margin: 0;
-    font-size: clamp(1.6rem, 2.6vw, 2.15rem);
-    line-height: 0.95;
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    line-height: 1.4;
+  }
+
+  .current-mode-card__pill {
+    width: auto;
+    min-height: auto;
+    padding: 12px 32px;
+    margin: 0;
+  }
+
+  .current-mode-card__name {
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   }
 }
 

@@ -26,7 +26,7 @@ export default function Hero() {
                 <div className="hero__wordGroup hero__wordGroup--leftTop">
                   <span className="hero__word">a latte</span>
                 </div>
-                <div className="hero__wordGroup hero__wordGroup--leftBottom">
+                <div className="hero__wordGroup hero__wordGroup--leftBottom relative">
                   <span className="hero__word">perfect</span>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function Hero() {
             <div className="hero__textMobile" aria-hidden="true">
               <span className="hero__wordMobile">a latte</span>
               <span className="hero__wordMobile">love makes</span>
-              <span className="hero__wordMobile hero__wordMobile--pair">
+              <span className="hero__wordMobile hero__wordMobile--pair relative">
                 <span className="hero__wordMobilePart hero__wordMobilePart--perfect">perfect</span>
                 <span className="hero__wordMobilePart hero__wordMobilePart--scent">scents</span>
               </span>

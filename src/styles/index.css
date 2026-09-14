@@ -68,7 +68,7 @@
     --coffee-ink: #23150c;
     --coffee-ink-soft: #f9f5f0;
     --coffee-shadow: rgba(30, 16, 9, 0.3);
-    --coffee-orange: #ef5b23;
+    --coffee-orange: #e1b35b;
     --coffee-orange-deep: #c7672f;
     --coffee-brown-900: #28130d;
     --coffee-brown-800: #3a241c;
@@ -179,21 +179,21 @@
 }
 
 .c2-button--primary {
-  background: var(--coffee-orange);
-  color: #fff7ef;
+  background: #2e5e58;
+  color: #ffffff;
 }
 
 .c2-button--primary:hover {
-  background: #d95721;
+  background: #1f4a44;
 }
 
 .c2-button--secondary {
-  border-color: rgba(249, 245, 240, 0.6);
-  background: rgba(255, 248, 238, 0.08);
-  color: #fff7ef;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #ffffff;
 }
 
 .c2-button--secondary:hover {
-  border-color: rgba(249, 245, 240, 0.88);
-  background: rgba(255, 248, 238, 0.16);
+  border-color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.08);
 }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import footerLogo from '../assets/images/C2_Logo.svg'
 import { footerExploreLinks } from '../data/navigation'
 import { submitContactForm } from '../utils/contactForms'
 import { navigateTo } from '../utils/navigation'
 import './Footer.css'
 
 const legalLinks = [
-  { label: 'Privacy Policy', href: null },
-  { label: 'Terms Of Service', href: null },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms Of Service', href: '/terms-of-service' },
   { label: 'Refund Policy', href: '/refund-policy' },
   { label: 'Contact Us', href: '/get-in-touch' },
 ]
@@ -51,7 +50,11 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <div className="site-footer__brand">
-          <img src={footerLogo} alt="C2 Coffee + Candle" className="site-footer__logo" />
+          <img src="/c2_logo.png" alt="C2 Coffee + Candle" className="site-footer__logo" />
+          <h2 className="site-footer__tagline">
+            Sip The Calm |<br />
+            Dine In or Take Away
+          </h2>
         </div>
 
         <nav className="site-footer__column" aria-label="Explore">
@@ -95,7 +98,7 @@ export default function Footer() {
             Connect
           </h2>
           <p className="site-footer__copy">
-            Join our circle for exclusive early access to new scent drops and coffee blends
+            Join our circle for exclusive early access to new scent drops and coffee blends.
           </p>
 
           <form className="site-footer__formWrap" onSubmit={handleSubmit}>
@@ -120,7 +123,9 @@ export default function Footer() {
                 aria-label="Submit email"
                 disabled={status === 'submitting'}
               >
-                <span aria-hidden="true">&rsaquo;</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
               </button>
             </div>
             {feedback ? (
@@ -128,13 +133,22 @@ export default function Footer() {
                 {feedback}
               </p>
             ) : null}
+
+            <div className="site-footer__socials">
+              <a href="https://www.instagram.com/c2coffeecandle/" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="Instagram">
+                <img src="/instagram-logo.webp" alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="https://www.tiktok.com/@c2coffeecandle" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="TikTok">
+                <img src="/tiktok-logo.png" alt="TikTok" width={24} height={24} />
+              </a>
+            </div>
           </form>
         </section>
       </div>
 
       <div className="site-footer__bottom">
-        <p className="site-footer__fineprint">&copy; 2024 C2 Coffee + Candle. All right reserved.</p>
-        <p className="site-footer__fineprint">Crafted with love in Malaysia</p>
+        <p className="site-footer__fineprint">&copy; 2026 C2 Coffee + Candle. All rights reserved.</p>
+        <p className="site-footer__fineprint">Crafted with love in Malaysia.</p>
       </div>
     </footer>
   )

@@ -11,7 +11,7 @@ export default {
           light: '#faf6f0',
           medium: '#f5ebd9',
           dark: '#23150c',
-          accent: '#d0632b',
+          accent: '#e1b35b',
           brown: '#3b2314',
         }
       },
