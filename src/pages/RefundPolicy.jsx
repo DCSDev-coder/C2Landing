@@ -2,6 +2,10 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import GetInTouchHero from '../components/GetInTouchHero'
+import fkp01620 from '../assets/legal/FKP01620.jpg'
+import fkp01952 from '../assets/legal/FKP01952.jpg'
+import fkp01862 from '../assets/legal/FKP01862.jpg'
+import fkp01859 from '../assets/legal/FKP01859.jpg'
 
 export default function RefundPolicy() {
   return (
@@ -9,7 +13,7 @@ export default function RefundPolicy() {
       <Navbar />
       
       <GetInTouchHero 
-        backgroundImage="/FKP01620.jpg" 
+        backgroundImage={fkp01620} 
         className="!bg-center"
       />
 
@@ -99,7 +103,7 @@ export default function RefundPolicy() {
             </div>
           </div>
           <div className="w-full md:w-1/2 aspect-[4/3] rounded-[32px] overflow-hidden shadow-sm relative">
-            <img src="/FKP01952.jpg" alt="Eligible refund requests" className="w-full h-full object-cover object-center" />
+            <img src={fkp01952} alt="Eligible refund requests" className="w-full h-full object-cover object-center" />
           </div>
         </section>
 
@@ -114,7 +118,7 @@ export default function RefundPolicy() {
             </p>
           </div>
           <div className="w-full md:w-1/2 aspect-[4/3] rounded-[32px] overflow-hidden shadow-sm relative">
-             <img src="/FKP01862.jpg" alt="Cancellations" className="w-full h-full object-cover object-center" />
+             <img src={fkp01862} alt="Cancellations" className="w-full h-full object-cover object-center" />
           </div>
         </section>
 
@@ -182,7 +186,7 @@ export default function RefundPolicy() {
             </div>
           </div>
           <div className="w-full md:w-1/2 aspect-[4/3] rounded-[32px] overflow-hidden shadow-sm relative">
-             <img src="/FKP01859.jpg" alt="Non-refundable situations" className="w-full h-full object-cover object-center" />
+             <img src={fkp01859} alt="Non-refundable situations" className="w-full h-full object-cover object-center" />
           </div>
         </section>
 

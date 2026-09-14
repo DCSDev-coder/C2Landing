@@ -3,7 +3,7 @@ export const primaryNavItems = [
   { label: 'GET IN TOUCH', href: '/get-in-touch' },
   { label: 'COLLABORATIONS', href: '/collaborations' },
   { label: 'TIERS', href: '/tiers' },
-  { label: 'DOWNLOAD', href: '/download' },
+  { label: 'DOWNLOAD', href: '/download', sectionId: 'download' },
 ]
 
 export const footerExploreLinks = [

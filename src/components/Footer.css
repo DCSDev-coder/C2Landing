@@ -2,6 +2,7 @@
   padding: 2.75rem 1.5rem 1.2rem;
   background: #2f554b;
   color: #faf6f0;
+  border-top: 1px solid rgba(250, 246, 240, 0.4);
 }
 
 .site-footer__inner {

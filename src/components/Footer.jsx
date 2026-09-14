@@ -3,6 +3,9 @@ import { footerExploreLinks } from '../data/navigation'
 import { submitContactForm } from '../utils/contactForms'
 import { navigateTo } from '../utils/navigation'
 import './Footer.css'
+import c2Logo from '../assets/brand/c2_logo.png'
+import instagramLogo from '../assets/socials/instagram-logo.webp'
+import tiktokLogo from '../assets/socials/tiktok-logo.png'
 
 const legalLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
@@ -50,7 +53,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <div className="site-footer__brand">
-          <img src="/c2_logo.png" alt="C2 Coffee + Candle" className="site-footer__logo" />
+          <img src={c2Logo} alt="C2 Coffee + Candle" className="site-footer__logo" />
           <h2 className="site-footer__tagline">
             Sip The Calm |<br />
             Dine In or Take Away
@@ -136,10 +139,10 @@ export default function Footer() {
 
             <div className="site-footer__socials">
               <a href="https://www.instagram.com/c2coffeecandle/" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="Instagram">
-                <img src="/instagram-logo.webp" alt="Instagram" width={24} height={24} />
+                <img src={instagramLogo} alt="Instagram" width={24} height={24} />
               </a>
               <a href="https://www.tiktok.com/@c2coffeecandle" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="TikTok">
-                <img src="/tiktok-logo.png" alt="TikTok" width={24} height={24} />
+                <img src={tiktokLogo} alt="TikTok" width={24} height={24} />
               </a>
             </div>
           </form>

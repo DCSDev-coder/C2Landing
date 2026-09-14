@@ -1,35 +1,54 @@
 import React, { useState } from 'react'
 import './CurrentModeSection.css'
+import matchaLatte from '../assets/drinks/MATCHA LATTE.png'
+import bloodyPeach from '../assets/drinks/BLOODY PEACH.png'
+import montBroga from '../assets/drinks/MONT BROGA.png'
+import shakeratoBianco from '../assets/drinks/SHAKERATO BIANCO.png'
+import yuzukano from '../assets/drinks/YUZUKANO.png'
+import senjaDiBroga from '../assets/drinks/SENJA DI BROGA.png'
+import espressoBomb from '../assets/drinks/ESPRESSO BOMB.png'
+import milkChocolate from '../assets/drinks/MILK CHOCOLATE.png'
+import nuttyChocolate from '../assets/drinks/NUTTY CHOCOLATE.png'
+import monkeyMatcha from '../assets/drinks/MONKEY MATCHA.png'
+import pinkyPromiseMatcha from '../assets/drinks/PINKY PROMISE MATCHA.png'
+import boijito from '../assets/drinks/BOIJITO.png'
+import fujiFizz from '../assets/drinks/FUJI FIZZ.png'
+import spicyMimosa from '../assets/drinks/SPICY MIMOSA.png'
+import ondeOndeSoda from '../assets/drinks/ONDE-ONDE SODA.png'
+import pinkyBlushMilkshakeBySyah from '../assets/drinks/PINKY BLUSH MILKSHAKE BY SYAH.png'
+import soleroFizz from '../assets/drinks/SOLERO FIZZ.png'
+import paddlePop from '../assets/drinks/PADDLE POP.png'
+import cloudyJasmine from '../assets/drinks/CLOUDY JASMINE.png'
 
 const drinks = [
   // C2 COFFEE CRAFT
-  { id: 'mont-broga', category: 'C2 Coffee Craft', name: 'Mont Broga', description: 'Black coffee layered with orangey cold foam and orange zest', image: '/drinks/MONT BROGA.png' },
-  { id: 'shakerato-bianco', category: 'C2 Coffee Craft', name: 'Shakerato Bianco', description: 'Chilled, shaken espresso with sweet silky and refreshing cream', image: '/drinks/SHAKERATO BIANCO.png' },
-  { id: 'yuzukano', category: 'C2 Coffee Craft', name: 'Yuzukano', description: 'Aerated espresso topping the chilled yuzu puree', image: '/drinks/YUZUKANO.png' },
-  { id: 'senja-di-broga', category: 'C2 Coffee Craft', name: 'Senja Di Broga', description: 'Sweet sparkling orange juice topped with espresso', image: '/drinks/SENJA DI BROGA.png' },
-  { id: 'espresso-bomb', category: 'C2 Coffee Craft', name: 'Espresso Bomb', description: 'The trendy espresso bomb is here. Choice of sparkling of ginger ade or tonic water', image: '/drinks/ESPRESSO BOMB.png' },
+  { id: 'mont-broga', category: 'C2 Coffee Craft', name: 'Mont Broga', description: 'Black coffee layered with orangey cold foam and orange zest', image: montBroga },
+  { id: 'shakerato-bianco', category: 'C2 Coffee Craft', name: 'Shakerato Bianco', description: 'Chilled, shaken espresso with sweet silky and refreshing cream', image: shakeratoBianco },
+  { id: 'yuzukano', category: 'C2 Coffee Craft', name: 'Yuzukano', description: 'Aerated espresso topping the chilled yuzu puree', image: yuzukano },
+  { id: 'senja-di-broga', category: 'C2 Coffee Craft', name: 'Senja Di Broga', description: 'Sweet sparkling orange juice topped with espresso', image: senjaDiBroga },
+  { id: 'espresso-bomb', category: 'C2 Coffee Craft', name: 'Espresso Bomb', description: 'The trendy espresso bomb is here. Choice of sparkling of ginger ade or tonic water', image: espressoBomb },
 
   // C2 CHOCOLATE
-  { id: 'milk-chocolate', category: 'C2 Chocolate', name: 'Milk Chocolate', description: 'Rich and smooth chocolate milk drinks topped with marshmallows', image: '/drinks/MILK CHOCOLATE.png' },
-  { id: 'nutty-chocolate', category: 'C2 Chocolate', name: 'Nutty Chocolate', description: 'Chocolate drink mixed with crunchy peanut butter', image: '/drinks/NUTTY CHOCOLATE.png' },
+  { id: 'milk-chocolate', category: 'C2 Chocolate', name: 'Milk Chocolate', description: 'Rich and smooth chocolate milk drinks topped with marshmallows', image: milkChocolate },
+  { id: 'nutty-chocolate', category: 'C2 Chocolate', name: 'Nutty Chocolate', description: 'Chocolate drink mixed with crunchy peanut butter', image: nuttyChocolate },
 
   // C2 MATCHA
-  { id: 'matcha-latte', category: 'C2 Matcha', name: 'Matcha Latte', description: 'Ceremonial grade matcha with smooth, creamy milk', image: '/drinks/MATCHA LATTE.png' },
-  { id: 'monkey-matcha', category: 'C2 Matcha', name: 'Monkey Matcha', description: 'Ceremonial grade matcha with ripe banana puree', image: '/drinks/MONKEY MATCHA.png' },
-  { id: 'pinky-promise-matcha', category: 'C2 Matcha', name: 'Pinky Promise Matcha', description: 'Ceremonial grade matcha with strawberry puree sweetness', image: '/drinks/PINKY PROMISE MATCHA.png' },
+  { id: 'matcha-latte', category: 'C2 Matcha', name: 'Matcha Latte', description: 'Ceremonial grade matcha with smooth, creamy milk', image: matchaLatte },
+  { id: 'monkey-matcha', category: 'C2 Matcha', name: 'Monkey Matcha', description: 'Ceremonial grade matcha with ripe banana puree', image: monkeyMatcha },
+  { id: 'pinky-promise-matcha', category: 'C2 Matcha', name: 'Pinky Promise Matcha', description: 'Ceremonial grade matcha with strawberry puree sweetness', image: pinkyPromiseMatcha },
 
   // C2 MOCKTAILS
-  { id: 'boijito', category: 'C2 Mocktails', name: 'Boijito', description: 'Sparkling mojito with hand-picked mint and calamansi flavour', image: '/drinks/BOIJITO.png' },
-  { id: 'bloody-peach', category: 'C2 Mocktails', name: 'Bloody Peach', description: 'Sparkling jasmine tea with peach flavour and top with grenadine syrup', image: '/drinks/BLOODY PEACH.png' },
-  { id: 'fuji-fizz', category: 'C2 Mocktails', name: 'Fuji Fizz', description: 'Ginger, apple and cinnamon comes together in a fizzy drinks. Fruity and spice.', image: '/drinks/FUJI FIZZ.png' },
-  { id: 'spicy-mimosa', category: 'C2 Mocktails', name: 'Spicy Mimosa', description: 'Hot and spicy orange juice topped with ginger ade and red berry based of grenadine syrup', image: '/drinks/SPICY MIMOSA.png' },
-  { id: 'onde2pop', category: 'C2 Mocktails', name: 'Onde2Pop', description: 'Green apple and coconut shaken together and topped with sparkling soda', image: '/drinks/ONDE-ONDE SODA.png' },
+  { id: 'boijito', category: 'C2 Mocktails', name: 'Boijito', description: 'Sparkling mojito with hand-picked mint and calamansi flavour', image: boijito },
+  { id: 'bloody-peach', category: 'C2 Mocktails', name: 'Bloody Peach', description: 'Sparkling jasmine tea with peach flavour and top with grenadine syrup', image: bloodyPeach },
+  { id: 'fuji-fizz', category: 'C2 Mocktails', name: 'Fuji Fizz', description: 'Ginger, apple and cinnamon comes together in a fizzy drinks. Fruity and spice.', image: fujiFizz },
+  { id: 'spicy-mimosa', category: 'C2 Mocktails', name: 'Spicy Mimosa', description: 'Hot and spicy orange juice topped with ginger ade and red berry based of grenadine syrup', image: spicyMimosa },
+  { id: 'onde2pop', category: 'C2 Mocktails', name: 'Onde2Pop', description: 'Green apple and coconut shaken together and topped with sparkling soda', image: ondeOndeSoda },
 
   // C2 BARISTA CRAFT
-  { id: 'pinky-blush-milkshake', category: 'C2 Barista Craft', name: 'Pinky Blush Milkshake', description: 'Creamy strawberry, delicate banana puree, mix and shake with milk', image: '/drinks/PINKY BLUSH MILKSHAKE BY SYAH.png' },
-  { id: 'solero-fizz', category: 'C2 Barista Craft', name: 'Solero Fizz', description: 'Bright citrus notes with sparkling soda and creamy, silky cold foam', image: '/drinks/SOLERO FIZZ.png' },
-  { id: 'paddle-pop', category: 'C2 Barista Craft', name: 'Paddle Pop', description: 'Creamy strawberry and vanilla, finished with silky blue foam', image: '/drinks/PADDLE POP.png' },
-  { id: 'cloudy-jasmine', category: 'C2 Barista Craft', name: 'Cloudy Jasmine', description: 'Refreshing jasmine tea soda with silky butterscotch cream foam', image: '/drinks/CLOUDY JASMINE.png' },
+  { id: 'pinky-blush-milkshake', category: 'C2 Barista Craft', name: 'Pinky Blush Milkshake', description: 'Creamy strawberry, delicate banana puree, mix and shake with milk', image: pinkyBlushMilkshakeBySyah },
+  { id: 'solero-fizz', category: 'C2 Barista Craft', name: 'Solero Fizz', description: 'Bright citrus notes with sparkling soda and creamy, silky cold foam', image: soleroFizz },
+  { id: 'paddle-pop', category: 'C2 Barista Craft', name: 'Paddle Pop', description: 'Creamy strawberry and vanilla, finished with silky blue foam', image: paddlePop },
+  { id: 'cloudy-jasmine', category: 'C2 Barista Craft', name: 'Cloudy Jasmine', description: 'Refreshing jasmine tea soda with silky butterscotch cream foam', image: cloudyJasmine },
 ]
 
 export default function CurrentModeSection() {

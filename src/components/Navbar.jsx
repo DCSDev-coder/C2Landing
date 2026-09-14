@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { primaryNavItems } from '../data/navigation'
+import c2Logo from '../assets/brand/c2_logo.png'
 import {
   getActiveHomeSection,
   getSectionIds,
@@ -72,7 +73,7 @@ export default function Navbar() {
           <div className="c2-nav__brand">
             <a href="/" onClick={(event) => handleNavigate(event, '/')} aria-label="Go to home">
               <img
-                src="/c2_logo.png"
+                src={c2Logo}
                 alt="C2 Coffee Logo"
                 className="c2-nav__logo"
               />

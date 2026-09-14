@@ -130,7 +130,7 @@ function DetailPanel({ blend, isActive, onClose, onTouchStart, onTouchEnd }) {
           </button>
 
           <h3 className="detail-panel__title">
-            About <em className="detail-panel__title-highlight">This Blends.</em>
+            About <em className="detail-panel__title-highlight">This Blend.</em>
           </h3>
 
           <div className="detail-panel__scroll-area">

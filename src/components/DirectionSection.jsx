@@ -1,8 +1,8 @@
 import React from 'react'
-import directionMap from '../assets/optimized/direction-map.webp'
 import './DirectionSection.css'
 
-const mapQuery = encodeURIComponent('C2 Coffee & Candle, Eco Forest, Semenyih, Selangor')
+const mapQuery = encodeURIComponent('C2 Coffee & Candle, 42, Jalan Eco Forest 6/1C, 43500 Semenyih, Selangor')
+const mapEmbedLink = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`
 const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
 
 function PinIcon() {
@@ -58,16 +58,31 @@ export default function DirectionSection() {
           </h1>
         </header>
 
-        <div className="direction__mapWrap">
+        <div className="direction__mapWrap relative rounded-[1.25rem] overflow-hidden shadow-[0_20px_40px_rgba(46,94,88,0.1)]">
+          {/* Glass shield overlay to prevent clicking other POIs, leaving a cutout for the info box */}
           <a
-            className="direction__mapLink"
             href={mapLink}
             target="_blank"
             rel="noreferrer"
             aria-label="Open cafe location in Google Maps"
+            className="absolute inset-0 z-10 block"
           >
-            <img src={directionMap} alt="Map showing the cafe location area" className="direction__map" />
+            {/* Right shield */}
+            <div className="absolute top-0 right-0 bottom-0 left-[420px]"></div>
+            {/* Bottom shield */}
+            <div className="absolute top-[220px] left-0 right-0 bottom-0"></div>
           </a>
+          <iframe 
+            src={mapEmbedLink}
+            width="100%" 
+            height="100%" 
+            style={{ border: 0, minHeight: '400px', display: 'block' }} 
+            allowFullScreen="" 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Google Maps Location for C2 Coffee & Candle"
+            className="direction__map"
+          ></iframe>
         </div>
 
         <div className="direction__footer">

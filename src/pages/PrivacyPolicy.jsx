@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 import GetInTouchHero from '../components/GetInTouchHero'
+import c2Logo from '../assets/brand/c2_logo.png'
+import c226 from '../assets/legal/C2-26.jpg'
+import c2161 from '../assets/legal/C2-161.jpg'
 
 export default function PrivacyPolicy() {
   const sections = [
@@ -13,7 +16,7 @@ export default function PrivacyPolicy() {
     // We handle section 2 differently (manual cards)
     {
       title: 'Purposes of Data Processing',
-      body: 'Your personal data is collected and processed for the following operational purposes:\n\n• Preparing and fulfilling your store self-pickup orders according to beverage customizations.\n\n• Managing your closed-loop C2 Token prepaid balance and calculating tiered member pricing (Kawan, Dilamun, Ketagih, Legend).\n\n• Administering loyalty cups progression, welcome rewards, and promotional campaign vouchers.\n\n• Authenticating your login sessions via email OTP.\n\n• Sending real-time order readiness alerts and critical operational notifications.\n\n• Detecting, preventing, and investigating fraud, unauthorized access, or referral abuse.'
+      body: 'Your personal data is collected and processed for the following operational purposes:\n\n• Preparing and fulfilling your store self-pickup orders according to beverage customizations.\n\n• Managing your closed-loop C2 Token prepaid balance and calculating tiered member pricing (Sipper, Brewer, Roaster, Legendary).\n\n• Administering loyalty cups progression, welcome rewards, and promotional campaign vouchers.\n\n• Authenticating your login sessions via email OTP.\n\n• Sending real-time order readiness alerts and critical operational notifications.\n\n• Detecting, preventing, and investigating fraud, unauthorized access, or referral abuse.'
     },
     {
       title: 'Disclosure to Third-Party Service Providers',
@@ -132,14 +135,14 @@ export default function PrivacyPolicy() {
   return (
     <div className="c2-page !bg-white">
       <Navbar />
-      
-      <GetInTouchHero 
-        backgroundImage="/C2-26.jpg" 
+
+      <GetInTouchHero
+        backgroundImage={c226}
         className="!bg-center"
       />
 
       <main className="py-16 md:py-24 px-6 md:px-12 max-w-6xl mx-auto min-h-[70vh] flex flex-col gap-16 md:gap-24">
-        
+
         {/* Header & Callout */}
         <div className="flex flex-col items-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 text-[#2f554b] text-center">
@@ -148,7 +151,7 @@ export default function PrivacyPolicy() {
           <p className="text-lg md:text-xl text-[#3d5952] font-light mb-12">
             Last Updated: <span className="font-semibold text-[#2f554b]">September 4, 2026</span>
           </p>
-          
+
           <div className="bg-[#e6ebe9] py-8 px-8 md:px-16 rounded-[2rem] text-center shadow-sm max-w-4xl">
             <p className="text-[#2f554b] text-lg md:text-xl leading-relaxed">
               Your privacy matters to us. We are committed to protecting your personal information and providing a safe, meaningful experience with C2.
@@ -167,7 +170,7 @@ export default function PrivacyPolicy() {
             </p>
           </div>
           <div className="w-full md:w-1/2 relative aspect-square rounded-[2rem] overflow-hidden shadow-md">
-            <img src="/C2-161.jpg" alt="Coffee Cup" className="w-full h-full object-cover object-center" />
+            <img src={c2161} alt="Coffee Cup" className="w-full h-full object-cover object-center" />
           </div>
         </section>
 
@@ -179,7 +182,7 @@ export default function PrivacyPolicy() {
           <p className="text-[#3d5952] text-lg leading-relaxed mb-10 max-w-3xl">
             We collect personal data necessary to provide seamless coffee ordering, closed-loop token balances, and member rewards:
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
             {personalDataItems.map((item, idx) => (
               <div key={idx} className="flex gap-5 items-start">
@@ -210,7 +213,7 @@ export default function PrivacyPolicy() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#e1b35b] mt-2 text-xs">●</span>
-                  <span>Managing your closed-loop C2 Token prepaid balance and calculating tiered member pricing (Kawan, Dilamun, Ketagih, Legend).</span>
+                  <span>Managing your closed-loop C2 Token prepaid balance and calculating tiered member pricing (Sipper, Brewer, Roaster, Legendary).</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#e1b35b] mt-2 text-xs">●</span>
@@ -231,22 +234,22 @@ export default function PrivacyPolicy() {
               </ul>
             </div>
           </div>
-          
+
           <div className="w-full md:w-1/2 bg-[#2f554b] text-white p-10 md:p-12 rounded-[2.5rem] flex flex-col justify-between min-h-[400px]">
-             <div>
-               <p className="text-[#a0b5b0] uppercase tracking-widest text-sm font-semibold mb-6">Our Commitment</p>
-               <h3 className="font-serif text-4xl md:text-5xl leading-tight mb-8">
-                 Brewed with<br />Care, Protected<br />by Purpose.
-               </h3>
-               <p className="text-[#d8e2df] text-lg leading-relaxed font-light">
-                 We handle your data responsibly so you can enjoy a safer and more personalised experience with C2.
-               </p>
-             </div>
-             
-             <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
-                 <img src="/c2_logo.png" alt="C2 Logo" className="h-10 w-auto opacity-90" />
-                 <span className="text-[#a0b5b0] uppercase tracking-[0.2em] text-xs font-semibold">C2 Coffee + Candle</span>
-               </div>
+            <div>
+              <p className="text-[#a0b5b0] uppercase tracking-widest text-sm font-semibold mb-6">Our Commitment</p>
+              <h3 className="font-serif text-4xl md:text-5xl leading-tight mb-8">
+                Brewed with<br />Care, Protected<br />by Purpose.
+              </h3>
+              <p className="text-[#d8e2df] text-lg leading-relaxed font-light">
+                We handle your data responsibly so you can enjoy a safer and more personalised experience with C2.
+              </p>
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
+              <img src={c2Logo} alt="C2 Logo" className="h-10 w-auto opacity-90" />
+              <span className="text-[#a0b5b0] uppercase tracking-[0.2em] text-xs font-semibold">C2 Coffee + Candle</span>
+            </div>
           </div>
         </section>
 
@@ -257,7 +260,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-3xl font-bold text-[#2f554b] text-center">Additional Policies</h2>
             <div className="h-[1px] w-12 md:w-24 bg-[#e1b35b]/40"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {sections.slice(2).map((section, idx) => (
               <div key={idx + 4} className="bg-[#f5f7f6] p-8 md:p-10 rounded-[2rem] flex flex-col gap-6">
@@ -279,7 +282,7 @@ export default function PrivacyPolicy() {
         </div>
 
       </main>
-      
+
       <Footer />
     </div>
   )
