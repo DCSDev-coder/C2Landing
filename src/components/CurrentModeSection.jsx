@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './CurrentModeSection.css'
 import matchaLatte from '../assets/drinks/MATCHA LATTE.png'
 import bloodyPeach from '../assets/drinks/BLOODY PEACH.png'
@@ -19,6 +19,17 @@ import pinkyBlushMilkshakeBySyah from '../assets/drinks/PINKY BLUSH MILKSHAKE BY
 import soleroFizz from '../assets/drinks/SOLERO FIZZ.png'
 import paddlePop from '../assets/drinks/PADDLE POP.png'
 import cloudyJasmine from '../assets/drinks/CLOUDY JASMINE.png'
+import butterscotchLatte from '../assets/drinks/BUTTERSCOTH LATTE.png'
+import hazelnutLatte from '../assets/drinks/HAZELNUT LATTE.png'
+import vanillaLatte from '../assets/drinks/VANILLA LATTE.png'
+import blueCloudCoconutCoffee from '../assets/drinks/BLUE CLOUD COCONUT COFFEE.png'
+import mocha from '../assets/drinks/MOCHA.png'
+import espresso from '../assets/drinks/ESPRESSO.png'
+import poccoLocco from '../assets/drinks/POCCO LOCCO.png'
+import latte from '../assets/drinks/LATTE.png'
+import flatWhite from '../assets/drinks/FLAT WHITE.png'
+import cappuccino from '../assets/drinks/CAPPUCCINO.png'
+import v60Brew from '../assets/drinks/V60 BREW.png'
 
 const drinks = [
   // C2 COFFEE CRAFT
@@ -28,14 +39,11 @@ const drinks = [
   { id: 'senja-di-broga', category: 'C2 Coffee Craft', name: 'Senja Di Broga', description: 'Sweet sparkling orange juice topped with espresso', image: senjaDiBroga },
   { id: 'espresso-bomb', category: 'C2 Coffee Craft', name: 'Espresso Bomb', description: 'The trendy espresso bomb is here. Choice of sparkling of ginger ade or tonic water', image: espressoBomb },
 
-  // C2 CHOCOLATE
-  { id: 'milk-chocolate', category: 'C2 Chocolate', name: 'Milk Chocolate', description: 'Rich and smooth chocolate milk drinks topped with marshmallows', image: milkChocolate },
-  { id: 'nutty-chocolate', category: 'C2 Chocolate', name: 'Nutty Chocolate', description: 'Chocolate drink mixed with crunchy peanut butter', image: nuttyChocolate },
-
-  // C2 MATCHA
-  { id: 'matcha-latte', category: 'C2 Matcha', name: 'Matcha Latte', description: 'Ceremonial grade matcha with smooth, creamy milk', image: matchaLatte },
-  { id: 'monkey-matcha', category: 'C2 Matcha', name: 'Monkey Matcha', description: 'Ceremonial grade matcha with ripe banana puree', image: monkeyMatcha },
-  { id: 'pinky-promise-matcha', category: 'C2 Matcha', name: 'Pinky Promise Matcha', description: 'Ceremonial grade matcha with strawberry puree sweetness', image: pinkyPromiseMatcha },
+  // C2 BARISTA CRAFT
+  { id: 'pinky-blush-milkshake', category: 'C2 Barista Craft', name: 'Pinky Blush Milkshake', description: 'Creamy strawberry, delicate banana puree, mix and shake with milk', image: pinkyBlushMilkshakeBySyah },
+  { id: 'solero-fizz', category: 'C2 Barista Craft', name: 'Solero Fizz', description: 'Bright citrus notes with sparkling soda and creamy, silky cold foam', image: soleroFizz },
+  { id: 'paddle-pop', category: 'C2 Barista Craft', name: 'Paddle Pop', description: 'Creamy strawberry and vanilla, finished with silky blue foam', image: paddlePop },
+  { id: 'cloudy-jasmine', category: 'C2 Barista Craft', name: 'Cloudy Jasmine', description: 'Refreshing jasmine tea soda with silky butterscotch cream foam', image: cloudyJasmine },
 
   // C2 MOCKTAILS
   { id: 'boijito', category: 'C2 Mocktails', name: 'Boijito', description: 'Sparkling mojito with hand-picked mint and calamansi flavour', image: boijito },
@@ -44,18 +52,49 @@ const drinks = [
   { id: 'spicy-mimosa', category: 'C2 Mocktails', name: 'Spicy Mimosa', description: 'Hot and spicy orange juice topped with ginger ade and red berry based of grenadine syrup', image: spicyMimosa },
   { id: 'onde2pop', category: 'C2 Mocktails', name: 'Onde2Pop', description: 'Green apple and coconut shaken together and topped with sparkling soda', image: ondeOndeSoda },
 
-  // C2 BARISTA CRAFT
-  { id: 'pinky-blush-milkshake', category: 'C2 Barista Craft', name: 'Pinky Blush Milkshake', description: 'Creamy strawberry, delicate banana puree, mix and shake with milk', image: pinkyBlushMilkshakeBySyah },
-  { id: 'solero-fizz', category: 'C2 Barista Craft', name: 'Solero Fizz', description: 'Bright citrus notes with sparkling soda and creamy, silky cold foam', image: soleroFizz },
-  { id: 'paddle-pop', category: 'C2 Barista Craft', name: 'Paddle Pop', description: 'Creamy strawberry and vanilla, finished with silky blue foam', image: paddlePop },
-  { id: 'cloudy-jasmine', category: 'C2 Barista Craft', name: 'Cloudy Jasmine', description: 'Refreshing jasmine tea soda with silky butterscotch cream foam', image: cloudyJasmine },
+  // C2 MATCHA
+  { id: 'matcha-latte', category: 'C2 Matcha', name: 'Matcha Latte', description: 'Ceremonial grade matcha with smooth, creamy milk', image: matchaLatte },
+  { id: 'monkey-matcha', category: 'C2 Matcha', name: 'Monkey Matcha', description: 'Ceremonial grade matcha with ripe banana puree', image: monkeyMatcha },
+  { id: 'pinky-promise-matcha', category: 'C2 Matcha', name: 'Pinky Promise Matcha', description: 'Ceremonial grade matcha with strawberry puree sweetness', image: pinkyPromiseMatcha },
+
+  // C2 CHOCOLATE
+  { id: 'milk-chocolate', category: 'C2 Chocolate', name: 'Milk Chocolate', description: 'Rich and smooth chocolate milk drinks topped with marshmallows', image: milkChocolate },
+  { id: 'nutty-chocolate', category: 'C2 Chocolate', name: 'Nutty Chocolate', description: 'Chocolate drink mixed with crunchy peanut butter', image: nuttyChocolate },
+
+  // C2 POUR OVER
+  { id: 'v60-brew', category: 'C2 Pour Over', name: 'V60 Brew', description: 'Hand-poured coffee revealing delicate aroma and clarity', image: v60Brew },
+
+  // C2 COFFEE
+  { id: 'espresso', category: 'C2 Coffee', name: 'Espresso', description: 'Pure, concentrated coffee. Choose between bold taste note or lighter note', image: espresso },
+  { id: 'pocco-locco', category: 'C2 Coffee', name: 'Pocco Locco', description: 'An espresso and oatmilk-small in size, rich in flavour', image: poccoLocco },
+  { id: 'latte', category: 'C2 Coffee', name: 'Latte', description: 'Espresso top with milk with layered of smooth foam', image: latte },
+  { id: 'flat-white', category: 'C2 Coffee', name: 'Flat White', description: 'Espresso top with hot milk with a thin layer of smooth foam', image: flatWhite },
+  { id: 'cappuccino', category: 'C2 Coffee', name: 'Cappuccino', description: 'Espresso topped with light and thick foam and delicate milk', image: cappuccino },
+
+  // C2 FLAVOURED COFFEE
+  { id: 'butterscotch-latte', category: 'C2 Flavoured Coffee', name: 'Butterscotch Latte', description: 'Smooth espresso and milk mix with butterscoth flavour', image: butterscotchLatte },
+  { id: 'hazelnut-latte', category: 'C2 Flavoured Coffee', name: 'Hazelnut Latte', description: 'Espresso and milk mixed with hazelnut flavour', image: hazelnutLatte },
+  { id: 'vanilla-latte', category: 'C2 Flavoured Coffee', name: 'Vanilla Latte', description: 'Gentle vanilla sweetness lifting smooth espresso', image: vanillaLatte },
+  { id: 'blue-cloud-coconut-coffee', category: 'C2 Flavoured Coffee', name: 'Blue Cloud Coconut Coffee', description: 'Black coffee with coconut flavour topped with creamy light blue cold foam', image: blueCloudCoconutCoffee },
+  { id: 'mocha', category: 'C2 Flavoured Coffee', name: 'Mocha', description: 'Chocolate and espresso mixed with milk', image: mocha },
 ]
 
 export default function CurrentModeSection() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [touchStartX, setTouchStartX] = useState(null)
   const [slideDirection, setSlideDirection] = useState('right')
+  const [isHovered, setIsHovered] = useState(false)
   const activeDrink = drinks[activeIndex]
+
+  useEffect(() => {
+    if (isHovered || touchStartX !== null) return
+
+    const timer = setInterval(() => {
+      goNext()
+    }, 4000)
+
+    return () => clearInterval(timer)
+  }, [isHovered, touchStartX])
 
   const goPrev = () => {
     setSlideDirection('left')
@@ -111,7 +150,11 @@ export default function CurrentModeSection() {
           </h2>
         </header>
 
-        <div className="current-mode__carousel">
+        <div 
+          className="current-mode__carousel"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <div
             className="current-mode__cardWrap"
             onTouchStart={handleTouchStart}
