@@ -19,9 +19,7 @@ const tiersData = [
     textColor: '#c24b69', // Darker Strawberry Pink
     accentColor: '#db5a7c', // Strawberry Pink
     rewards: [
-      '10% discount on all orders',
-      'Early access to seasonal drops',
-      'Member-only news/letter'
+      'Coming soon'
     ]
   },
   {
@@ -34,9 +32,7 @@ const tiersData = [
     textColor: '#8a400f', // Darker orange
     accentColor: '#e07624', // Bright orange
     rewards: [
-      '10% discount on all orders',
-      '15% discount on all orders',
-      'Free Shipping on all orders'
+      'Coming soon'
     ]
   },
   {
@@ -49,9 +45,7 @@ const tiersData = [
     textColor: '#ebd8d1',
     accentColor: '#de663e',
     rewards: [
-      'Monthly candle and Coffee',
-      '25% discount on all orders',
-      'Exclusive event invitations'
+      'Coming soon'
     ]
   },
   {
@@ -64,9 +58,7 @@ const tiersData = [
     textColor: '#d4cbdf',
     accentColor: '#a074c7',
     rewards: [
-      'no idea',
-      '30% discount on all orders',
-      'no idea'
+      'Coming soon'
     ]
   }
 ]
