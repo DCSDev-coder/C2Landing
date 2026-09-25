@@ -7,6 +7,7 @@ import Download from './pages/Download'
 import RefundPolicy from './pages/RefundPolicy'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
+import DeleteAccount from './pages/DeleteAccount'
 import NotFound from './pages/NotFound'
 
 function scrollToSection(sectionId) {
@@ -74,6 +75,7 @@ function App() {
     '/refund-policy': <RefundPolicy />,
     '/privacy-policy': <PrivacyPolicy />,
     '/terms-of-service': <TermsOfService />,
+    '/delete-account': <DeleteAccount />,
   }
 
   return routes[location.pathname] ?? <NotFound />
