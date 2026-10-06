@@ -3,9 +3,9 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 import GetInTouchHero from '../components/GetInTouchHero'
-import c2Logo from '../assets/brand/c2_logo.png'
-import c226 from '../assets/legal/C2-26.jpg'
-import c2161 from '../assets/legal/C2-161.jpg'
+import c2Logo from '../assets/brand/c2_logo.webp'
+import c226 from '../assets/legal/C2-26.webp'
+import c2161 from '../assets/legal/C2-161.webp'
 
 export default function PrivacyPolicy() {
   const sections = [

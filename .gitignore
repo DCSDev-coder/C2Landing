@@ -31,3 +31,6 @@ dist.zip
 *.njsproj
 *.sln
 *.sw?
+
+# Raw screen recordings
+*.mov

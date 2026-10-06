@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import './TierOverviewSection.css'
-import tier1 from '../assets/tiers/tier-1.png'
-import tier2 from '../assets/tiers/tier-2.png'
-import tier3 from '../assets/tiers/tier-3.png'
-import tier4 from '../assets/tiers/tier-4.png'
-import matchaLatte from '../assets/drinks/MATCHA LATTE.png'
-import bloodyPeach from '../assets/drinks/BLOODY PEACH.png'
+import tier1 from '../assets/tiers/tier-1.webp'
+import tier2 from '../assets/tiers/tier-2.webp'
+import tier3 from '../assets/tiers/tier-3.webp'
+import tier4 from '../assets/tiers/tier-4.webp'
+import matchaLatte from '../assets/drinks/MATCHA LATTE.webp'
+import bloodyPeach from '../assets/drinks/BLOODY PEACH.webp'
 
 const tiersData = [
   {

@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import GetInTouchHero from '../components/GetInTouchHero'
 import DownloadAppSection from '../components/DownloadAppSection'
 import Footer from '../components/Footer'
-import fkp01636 from '../assets/misc/FKP01636.jpg'
+import fkp01636 from '../assets/misc/FKP01636.webp'
 
 export default function Download() {
   return (

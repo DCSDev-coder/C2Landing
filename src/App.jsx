@@ -48,6 +48,63 @@ function App() {
   }, [])
 
   useEffect(() => {
+    const pageMeta = {
+      '/': {
+        title: 'C2 Coffee + Candle | Coffee Shop, Signature Blends, Barista Drinks & Cafe Moments',
+        description: 'C2 Coffee + Candle is a coffee shop in Eco Forest, Semenyih serving signature blends, barista-crafted drinks, mocktails, matcha, chocolate, and warm cafe experiences.',
+      },
+      '/download': {
+        title: 'Download App | C2 Coffee + Candle Mobile Ordering & Loyalty Rewards',
+        description: 'Download the official C2 Coffee + Candle app on Google Play to order drinks, earn coffee tokens, unlock VIP tiers, and enjoy seamless cafe pickups.',
+      },
+      '/get-in-touch': {
+        title: 'Get In Touch & Visit Us | C2 Coffee + Candle Eco Forest Semenyih',
+        description: 'Find directions, opening hours, and contact details for C2 Coffee + Candle in Eco Forest, Semenyih, Selangor. Dine in or take away today.',
+      },
+      '/collaborations': {
+        title: 'Collaborations & Events | C2 Coffee + Candle Partner Programs',
+        description: 'Partner with C2 Coffee + Candle for popups, brand collaborations, creative events, and sensory coffee + candle activations.',
+      },
+      '/tiers': {
+        title: 'C2 Loyalty Tiers & Rewards | Member Perks & Exclusive Benefits',
+        description: 'Explore C2 Coffee member tiers from Bronze to Black Diamond. Enjoy complimentary coffee tokens, birthday perks, and member-only specials.',
+      },
+      '/privacy-policy': {
+        title: 'Privacy Policy | C2 Coffee + Candle',
+        description: 'Privacy Policy and data practices for C2 Coffee + Candle website and mobile app users.',
+      },
+      '/terms-of-service': {
+        title: 'Terms of Service | C2 Coffee + Candle',
+        description: 'Terms of Service for C2 Coffee + Candle website, services, and mobile ordering.',
+      },
+      '/refund-policy': {
+        title: 'Refund Policy | C2 Coffee + Candle',
+        description: 'Customer refund, return, and cancellation policies for C2 Coffee + Candle orders.',
+      },
+      '/delete-account': {
+        title: 'Delete Account | C2 Coffee + Candle Mobile App',
+        description: 'Request account deletion and data removal for your C2 Coffee mobile application account.',
+      },
+    }
+
+    const current = pageMeta[location.pathname] || {
+      title: 'C2 Coffee + Candle | Eco Forest, Semenyih',
+      description: 'C2 Coffee + Candle specialty coffee and lifestyle cafe in Eco Forest, Semenyih.',
+    }
+
+    document.title = current.title
+    const descMeta = document.querySelector('meta[name="description"]')
+    if (descMeta) {
+      descMeta.setAttribute('content', current.description)
+    }
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]')
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', `https://c2coffeeandcandle.com${location.pathname === '/' ? '' : location.pathname}`)
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
     if (location.pathname !== '/' || !location.hash) {
       return
     }

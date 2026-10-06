@@ -2,10 +2,10 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import GetInTouchHero from '../components/GetInTouchHero'
-import fkp01620 from '../assets/legal/FKP01620.jpg'
-import fkp01952 from '../assets/legal/FKP01952.jpg'
-import fkp01862 from '../assets/legal/FKP01862.jpg'
-import fkp01859 from '../assets/legal/FKP01859.jpg'
+import fkp01620 from '../assets/legal/FKP01620.webp'
+import fkp01952 from '../assets/legal/FKP01952.webp'
+import fkp01862 from '../assets/legal/FKP01862.webp'
+import fkp01859 from '../assets/legal/FKP01859.webp'
 
 export default function RefundPolicy() {
   return (

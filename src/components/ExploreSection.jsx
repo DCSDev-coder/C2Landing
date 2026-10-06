@@ -1,11 +1,11 @@
 import React, { useMemo, useRef, useState } from 'react'
-import datoBg from '../assets/About Us/Explore/image 47.png'
-import datinBg from '../assets/About Us/Explore/image 45.png'
-import datoAvatar from '../assets/About Us/Explore/dato 2.png'
-import datinAvatar from '../assets/About Us/Explore/image 46.png'
-import almondIcon from '../assets/About Us/Explore/Almond.png'
-import chocolateIcon from '../assets/About Us/Explore/Chocolate Bar.png'
-import cocoaIcon from '../assets/About Us/Explore/Cocoa.png'
+import datoBg from '../assets/About Us/Explore/image 47.webp'
+import datinBg from '../assets/About Us/Explore/image 45.webp'
+import datoAvatar from '../assets/About Us/Explore/dato 2.webp'
+import datinAvatar from '../assets/About Us/Explore/image 46.webp'
+import almondIcon from '../assets/About Us/Explore/Almond.webp'
+import chocolateIcon from '../assets/About Us/Explore/Chocolate Bar.webp'
+import cocoaIcon from '../assets/About Us/Explore/Cocoa.webp'
 import './ExploreSection.css'
 
 const blends = [

@@ -4,7 +4,7 @@ import GetInTouchHero from '../components/GetInTouchHero'
 import CollaborationSection from '../components/CollaborationSection'
 import PartnerShowcaseSection from '../components/PartnerShowcaseSection'
 import Footer from '../components/Footer'
-import collaborationHeroImage from '../assets/images/Collab.jpeg'
+import collaborationHeroImage from '../assets/images/Collab.webp'
 
 export default function Collaboration() {
   return (

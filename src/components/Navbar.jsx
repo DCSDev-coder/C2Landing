@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { primaryNavItems } from '../data/navigation'
-import c2Logo from '../assets/brand/c2_logo.png'
+import c2Logo from '../assets/brand/c2_logo.webp'
 import {
   getActiveHomeSection,
   getSectionIds,

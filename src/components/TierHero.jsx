@@ -1,6 +1,6 @@
 import React from 'react'
 import './TierHero.css'
-import c2109 from '../assets/tiers/C2-109.png'
+import c2109 from '../assets/tiers/C2-109.webp'
 
 export default function TierHero() {
   return (

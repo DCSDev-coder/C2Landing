@@ -1,5 +1,5 @@
 import React from 'react'
-import inspirationImage from '../assets/images/Collab.jpeg'
+import inspirationImage from '../assets/images/Collab.webp'
 import './InspirationSection.css'
 
 const craftItems = [

@@ -3,9 +3,9 @@ import { footerExploreLinks } from '../data/navigation'
 import { submitContactForm } from '../utils/contactForms'
 import { navigateTo } from '../utils/navigation'
 import './Footer.css'
-import c2Logo from '../assets/brand/c2_logo.png'
+import c2Logo from '../assets/brand/c2_logo.webp'
 import instagramLogo from '../assets/socials/instagram-logo.webp'
-import tiktokLogo from '../assets/socials/tiktok-logo.png'
+import tiktokLogo from '../assets/socials/tiktok-logo.webp'
 
 const legalLinks = [
   { label: 'Privacy Policy', href: '/privacy-policy' },

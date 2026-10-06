@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import homeImg from '../assets/app-screens/home.png';
-import rockBg from '../assets/Download/rock-background.png';
-import menuImg from '../assets/app-screens/menu.png';
-import drinkDetailsImg from '../assets/app-screens/drink-details.png';
-import rewardsImg from '../assets/app-screens/rewards.png';
+import homeImg from '../assets/app-screens/home.webp';
+import rockBg from '../assets/Download/rock-background.webp';
+import menuImg from '../assets/app-screens/menu.webp';
+import drinkDetailsImg from '../assets/app-screens/drink-details.webp';
+import rewardsImg from '../assets/app-screens/rewards.webp';
+import appVideo from '../assets/app-screens/app-demo.mp4';
 
 const appScreens = [
   { id: 1, src: homeImg, alt: 'Home Screen' },
@@ -54,47 +55,26 @@ export default function DownloadAppSection() {
 
           {/* Interactive Layer */}
           <div className="relative z-10 flex justify-center items-center gap-4 sm:gap-8 w-full -mt-16 md:-mt-32">
-            <button onClick={prevSlide} className="text-black bg-[#f1ebe1] hover:bg-[#e4dec3] transition-colors p-3 rounded-full shadow-sm" aria-label="Previous feature">
-              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
-            </button>
 
             <div className="relative w-[280px] sm:w-[300px] h-[560px] sm:h-[600px] border-[12px] border-black rounded-[48px] bg-black flex justify-center overflow-hidden flex-shrink-0">
               {/* Phone Screen Content */}
-              <div className="w-full h-full relative overflow-y-auto scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] bg-white">
-                <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                  <motion.img
-                    key={currentSlide}
-                    src={appScreens[currentSlide].src}
-                    alt={appScreens[currentSlide].alt}
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                      x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.2 }
-                    }}
-                    className="w-full h-auto min-h-full object-top absolute top-0 left-0 blur-3xl grayscale opacity-60"
-                  />
-                </AnimatePresence>
+              <div className="w-full h-full relative overflow-hidden bg-black flex items-center justify-center">
+                <video
+                  src={appVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              {/* Notch */}
-              <div className="absolute top-0 w-32 h-6 bg-black rounded-b-2xl z-10"></div>
               {/* Left/Right Buttons */}
               <div className="absolute top-24 -left-[16px] w-1 h-12 bg-black rounded-l-md z-10"></div>
               <div className="absolute top-40 -left-[16px] w-1 h-16 bg-black rounded-l-md z-10"></div>
               <div className="absolute top-32 -right-[16px] w-1 h-20 bg-black rounded-r-md z-10"></div>
             </div>
 
-            <button onClick={nextSlide} className="text-black bg-[#f1ebe1] hover:bg-[#e4dec3] transition-colors p-3 rounded-full shadow-sm" aria-label="Next feature">
-              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
           </div>
         </div>
 
@@ -115,12 +95,14 @@ export default function DownloadAppSection() {
           </p>
 
           <div className="mb-8">
-            <span className="text-[#e1b35b] font-medium italic text-lg tracking-wide">*coming soon</span>
+            <span className="text-[#e1b35b] font-medium italic text-lg tracking-wide">*iOS version coming soon</span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="#"
+              href="https://play.google.com/store/apps/details?id=com.c2coffeeandcandle.customer"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 border border-black/30 hover:border-black text-black px-6 py-3 rounded-full transition-colors hover:bg-black/5"
             >
               <svg className="w-8 h-8 fill-black" viewBox="0 0 512 512">
@@ -134,7 +116,8 @@ export default function DownloadAppSection() {
 
             <a
               href="#"
-              className="flex items-center gap-3 bg-[#e1b35b] hover:bg-[#c99f4d] text-white px-6 py-3 rounded-full transition-colors"
+              className="flex items-center gap-3 bg-[#e1b35b] hover:bg-[#c99f4d] text-white px-6 py-3 rounded-full transition-colors opacity-90 cursor-default"
+              title="iOS version coming soon"
             >
               <svg className="w-8 h-8 fill-white" viewBox="0 0 384 512">
                 <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />

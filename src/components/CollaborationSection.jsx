@@ -1,6 +1,6 @@
 import React from 'react'
-import collaborationPhoto from '../assets/Collaboration/FKP01847 1.png'
-import starIcon from '../assets/Collaboration/star.png'
+import collaborationPhoto from '../assets/Collaboration/FKP01847 1.webp'
+import starIcon from '../assets/Collaboration/star.webp'
 import './CollaborationSection.css'
 
 export default function CollaborationSection() {

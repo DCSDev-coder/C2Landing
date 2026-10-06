@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import starIcon from '../assets/Collaboration/star.png'
+import starIcon from '../assets/Collaboration/star.webp'
 import { submitContactForm } from '../utils/contactForms'
 import './PartnerShowcaseSection.css'
 

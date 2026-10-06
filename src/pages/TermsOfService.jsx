@@ -2,9 +2,9 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import GetInTouchHero from '../components/GetInTouchHero'
-import fkp01630 from '../assets/legal/FKP01630.jpg'
-import c223 from '../assets/legal/C2-23.jpg'
-import c242 from '../assets/legal/C2-42.jpg'
+import fkp01630 from '../assets/legal/FKP01630.webp'
+import c223 from '../assets/legal/C2-23.webp'
+import c242 from '../assets/legal/C2-42.webp'
 
 const renderBody = (body) => {
   return body.split('\n\n').map((paragraph, idx) => {

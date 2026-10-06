@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import GetInTouchHero from '../components/GetInTouchHero'
 import DirectionSection from '../components/DirectionSection'
 import Footer from '../components/Footer'
-import insideCafeHero from '../assets/images/InsideC2Cafe.jpeg'
+import insideCafeHero from '../assets/images/InsideC2Cafe.webp'
 
 export default function GetInTouch() {
   return (
