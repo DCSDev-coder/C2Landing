@@ -58,6 +58,10 @@ export default function Footer() {
             Sip The Calm |<br />
             Dine In or Take Away
           </h2>
+          <div className="site-footer__entity">
+            <span className="site-footer__entity-name">C 2 CAFE</span>
+            <span className="site-footer__entity-ssm">SSM: 202303195866 (003518048-V)</span>
+          </div>
         </div>
 
         <nav className="site-footer__column" aria-label="Explore">
@@ -150,7 +154,7 @@ export default function Footer() {
       </div>
 
       <div className="site-footer__bottom">
-        <p className="site-footer__fineprint">&copy; 2026 C2 Coffee + Candle. All rights reserved.</p>
+        <p className="site-footer__fineprint">&copy; 2026 C 2 CAFE [SSM: 202303195866 (003518048-V)]. All rights reserved.</p>
         <p className="site-footer__fineprint">Crafted with love in Malaysia.</p>
       </div>
     </footer>

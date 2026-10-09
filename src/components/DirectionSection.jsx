@@ -56,6 +56,9 @@ export default function DirectionSection() {
           <h1 className="direction__title" id="direction-title">
             Find Your Way to <span className="direction__titleHighlight">C2 Coffee &amp; Candle</span>
           </h1>
+          <p className="direction__lede">
+            Operated by <strong className="font-semibold text-[#1a332f]">C 2 CAFE</strong> &bull; SSM: 202303195866 (003518048-V)
+          </p>
         </header>
 
         <div className="direction__mapWrap relative rounded-[1.25rem] overflow-hidden shadow-[0_20px_40px_rgba(46,94,88,0.1)]">

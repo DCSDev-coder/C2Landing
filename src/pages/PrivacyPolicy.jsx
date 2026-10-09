@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
   const sections = [
     {
       title: 'Introduction & PDPA Compliance',
-      body: 'C2 Coffee ("C2 Coffee + Candle", "we", "us", or "our") respects your privacy and is dedicated to protecting the personal data of our customers in accordance with the Malaysian Personal Data Protection Act 2010 ("PDPA"). This Privacy Policy explains how we collect, process, manage, store, and safeguard your personal information when you use our mobile application ("App") and visit our retail coffee stores.'
+      body: 'C 2 CAFE (Registration No. 202303195866 / 003518048-V) ("C2 Coffee + Candle", "we", "us", or "our") respects your privacy and is dedicated to protecting the personal data of our customers in accordance with the Malaysian Personal Data Protection Act 2010 ("PDPA"). This Privacy Policy explains how we collect, process, manage, store, and safeguard your personal information when you use our mobile application ("App") and visit our retail coffee stores.'
     },
     // We handle section 2 differently (manual cards)
     {

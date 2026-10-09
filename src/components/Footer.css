@@ -35,6 +35,28 @@
   color: #faf6f0;
 }
 
+.site-footer__entity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.85rem;
+}
+
+.site-footer__entity-name {
+  font-family: var(--font-recoleta);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #faf6f0;
+}
+
+.site-footer__entity-ssm {
+  font-family: var(--font-recoleta);
+  font-size: 0.82rem;
+  color: rgba(250, 246, 240, 0.75);
+  letter-spacing: 0.02em;
+}
+
 .site-footer__column {
   min-width: 0;
 }

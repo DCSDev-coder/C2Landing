@@ -33,7 +33,7 @@ export default function RefundPolicy() {
         {/* Intro Banner */}
         <div className="bg-[#e6ebe9] py-8 px-6 md:px-12 rounded-2xl text-center shadow-sm">
           <p className="text-[#2f554b] text-lg md:text-xl leading-relaxed">
-            This Refund Policy applies to food, beverages, vouchers, tokens, and other purchases made through C2 Coffee & Candle's website and mobile application.
+            This Refund Policy applies to food, beverages, vouchers, tokens, and other purchases made through C 2 CAFE (Registration No. 202303195866 / 003518048-V) ("C2 Coffee & Candle") website and mobile application.
           </p>
         </div>
 

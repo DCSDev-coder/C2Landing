@@ -29,7 +29,7 @@ export default function TermsOfService() {
   const sections = [
     {
       title: 'Agreement & Acceptance of Terms',
-      body: 'By downloading, accessing, or using the C2 Coffee mobile application ("App"), you agree to be legally bound by these Terms and Conditions ("Terms"). The App is operated by C2 Coffee ("C2 Coffee + Candle", "we", "us", or "our") to provide self-pickup ordering, closed-loop prepaid C2 Token services, loyalty cup tracking, and promotional rewards across participating C2 Coffee outlets (including Broga, Kajang, Semenyih, and future stores). If you do not agree to these Terms, please immediately discontinue use of the App.'
+      body: 'By downloading, accessing, or using the C2 Coffee mobile application ("App") or website, you agree to be legally bound by these Terms and Conditions ("Terms"). The App and services are operated by C 2 CAFE (Registration No. 202303195866 / 003518048-V) ("C2 Coffee + Candle", "we", "us", or "our") to provide self-pickup ordering, closed-loop prepaid C2 Token services, loyalty cup tracking, and promotional rewards across participating C2 Coffee outlets (including Broga, Kajang, Semenyih, and future stores). If you do not agree to these Terms, please immediately discontinue use of the App.'
     },
     {
       title: 'Account Registration & Authentication',
