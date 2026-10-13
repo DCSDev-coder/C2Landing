@@ -133,8 +133,8 @@ export default function DirectionSection() {
               <h2 className="direction__label">EMAIL</h2>
             </div>
             <div className="direction__footerBody">
-              <a className="direction__email" href="mailto:partnerships@c2coffeeandcandle.com">
-                partnerships@c2coffeeandcandle.com
+              <a className="direction__email" href="mailto:support@c2coffeeandcandle.com">
+                support@c2coffeeandcandle.com
               </a>
             </div>
           </div>

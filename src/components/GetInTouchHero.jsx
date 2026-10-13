@@ -7,7 +7,6 @@ export default function GetInTouchHero({ backgroundImage = heroImage, background
     <section
       className={`get-in-touch-hero ${className}`}
       data-nav-hero
-      style={backgroundVideo ? undefined : { backgroundImage: `url(${backgroundImage})` }}
       aria-label="Get in touch hero"
     >
       {backgroundVideo ? (
@@ -20,7 +19,14 @@ export default function GetInTouchHero({ backgroundImage = heroImage, background
         >
           <source src={backgroundVideo} type="video/mp4" />
         </video>
-      ) : null}
+      ) : (
+        <img
+          className="get-in-touch-hero__image"
+          src={backgroundImage}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
     </section>
   )
 }

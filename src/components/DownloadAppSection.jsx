@@ -1,47 +1,40 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 
-import homeImg from '../assets/app-screens/home.webp';
+import appDemo2Poster from '../assets/app-screens/app-demo2-poster.png';
 import rockBg from '../assets/Download/rock-background.webp';
-import menuImg from '../assets/app-screens/menu.webp';
-import drinkDetailsImg from '../assets/app-screens/drink-details.webp';
-import rewardsImg from '../assets/app-screens/rewards.webp';
-import appVideo from '../assets/app-screens/app-demo.mp4';
 
-const appScreens = [
-  { id: 1, src: homeImg, alt: 'Home Screen' },
-  { id: 2, src: menuImg, alt: 'Menu Screen' },
-  { id: 3, src: drinkDetailsImg, alt: 'Drink Details Screen' },
-  { id: 4, src: rewardsImg, alt: 'Rewards Screen' },
-];
+const C2PhoneScene = lazy(() => import('./C2PhoneScene'));
+
+function PhoneFallback() {
+  return (
+    <div className="relative h-[590px] sm:h-[680px] w-full max-w-[520px] flex items-center justify-center">
+      <div className="relative w-[220px] sm:w-[250px] aspect-[1206/2462] border-[9px] border-[#171a19] rounded-[42px] bg-black overflow-hidden shadow-2xl">
+        <img src={appDemo2Poster} alt="Current C2 Coffee mobile app home screen" className="w-full h-full object-cover" />
+      </div>
+    </div>
+  );
+}
+
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  ));
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return undefined;
+
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncPreference = () => setPrefersReducedMotion(query.matches);
+    syncPreference();
+    query.addEventListener('change', syncPreference);
+    return () => query.removeEventListener('change', syncPreference);
+  }, []);
+
+  return prefersReducedMotion;
+}
 
 export default function DownloadAppSection() {
-  const [[currentSlide, direction], setPage] = useState([0, 0]);
-
-  const paginate = (newDirection) => {
-    const nextSlide = (currentSlide + newDirection + appScreens.length) % appScreens.length;
-    setPage([nextSlide, newDirection]);
-  };
-
-  const nextSlide = () => paginate(1);
-  const prevSlide = () => paginate(-1);
-
-  const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 300 : -300,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction) => ({
-      zIndex: 0,
-      x: direction < 0 ? 300 : -300,
-      opacity: 0,
-    }),
-  };
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
     <section className="py-24 px-6 md:px-12 w-full flex justify-center bg-[#fbfdfc] overflow-hidden">
@@ -53,38 +46,25 @@ export default function DownloadAppSection() {
             <img src={rockBg} alt="" className="w-full max-w-[750px] h-auto object-contain scale-125 md:scale-[1.35] -ml-8 md:-ml-12 mt-16 md:mt-24" />
           </div>
 
-          {/* Interactive Layer */}
-          <div className="relative z-10 flex justify-center items-center gap-4 sm:gap-8 w-full -mt-16 md:-mt-32">
-
-            <div className="relative w-[280px] sm:w-[300px] h-[560px] sm:h-[600px] border-[12px] border-black rounded-[48px] bg-black flex justify-center overflow-hidden flex-shrink-0">
-              {/* Phone Screen Content */}
-              <div className="w-full h-full relative overflow-hidden bg-black flex items-center justify-center">
-                <video
-                  src={appVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Left/Right Buttons */}
-              <div className="absolute top-24 -left-[16px] w-1 h-12 bg-black rounded-l-md z-10"></div>
-              <div className="absolute top-40 -left-[16px] w-1 h-16 bg-black rounded-l-md z-10"></div>
-              <div className="absolute top-32 -right-[16px] w-1 h-20 bg-black rounded-r-md z-10"></div>
-            </div>
-
+          {/* Use the iPhone 17 Pro-style 3D model at every viewport size. */}
+          <div className="relative z-10 flex justify-center items-center w-full mt-0 md:-mt-32">
+            {!prefersReducedMotion ? (
+              <Suspense fallback={<PhoneFallback />}>
+                <C2PhoneScene poster={appDemo2Poster} />
+              </Suspense>
+            ) : (
+              <PhoneFallback />
+            )}
           </div>
         </div>
 
         {/* Content Right */}
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#2f554b] leading-tight mb-2">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#2f554b] leading-tight mb-2">
             Take the C2
             <br />
             Experience
-          </h2>
+          </h1>
 
           <h3 className="text-5xl md:text-6xl lg:text-7xl font-medium italic text-[#e1b35b] mb-6">
             With You

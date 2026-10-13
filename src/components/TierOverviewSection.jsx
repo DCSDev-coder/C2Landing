@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import './TierOverviewSection.css'
 import tier1 from '../assets/tiers/tier-1.webp'
@@ -8,7 +8,7 @@ import tier4 from '../assets/tiers/tier-4.webp'
 import matchaLatte from '../assets/drinks/MATCHA LATTE.webp'
 import bloodyPeach from '../assets/drinks/BLOODY PEACH.webp'
 
-const tiersData = [
+const fallbackTiers = [
   {
     id: 1,
     name: 'SIPPER',
@@ -62,6 +62,22 @@ const tiersData = [
     ]
   }
 ]
+
+const publicApiBaseUrl = (
+  import.meta.env.VITE_PUBLIC_API_BASE_URL || 'https://api.c2coffeeandcandle.com/v1'
+).replace(/\/$/, '')
+
+function mergeLiveTier(liveTier, fallbackTier, index) {
+  return {
+    ...fallbackTier,
+    id: index + 1,
+    name: liveTier.name || fallbackTier.name,
+    minCups: Number(liveTier.min_cups ?? 0),
+    rewards: Array.isArray(liveTier.rewards) && liveTier.rewards.length
+      ? liveTier.rewards
+      : fallbackTier.rewards,
+  }
+}
 
 const TierCard = ({ tier }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -120,6 +136,12 @@ const TierCard = ({ tier }) => {
               {tier.subtitle}
             </p>
 
+            {tier.minCups !== undefined && (
+              <p className="text-sm mb-4 font-semibold" style={{ color: tier.textColor }}>
+                {tier.minCups} {tier.minCups === 1 ? 'cup' : 'cups'} needed
+              </p>
+            )}
+
             <ul className="space-y-3">
               {tier.rewards.map((reward, i) => (
                 <li key={i} className="flex items-start gap-2 md:gap-3">
@@ -138,13 +160,47 @@ const TierCard = ({ tier }) => {
 }
 
 export default function TierOverviewSection() {
+  const [tiers, setTiers] = useState(fallbackTiers)
+
+  useEffect(() => {
+    let cancelled = false
+
+    fetch(`${publicApiBaseUrl}/public/tiers`, {
+      headers: { Accept: 'application/json' },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Public tiers request failed with ${response.status}`)
+        }
+        return response.json()
+      })
+      .then((payload) => {
+        const liveTiers = Array.isArray(payload?.tiers) ? payload.tiers : []
+        if (cancelled || liveTiers.length === 0) {
+          return
+        }
+
+        setTiers(liveTiers.map((liveTier, index) => {
+          const fallbackTier = fallbackTiers[index] || fallbackTiers[fallbackTiers.length - 1]
+          return mergeLiveTier(liveTier, fallbackTier, index)
+        }))
+      })
+      .catch(() => {
+        // Keep the designed cards visible if the public API is temporarily unavailable.
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <section className="tier-overview" aria-labelledby="tier-overview-title">
       <div className="tier-overview__inner flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-stretch">
         
         {/* Left Side: 2x2 Grid of Cards */}
         <div className="w-full lg:w-[60%] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 z-10 relative">
-          {tiersData.map(tier => (
+          {tiers.map(tier => (
             <TierCard key={tier.id} tier={tier} />
           ))}
         </div>

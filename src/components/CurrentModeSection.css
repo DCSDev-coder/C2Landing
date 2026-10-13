@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   padding: 72px 24px 96px;
+  background: #ffffff;
 }
 
 .current-mode__inner {

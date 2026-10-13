@@ -31,7 +31,7 @@ import flatWhite from '../assets/drinks/FLAT WHITE.webp'
 import cappuccino from '../assets/drinks/CAPPUCCINO.webp'
 import v60Brew from '../assets/drinks/V60 BREW.webp'
 
-const drinks = [
+const fallbackDrinks = [
   // C2 COFFEE CRAFT
   { id: 'mont-broga', category: 'C2 Coffee Craft', name: 'Mont Broga', description: 'Black coffee layered with orangey cold foam and orange zest', image: montBroga },
   { id: 'shakerato-bianco', category: 'C2 Coffee Craft', name: 'Shakerato Bianco', description: 'Chilled, shaken espresso with sweet silky and refreshing cream', image: shakeratoBianco },
@@ -79,12 +79,67 @@ const drinks = [
   { id: 'mocha', category: 'C2 Flavoured Coffee', name: 'Mocha', description: 'Chocolate and espresso mixed with milk', image: mocha },
 ]
 
+const fallbackImagesByName = Object.fromEntries(
+  fallbackDrinks.map((drink) => [drink.name.trim().toLowerCase(), drink.image]),
+)
+
+const publicMenuApiBaseUrl = (
+  import.meta.env.VITE_PUBLIC_API_BASE_URL || 'https://api.c2coffeeandcandle.com/v1'
+).replace(/\/$/, '')
+
+function resolveDrinkImage(item) {
+  return item.image_url || null
+}
+
 export default function CurrentModeSection() {
+  const [drinks, setDrinks] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const [activeIndex, setActiveIndex] = useState(0)
   const [touchStartX, setTouchStartX] = useState(null)
   const [slideDirection, setSlideDirection] = useState('right')
   const [isHovered, setIsHovered] = useState(false)
   const activeDrink = drinks[activeIndex]
+
+  useEffect(() => {
+    let cancelled = false
+
+    fetch(`${publicMenuApiBaseUrl}/public/menu`, {
+      headers: { Accept: 'application/json' },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Public menu request failed with ${response.status}`)
+        }
+        return response.json()
+      })
+      .then((payload) => {
+        if (cancelled) {
+          return
+        }
+
+        const liveDrinks = (Array.isArray(payload?.drinks) ? payload.drinks : [])
+          .filter((item) => item?.name)
+          .map((item) => ({
+            id: String(item.id ?? item.code ?? item.name),
+            category: item.category || 'C2 Drinks',
+            name: item.name,
+            description: item.description || '',
+            image: resolveDrinkImage(item),
+          }))
+          .filter((item) => item.image)
+
+        setDrinks(liveDrinks)
+        setActiveIndex((current) => liveDrinks.length ? Math.min(current, liveDrinks.length - 1) : 0)
+        setIsLoading(false)
+      })
+      .catch(() => {
+        if (!cancelled) setIsLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     if (isHovered || touchStartX !== null) return
@@ -94,7 +149,15 @@ export default function CurrentModeSection() {
     }, 4000)
 
     return () => clearInterval(timer)
-  }, [isHovered, touchStartX])
+  }, [isHovered, touchStartX, drinks.length])
+
+  if (isLoading) {
+    return null
+  }
+
+  if (!activeDrink) {
+    return null
+  }
 
   const goPrev = () => {
     setSlideDirection('left')

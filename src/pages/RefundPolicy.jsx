@@ -47,7 +47,7 @@ export default function RefundPolicy() {
               For refund or order issues, contact us at:
             </p>
             <ul className="space-y-4 border-l-2 border-[#e1b35b]/30 pl-6 text-[#3d5952] text-lg leading-relaxed">
-              <li><strong className="text-[#2f554b]">Email:</strong> partnerships@c2coffeeandcandle.com</li>
+              <li><strong className="text-[#2f554b]">Email:</strong> support@c2coffeeandcandle.com</li>
               <li><strong className="text-[#2f554b]">WhatsApp/Phone:</strong> +60 12-345 6789</li>
               <li><strong className="text-[#2f554b]">Business address:</strong> Eco Forest, Semenyih, Selangor</li>
             </ul>

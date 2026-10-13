@@ -1,35 +1,12 @@
 const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim()
-const CONTACT_RECEIVER_EMAIL = import.meta.env.VITE_CONTACT_RECEIVER_EMAIL?.trim()
-const CONTACT_FORM_URL = import.meta.env.VITE_CONTACT_FORM_URL?.trim()
-
-function buildDefaultEndpoint() {
-  if (!CONTACT_RECEIVER_EMAIL) {
-    return null
-  }
-
-  return `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_RECEIVER_EMAIL)}`
-}
-
-function getProviderErrorMessage(responseBody) {
-  const rawMessage = responseBody?.message?.trim()
-
-  if (!rawMessage) {
-    return null
-  }
-
-  if (/activate form/i.test(rawMessage) || /needs activation/i.test(rawMessage)) {
-    return 'Form inbox setup is still pending. Activate the receiver email in FormSubmit before submissions can be delivered.'
-  }
-
-  return rawMessage
-}
+const PUBLIC_API_BASE_URL = (
+  import.meta.env.VITE_PUBLIC_API_BASE_URL || 'https://api.c2coffeeandcandle.com/v1'
+).replace(/\/$/, '')
 
 export function getContactConfigurationError() {
-  if (CONTACT_FORM_ENDPOINT || CONTACT_RECEIVER_EMAIL) {
-    return null
-  }
-
-  return 'Contact form is not configured yet. Set VITE_CONTACT_FORM_ENDPOINT or VITE_CONTACT_RECEIVER_EMAIL.'
+  return CONTACT_FORM_ENDPOINT || PUBLIC_API_BASE_URL
+    ? null
+    : 'Contact form is not configured yet. Set VITE_PUBLIC_API_BASE_URL.'
 }
 
 export async function submitContactForm({ subject, payload }) {
@@ -39,7 +16,8 @@ export async function submitContactForm({ subject, payload }) {
     throw new Error(configurationError)
   }
 
-  const endpoint = CONTACT_FORM_ENDPOINT || buildDefaultEndpoint()
+  const endpoint = CONTACT_FORM_ENDPOINT || `${PUBLIC_API_BASE_URL}/public/contact`
+  const { formType, ...formPayload } = payload
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -47,11 +25,9 @@ export async function submitContactForm({ subject, payload }) {
       Accept: 'application/json',
     },
     body: JSON.stringify({
-      ...payload,
-      _subject: subject,
-      _captcha: 'false',
-      _template: 'table',
-      ...(CONTACT_FORM_URL ? { _url: CONTACT_FORM_URL } : {}),
+      ...formPayload,
+      form_type: formType,
+      subject,
     }),
   })
 
@@ -69,15 +45,15 @@ export async function submitContactForm({ subject, payload }) {
   }
 
   if (!response.ok) {
-    throw new Error(getProviderErrorMessage(responseBody) || 'Unable to send the form right now. Please try again.')
+    throw new Error(responseBody?.message || 'Unable to send the form right now. Please try again.')
   }
 
   if (responseBody && `${responseBody.success}`.toLowerCase() === 'false') {
-    throw new Error(getProviderErrorMessage(responseBody) || 'Form provider rejected the submission.')
+    throw new Error(responseBody?.message || 'Form submission was rejected.')
   }
 
   return {
-    mode: CONTACT_FORM_ENDPOINT ? 'endpoint' : 'formsubmit',
+    mode: CONTACT_FORM_ENDPOINT ? 'custom-endpoint' : 'api',
     message: responseBody?.message || null,
   }
 }
