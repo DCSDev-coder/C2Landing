@@ -4,6 +4,7 @@ import GetInTouch from './pages/GetInTouch'
 import Collaboration from './pages/Collaboration'
 import Tier from './pages/Tier'
 import Download from './pages/Download'
+import CounterDownload from './pages/CounterDownload'
 import RefundPolicy from './pages/RefundPolicy'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
@@ -102,6 +103,7 @@ function App() {
     '/collaborations': <Collaboration />,
     '/tiers': <Tier />,
     '/download': <Download />,
+    '/download/counterdownload': <CounterDownload />,
     '/refund-policy': <RefundPolicy />,
     '/privacy-policy': <PrivacyPolicy />,
     '/terms-of-service': <TermsOfService />,

@@ -37,6 +37,7 @@ export const pageSeo = {
     },
   },
   '/download': { title: 'Download App | C2 Coffee + Candle Mobile Ordering & Loyalty Rewards', description: 'Download the official C2 Coffee + Candle app on Google Play to order drinks, earn coffee tokens, unlock VIP tiers, and enjoy seamless cafe pickups.', robots: 'index, follow' },
+  '/download/counterdownload': { title: 'C2 Store Android Download | C2 Coffee + Candle', description: 'Internal Android installer for authorised C2 Coffee outlet devices.', robots: 'noindex, nofollow' },
   '/get-in-touch': { title: 'Get In Touch & Visit Us | C2 Coffee + Candle Eco Forest Semenyih', description: 'Find directions, opening hours, and contact details for C2 Coffee + Candle in Eco Forest, Semenyih, Selangor. Dine in or take away today.', robots: 'index, follow' },
   '/collaborations': { title: 'Collaborations & Events | C2 Coffee + Candle Partner Programs', description: 'Partner with C2 Coffee + Candle for popups, brand collaborations, creative events, and sensory coffee + candle activations.', robots: 'index, follow' },
   '/tiers': { title: 'C2 Loyalty Tiers & Rewards | Member Perks & Exclusive Benefits', description: 'Explore C2 Coffee member tiers from Bronze to Black Diamond. Enjoy complimentary coffee tokens, birthday perks, and member-only specials.', robots: 'index, follow' },

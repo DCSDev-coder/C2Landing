@@ -1,5 +1,8 @@
 DirectoryIndex index.html
 
+AddType application/vnd.android.package-archive .apk
+AddType application/json .json
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -19,6 +22,10 @@ DirectoryIndex index.html
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
   </FilesMatch>
+
+  <Files "latest.json">
+    Header set Cache-Control "no-store, no-cache, must-revalidate"
+  </Files>
 
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   Header always set X-Content-Type-Options "nosniff"
