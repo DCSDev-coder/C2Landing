@@ -38,7 +38,7 @@ export default function DownloadAppSection() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <section className="py-24 px-6 md:px-12 w-full flex justify-center bg-[#fbfdfc] overflow-hidden">
+    <section id="download" className="py-24 px-6 md:px-12 w-full flex justify-center bg-[#fbfdfc] overflow-hidden">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-24 lg:gap-32">
         {/* Phone Mockup Left */}
         <div className="w-full md:w-1/2 relative flex justify-center items-center min-h-[600px] sm:min-h-[700px]">

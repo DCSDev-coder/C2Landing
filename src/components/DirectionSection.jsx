@@ -51,7 +51,7 @@ export default function DirectionSection() {
   }
 
   return (
-    <section className="direction" aria-labelledby="direction-title">
+    <section id="get-in-touch" className="direction" aria-labelledby="direction-title">
       <div className="direction__inner">
         <header className="direction__header">
           <p className="direction__eyebrow">VISIT US</p>

@@ -82,7 +82,7 @@ function App() {
   }, [location.pathname])
 
   useEffect(() => {
-    if (location.pathname !== '/' || !location.hash) {
+    if (!location.hash) {
       return
     }
 
@@ -91,8 +91,6 @@ function App() {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         scrollToSection(sectionId)
-        window.history.replaceState({}, '', '/')
-        setLocation(getCurrentLocation())
       })
     })
   }, [location])

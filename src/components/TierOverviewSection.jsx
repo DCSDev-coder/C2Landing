@@ -195,7 +195,7 @@ export default function TierOverviewSection() {
   }, [])
 
   return (
-    <section className="tier-overview" aria-labelledby="tier-overview-title">
+    <section id="tiers" className="tier-overview" aria-labelledby="tier-overview-title">
       <div className="tier-overview__inner flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-stretch">
         
         {/* Left Side: 2x2 Grid of Cards */}

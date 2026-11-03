@@ -13,21 +13,34 @@ function getNavOffset() {
   return navShell ? navShell.getBoundingClientRect().height : 0
 }
 
-function scrollToSection(sectionId, behavior = 'smooth') {
+export function scrollToSection(sectionId, behavior = 'smooth') {
   if (!sectionId) {
     window.scrollTo({ top: 0, behavior })
     return
   }
 
-  const target = document.getElementById(sectionId)
+  let attempts = 0
+  const maxAttempts = 20
 
-  if (!target) {
-    window.scrollTo({ top: 0, behavior: 'auto' })
-    return
+  const tryScroll = () => {
+    const target = document.getElementById(sectionId)
+
+    if (target) {
+      const navOffset = getNavOffset()
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 12
+      window.scrollTo({ top: Math.max(top, 0), behavior })
+      return
+    }
+
+    attempts += 1
+    if (attempts < maxAttempts) {
+      setTimeout(tryScroll, 35)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
   }
 
-  const top = target.getBoundingClientRect().top + window.scrollY - getNavOffset() - 12
-  window.scrollTo({ top: Math.max(top, 0), behavior })
+  tryScroll()
 }
 
 export function navigateTo(event, href, sectionId = null) {
@@ -45,15 +58,15 @@ export function navigateTo(event, href, sectionId = null) {
   window.history.pushState({}, '', nextPath)
   window.dispatchEvent(new PopStateEvent('popstate'))
 
+  // Wait for React route component to mount, then scroll smoothly to the target section
   window.requestAnimationFrame(() => {
-    window.requestAnimationFrame(() => {
+    setTimeout(() => {
       if (sectionId) {
         scrollToSection(sectionId, 'smooth')
-        return
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' })
       }
-
-      window.scrollTo({ top: 0, behavior: 'auto' })
-    })
+    }, 40)
   })
 }
 
@@ -90,5 +103,9 @@ export function isHrefActive(href, currentPath, sectionId = null, activeSectionI
     return false
   }
 
-  return sectionId ? currentPath === '/' && sectionId === activeSectionId : true
+  if (currentPath === '/') {
+    return sectionId ? sectionId === activeSectionId : false
+  }
+
+  return true
 }

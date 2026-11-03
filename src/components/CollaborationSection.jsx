@@ -5,7 +5,7 @@ import './CollaborationSection.css'
 
 export default function CollaborationSection() {
   return (
-    <section className="collaboration-section">
+    <section id="collaborations" className="collaboration-section">
       <div className="collaboration-section__inner">
         <div className="collaboration-section__copy">
           <h2 className="collaboration-section__title">
