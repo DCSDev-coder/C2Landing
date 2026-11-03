@@ -22,14 +22,13 @@ export default function MerchandiseSection() {
           </p>
         </div>
 
-        {/* Product Grid - Clean Self-Contained Cards */}
+        {/* Product Grid - Entire Card is Clickable */}
         <div className="merch-grid">
           {merchandiseProducts.map((product) => (
             <div
               key={product.id}
               className="merch-item"
               data-reveal
-              onClick={handleProductClick}
             >
               <a
                 href="/download"
@@ -44,8 +43,6 @@ export default function MerchandiseSection() {
                     alt={product.name}
                     className="merch-cup-img"
                     loading="lazy"
-                    draggable={false}
-                    onDragStart={(e) => e.preventDefault()}
                   />
                 </div>
 
@@ -78,15 +75,14 @@ export default function MerchandiseSection() {
               {/* Decorative Squiggle Wavy Line */}
               <svg
                 className="merch-squiggle"
-                viewBox="0 0 76 14"
+                viewBox="0 0 68 12"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
               >
                 <path
-                  d="M2 7C9 2 16 12 23 7C30 2 37 12 44 7C51 2 58 12 65 7C69 4 73 9 74 9"
+                  d="M2 6C8 1 12 11 18 6C24 1 28 11 34 6C40 1 44 11 50 6C56 1 60 11 66 6"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth="2.4"
                   strokeLinecap="round"
                 />
               </svg>
@@ -96,27 +92,34 @@ export default function MerchandiseSection() {
               </p>
 
               <div className="merch-perk-actions">
-                <a href="/download" className="merch-perk-btn merch-perk-btn--primary">
+                <a
+                  href="/download"
+                  className="merch-perk-btn merch-perk-btn--primary"
+                  onClick={handleProductClick}
+                >
                   Download C2 App
                 </a>
-                <a href="/get-in-touch" className="merch-perk-btn merch-perk-btn--outline">
+                <a
+                  href="/get-in-touch"
+                  className="merch-perk-btn merch-perk-btn--outline"
+                >
                   Visit Our Cafe
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Lifestyle Photography Card */}
+          {/* Right Photo Card - Cropped & Zoomed to C2 Wall Logo */}
           <div className="merch-perk-right" data-reveal>
             <img
               src={lifestyleImage}
-              alt="C2 Coffee and Candle handmade ceramics and ambiance"
+              alt="C2 Coffee + Candle handcrafted barista pouring drip coffee"
               className="merch-perk-image"
               loading="lazy"
             />
-            <span className="merch-perk-image-tag">
-              C2 Coffee + Candle • Eco Forest
-            </span>
+            <div className="merch-perk-image-tag">
+              C2 COFFEE + CANDLE &bull; ECO FOREST
+            </div>
           </div>
         </div>
       </div>

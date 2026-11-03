@@ -1,9 +1,10 @@
 import { navigateTo } from './navigation'
 
 /**
- * Handles deep linking into the C2 Coffee mobile application.
- * If installed on the user's mobile device, it opens the app directly.
- * If the app is not installed (or if viewed on desktop), it seamlessly routes to the download page.
+ * Handles navigation to the C2 Coffee app or download experience.
+ * On Android, attempts to launch the installed app via intent, falling back to /download.
+ * On iOS and desktop, seamlessly navigates to /download (or triggers Universal Links)
+ * without ever prompting "Safari cannot open the page because the address is invalid".
  */
 export function openC2AppOrDownload(event) {
   if (event && typeof event.preventDefault === 'function') {
@@ -15,7 +16,7 @@ export function openC2AppOrDownload(event) {
   const downloadUrl = `${window.location.origin}/download`
 
   if (isAndroid) {
-    // Chrome Android Intent format: attempts app launch via package name, with browser fallback
+    // Android Intent: attempts app launch via registered package with seamless browser fallback
     const androidIntent = `intent://c2coffeeandcandle.com/menu#Intent;scheme=c2coffee;package=com.c2coffeeandcandle.customer;S.browser_fallback_url=${encodeURIComponent(downloadUrl)};end`
     
     const startTime = Date.now()
@@ -31,28 +32,16 @@ export function openC2AppOrDownload(event) {
         window.location.href = '/download'
       }
     }, 1200)
-  } else if (isIOS) {
-    // iOS custom URI scheme with timeout fallback to download page
-    const startTime = Date.now()
-    window.location.href = 'c2coffee://menu'
+    return
+  }
 
-    setTimeout(() => {
-      if (document.hidden || Date.now() - startTime > 1800) {
-        return
-      }
-      if (typeof navigateTo === 'function') {
-        navigateTo(null, '/download')
-      } else {
-        window.location.href = '/download'
-      }
-    }, 1200)
+  // On iOS & Desktop:
+  // Direct navigation to /download avoids the native Safari alert ("Safari cannot open the page because the address is invalid").
+  // If the user has Universal Links configured for the C2 app on their phone, iOS opens the app immediately;
+  // otherwise, it smoothly takes the user to the /download page with official App Store and Google Play options.
+  if (typeof navigateTo === 'function') {
+    navigateTo(event, '/download')
   } else {
-    // Desktop devices smoothly route to the app download page
-    if (typeof navigateTo === 'function') {
-      navigateTo(event, '/download')
-    } else {
-      window.location.href = '/download'
-    }
+    window.location.href = '/download'
   }
 }
-
