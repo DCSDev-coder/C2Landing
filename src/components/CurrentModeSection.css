@@ -6,8 +6,10 @@
 }
 
 .current-mode__inner {
-  max-width: 1180px;
+  max-width: 1520px;
+  width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .current-mode__header {
@@ -60,8 +62,62 @@
 .current-mode__cardWrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
+  position: relative;
+  padding: 0 54px;
+}
+
+
+.current-mode__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  color: #1a332f;
+  box-shadow: 0 4px 14px rgba(40, 19, 13, 0.08);
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.current-mode__nav-btn--prev {
+  left: 6px;
+}
+
+.current-mode__nav-btn--next {
+  right: 6px;
+}
+
+.current-mode__nav-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+}
+
+.current-mode__nav-btn:hover {
+  background: #1a332f;
+  color: #ffffff;
+  border-color: #1a332f;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(26, 51, 47, 0.22);
+}
+
+.current-mode__nav-btn:active {
+  transform: translateY(-50%) scale(0.94);
 }
 
 .current-mode__fraction {
@@ -228,19 +284,24 @@
     justify-content: center;
   }
 
-  .current-mode__nav-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    padding: 10px;
-    flex-shrink: 0;
+    .current-mode__nav-btn {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
   }
-  
-  .current-mode__nav-btn:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
+
+  .current-mode__nav-btn--prev {
+    left: clamp(12px, 2.8vw, 42px);
+  }
+
+  .current-mode__nav-btn--next {
+    right: clamp(12px, 2.8vw, 42px);
+  }
+
+  .current-mode__nav-btn svg {
+    width: 24px;
+    height: 24px;
   }
 
 

@@ -6,6 +6,7 @@ import './CoffeeCandleSection.css'
 
 const pillars = [
   {
+    pillarNo: '01',
     bottomLine1: 'A MULTISENSORY CRAFT',
     description:
       'We go beyond taste. By pairing specialty coffee with artisan candles, we crafted a complete sensory journey where every cup and candle meets the highest quality standards.',
@@ -13,6 +14,7 @@ const pillars = [
     tone: 'primary-green',
   },
   {
+    pillarNo: '02',
     bottomLine1: 'CURATING COMFORT',
     description:
       'Designed as your daily sanctuary in Eco Forest, our Muslim-owned cafe is built on warmth. Whether you dine in or take our ambiance home, we bring comfort to your routine.',
@@ -20,6 +22,7 @@ const pillars = [
     tone: 'secondary-green',
   },
   {
+    pillarNo: '03',
     bottomLine1: 'EXPERTISE IN EVERY POUR',
     description:
       'Building on the artistry of 5luxe Scents Co., we bring years of fragrance and design experience to our brews, ensuring the scent in the air perfectly complements the coffee in your cup.',
@@ -91,6 +94,7 @@ export default function CoffeeCandleSection() {
           </p>
         </header>
 
+        {/* Mobile View: Touch Carousel */}
         <div className="coffee-candle__mobileCarousel">
           <div className="coffee-candle__mobileFrame">
             <div
@@ -102,20 +106,20 @@ export default function CoffeeCandleSection() {
                 key={activePillar.bottomLine1}
                 className={`pillar-card pillar-card--mobile pillar-card--${activePillar.tone} pillar-card--slide-${slideDirection}`}
               >
+                <span className="pillar-card__number" aria-hidden="true">{activePillar.pillarNo}</span>
+
                 <div className="pillar-card__cupWrap">
                   <img src={activePillar.image} alt="" className="pillar-card__cup" />
                 </div>
 
-                <div className="pillar-card__divider-vertical"></div>
+                <div className="pillar-card__divider-vertical" aria-hidden="true" />
 
                 <p className="pillar-card__copy">{activePillar.description}</p>
 
                 <div className="pillar-card__footer">
-                  <div className="pillar-card__divider-horizontal"></div>
+                  <div className="pillar-card__divider-horizontal" aria-hidden="true" />
                   <div className="pillar-card__bottomText">
                     <span>{activePillar.bottomLine1}</span>
-                    <br />
-                    <span>{activePillar.bottomLine2}</span>
                   </div>
                 </div>
               </article>
@@ -136,26 +140,27 @@ export default function CoffeeCandleSection() {
           </div>
         </div>
 
+        {/* Desktop View: Wide 3-Column Grid */}
         <div className="coffee-candle__grid">
           {pillars.map((pillar) => (
             <article
               key={pillar.bottomLine1}
               className={`pillar-card pillar-card--${pillar.tone}`}
             >
+              <span className="pillar-card__number" aria-hidden="true">{pillar.pillarNo}</span>
+
               <div className="pillar-card__cupWrap">
                 <img src={pillar.image} alt="" className="pillar-card__cup" />
               </div>
 
-              <div className="pillar-card__divider-vertical"></div>
+              <div className="pillar-card__divider-vertical" aria-hidden="true" />
 
               <p className="pillar-card__copy">{pillar.description}</p>
 
               <div className="pillar-card__footer">
-                <div className="pillar-card__divider-horizontal"></div>
+                <div className="pillar-card__divider-horizontal" aria-hidden="true" />
                 <div className="pillar-card__bottomText">
                   <span>{pillar.bottomLine1}</span>
-                  <br />
-                  <span>{pillar.bottomLine2}</span>
                 </div>
               </div>
             </article>

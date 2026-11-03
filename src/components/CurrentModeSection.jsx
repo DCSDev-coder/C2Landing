@@ -6,19 +6,13 @@ import montBroga from '../assets/drinks/MONT BROGA.webp'
 import shakeratoBianco from '../assets/drinks/SHAKERATO BIANCO.webp'
 import yuzukano from '../assets/drinks/YUZUKANO.webp'
 import senjaDiBroga from '../assets/drinks/SENJA DI BROGA.webp'
-import espressoBomb from '../assets/drinks/ESPRESSO BOMB.webp'
 import milkChocolate from '../assets/drinks/MILK CHOCOLATE.webp'
 import nuttyChocolate from '../assets/drinks/NUTTY CHOCOLATE.webp'
 import monkeyMatcha from '../assets/drinks/MONKEY MATCHA.webp'
 import pinkyPromiseMatcha from '../assets/drinks/PINKY PROMISE MATCHA.webp'
 import boijito from '../assets/drinks/BOIJITO.webp'
-import fujiFizz from '../assets/drinks/FUJI FIZZ.webp'
-import spicyMimosa from '../assets/drinks/SPICY MIMOSA.webp'
-import ondeOndeSoda from '../assets/drinks/ONDE-ONDE SODA.webp'
 import pinkyBlushMilkshakeBySyah from '../assets/drinks/PINKY BLUSH MILKSHAKE BY SYAH.webp'
-import soleroFizz from '../assets/drinks/SOLERO FIZZ.webp'
 import paddlePop from '../assets/drinks/PADDLE POP.webp'
-import cloudyJasmine from '../assets/drinks/CLOUDY JASMINE.webp'
 import butterscotchLatte from '../assets/drinks/BUTTERSCOTH LATTE.webp'
 import hazelnutLatte from '../assets/drinks/HAZELNUT LATTE.webp'
 import vanillaLatte from '../assets/drinks/VANILLA LATTE.webp'
@@ -29,7 +23,6 @@ import poccoLocco from '../assets/drinks/POCCO LOCCO.webp'
 import latte from '../assets/drinks/LATTE.webp'
 import flatWhite from '../assets/drinks/FLAT WHITE.webp'
 import cappuccino from '../assets/drinks/CAPPUCCINO.webp'
-import v60Brew from '../assets/drinks/V60 BREW.webp'
 
 const fallbackDrinks = [
   // C2 COFFEE CRAFT
@@ -37,20 +30,14 @@ const fallbackDrinks = [
   { id: 'shakerato-bianco', category: 'C2 Coffee Craft', name: 'Shakerato Bianco', description: 'Chilled, shaken espresso with sweet silky and refreshing cream', image: shakeratoBianco },
   { id: 'yuzukano', category: 'C2 Coffee Craft', name: 'Yuzukano', description: 'Aerated espresso topping the chilled yuzu puree', image: yuzukano },
   { id: 'senja-di-broga', category: 'C2 Coffee Craft', name: 'Senja Di Broga', description: 'Sweet sparkling orange juice topped with espresso', image: senjaDiBroga },
-  { id: 'espresso-bomb', category: 'C2 Coffee Craft', name: 'Espresso Bomb', description: 'The trendy espresso bomb is here. Choice of sparkling of ginger ade or tonic water', image: espressoBomb },
 
   // C2 BARISTA CRAFT
   { id: 'pinky-blush-milkshake', category: 'C2 Barista Craft', name: 'Pinky Blush Milkshake', description: 'Creamy strawberry, delicate banana puree, mix and shake with milk', image: pinkyBlushMilkshakeBySyah },
-  { id: 'solero-fizz', category: 'C2 Barista Craft', name: 'Solero Fizz', description: 'Bright citrus notes with sparkling soda and creamy, silky cold foam', image: soleroFizz },
   { id: 'paddle-pop', category: 'C2 Barista Craft', name: 'Paddle Pop', description: 'Creamy strawberry and vanilla, finished with silky blue foam', image: paddlePop },
-  { id: 'cloudy-jasmine', category: 'C2 Barista Craft', name: 'Cloudy Jasmine', description: 'Refreshing jasmine tea soda with silky butterscotch cream foam', image: cloudyJasmine },
 
   // C2 MOCKTAILS
   { id: 'boijito', category: 'C2 Mocktails', name: 'Boijito', description: 'Sparkling mojito with hand-picked mint and calamansi flavour', image: boijito },
   { id: 'bloody-peach', category: 'C2 Mocktails', name: 'Bloody Peach', description: 'Sparkling jasmine tea with peach flavour and top with grenadine syrup', image: bloodyPeach },
-  { id: 'fuji-fizz', category: 'C2 Mocktails', name: 'Fuji Fizz', description: 'Ginger, apple and cinnamon comes together in a fizzy drinks. Fruity and spice.', image: fujiFizz },
-  { id: 'spicy-mimosa', category: 'C2 Mocktails', name: 'Spicy Mimosa', description: 'Hot and spicy orange juice topped with ginger ade and red berry based of grenadine syrup', image: spicyMimosa },
-  { id: 'onde2pop', category: 'C2 Mocktails', name: 'Onde2Pop', description: 'Green apple and coconut shaken together and topped with sparkling soda', image: ondeOndeSoda },
 
   // C2 MATCHA
   { id: 'matcha-latte', category: 'C2 Matcha', name: 'Matcha Latte', description: 'Ceremonial grade matcha with smooth, creamy milk', image: matchaLatte },
@@ -61,9 +48,6 @@ const fallbackDrinks = [
   { id: 'milk-chocolate', category: 'C2 Chocolate', name: 'Milk Chocolate', description: 'Rich and smooth chocolate milk drinks topped with marshmallows', image: milkChocolate },
   { id: 'nutty-chocolate', category: 'C2 Chocolate', name: 'Nutty Chocolate', description: 'Chocolate drink mixed with crunchy peanut butter', image: nuttyChocolate },
 
-  // C2 POUR OVER
-  { id: 'v60-brew', category: 'C2 Pour Over', name: 'V60 Brew', description: 'Hand-poured coffee revealing delicate aroma and clarity', image: v60Brew },
-
   // C2 COFFEE
   { id: 'espresso', category: 'C2 Coffee', name: 'Espresso', description: 'Pure, concentrated coffee. Choose between bold taste note or lighter note', image: espresso },
   { id: 'pocco-locco', category: 'C2 Coffee', name: 'Pocco Locco', description: 'An espresso and oatmilk-small in size, rich in flavour', image: poccoLocco },
@@ -72,6 +56,7 @@ const fallbackDrinks = [
   { id: 'cappuccino', category: 'C2 Coffee', name: 'Cappuccino', description: 'Espresso topped with light and thick foam and delicate milk', image: cappuccino },
 
   // C2 FLAVOURED COFFEE
+  { id: 'spanish-latte', category: 'C2 Flavoured Coffee', name: 'Spanish Latte', description: 'Espresso, condensed milk and fresh milk, a perfectly sweet finish.', image: latte },
   { id: 'butterscotch-latte', category: 'C2 Flavoured Coffee', name: 'Butterscotch Latte', description: 'Smooth espresso and milk mix with butterscoth flavour', image: butterscotchLatte },
   { id: 'hazelnut-latte', category: 'C2 Flavoured Coffee', name: 'Hazelnut Latte', description: 'Espresso and milk mixed with hazelnut flavour', image: hazelnutLatte },
   { id: 'vanilla-latte', category: 'C2 Flavoured Coffee', name: 'Vanilla Latte', description: 'Gentle vanilla sweetness lifting smooth espresso', image: vanillaLatte },
@@ -92,13 +77,13 @@ function resolveDrinkImage(item) {
 }
 
 export default function CurrentModeSection() {
-  const [drinks, setDrinks] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [drinks, setDrinks] = useState(fallbackDrinks)
+  const [isLoading, setIsLoading] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [touchStartX, setTouchStartX] = useState(null)
   const [slideDirection, setSlideDirection] = useState('right')
   const [isHovered, setIsHovered] = useState(false)
-  const activeDrink = drinks[activeIndex]
+  const activeDrink = drinks[activeIndex] || fallbackDrinks[0]
 
   useEffect(() => {
     let cancelled = false
@@ -128,12 +113,11 @@ export default function CurrentModeSection() {
           }))
           .filter((item) => item.image)
 
-        setDrinks(liveDrinks)
-        setActiveIndex((current) => liveDrinks.length ? Math.min(current, liveDrinks.length - 1) : 0)
+        if (liveDrinks.length > 0) { setDrinks(liveDrinks); setActiveIndex((current) => Math.min(current, liveDrinks.length - 1)); }
         setIsLoading(false)
       })
       .catch(() => {
-        if (!cancelled) setIsLoading(false)
+        if (!cancelled) { setDrinks(fallbackDrinks); setIsLoading(false); }
       })
 
     return () => {
@@ -151,10 +135,7 @@ export default function CurrentModeSection() {
     return () => clearInterval(timer)
   }, [isHovered, touchStartX, drinks.length])
 
-  if (isLoading) {
-    return null
-  }
-
+  // Always render fallback drinks
   if (!activeDrink) {
     return null
   }
@@ -224,7 +205,7 @@ export default function CurrentModeSection() {
             onTouchEnd={handleTouchEnd}
           >
             <button type="button" className="current-mode__nav-btn current-mode__nav-btn--prev" onClick={goPrev} aria-label="Previous drink">
-              <svg className="w-8 h-8 md:w-10 md:h-10 text-[#1a332f]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <svg fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
@@ -242,7 +223,7 @@ export default function CurrentModeSection() {
               </div>
             </article>
             <button type="button" className="current-mode__nav-btn current-mode__nav-btn--next" onClick={goNext} aria-label="Next drink">
-              <svg className="w-8 h-8 md:w-10 md:h-10 text-[#1a332f]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <svg fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>

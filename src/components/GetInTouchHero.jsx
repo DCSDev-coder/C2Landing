@@ -2,7 +2,7 @@ import React from 'react'
 import heroImage from '../assets/optimized/get-in-touch-hero.webp'
 import './GetInTouchHero.css'
 
-export default function GetInTouchHero({ backgroundImage = heroImage, backgroundVideo = null, className = '' }) {
+export default function GetInTouchHero({ backgroundImage = heroImage, backgroundVideo = null, className = '', backgroundPosition }) {
   return (
     <section
       className={`get-in-touch-hero ${className}`}
@@ -25,6 +25,7 @@ export default function GetInTouchHero({ backgroundImage = heroImage, background
           src={backgroundImage}
           alt=""
           aria-hidden="true"
+          style={backgroundPosition ? { objectPosition: backgroundPosition } : undefined}
         />
       )}
     </section>

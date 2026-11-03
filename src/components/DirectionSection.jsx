@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './DirectionSection.css'
 
 const mapQuery = encodeURIComponent('C2 Coffee & Candle, 42, Jalan Eco Forest 6/1C, 43500 Semenyih, Selangor')
@@ -38,16 +38,18 @@ function MailIcon() {
   )
 }
 
-function PaperPlaneIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M22 2L11 13" />
-      <path d="M22 2L15 22L11 13L2 9L22 2Z" />
-    </svg>
-  )
-}
-
 export default function DirectionSection() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyEmail = (e) => {
+    e.preventDefault()
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('support@c2coffeeandcandle.com')
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    }
+  }
+
   return (
     <section className="direction" aria-labelledby="direction-title">
       <div className="direction__inner">
@@ -61,7 +63,7 @@ export default function DirectionSection() {
           </p>
         </header>
 
-        <div className="direction__mapWrap relative rounded-[1.25rem] overflow-hidden shadow-[0_20px_40px_rgba(46,94,88,0.1)]">
+        <div className="direction__mapWrap relative rounded-[1.75rem] overflow-hidden shadow-[0_20px_40px_rgba(46,94,88,0.12)]">
           {/* Glass shield overlay to prevent clicking other POIs, leaving a cutout for the info box */}
           <a
             href={mapLink}
@@ -75,69 +77,127 @@ export default function DirectionSection() {
             {/* Bottom shield */}
             <div className="absolute top-[220px] left-0 right-0 bottom-0"></div>
           </a>
-          <iframe 
+          <iframe
             src={mapEmbedLink}
-            width="100%" 
-            height="100%" 
-            style={{ border: 0, minHeight: '400px', display: 'block' }} 
-            allowFullScreen="" 
-            loading="lazy" 
+            width="100%"
+            height="100%"
+            style={{ border: 0, minHeight: '420px', display: 'block' }}
+            allowFullScreen=""
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Google Maps Location for C2 Coffee & Candle"
             className="direction__map"
           ></iframe>
         </div>
 
-        <div className="direction__footer">
-          <div className="direction__footerCol">
-            <div className="direction__footerHeader">
-              <div className="direction__iconWrap direction__iconWrap--pin">
-                <PinIcon />
+        {/* Fun, tactile Cafe Info Cards */}
+        <div className="direction__cards-grid">
+          {/* Card 1: Location */}
+          <article className="direction__card direction__card--location">
+            <div className="direction__card-top">
+              <div className="direction__card-badge">
+                <div className="direction__card-icon direction__card-icon--pin">
+                  <PinIcon />
+                </div>
+                <span className="direction__card-tag">Location</span>
               </div>
-              <h2 className="direction__label">ADDRESS</h2>
             </div>
-            <div className="direction__footerBody">
-              <p className="direction__value">
+
+            <div className="direction__card-body">
+              <h3 className="direction__card-title">Eco Forest Cafe</h3>
+              <p className="direction__card-text">
                 42, Jalan Eco Forest 6/1C,<br />
                 Eco Forest, 43500 Semenyih,<br />
                 Selangor
               </p>
             </div>
-          </div>
 
-          <div className="direction__footerCol">
-            <div className="direction__footerHeader">
-              <div className="direction__iconWrap direction__iconWrap--clock">
-                <ClockIcon />
-              </div>
-              <h2 className="direction__label">OPENING HOURS</h2>
-            </div>
-            <div className="direction__footerBody">
-              <div className="direction__hoursBlock">
-                <p className="direction__hoursLabel">Monday - Thursday</p>
-                <p className="direction__hoursValue">7:00am - 8:00pm</p>
-              </div>
-              <div className="direction__hoursDivider" aria-hidden="true" />
-              <div className="direction__hoursBlock">
-                <p className="direction__hoursLabel">Friday - Saturday</p>
-                <p className="direction__hoursValue">7:00am - 10:00pm</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="direction__footerCol">
-            <div className="direction__footerHeader">
-              <div className="direction__iconWrap direction__iconWrap--mail">
-                <MailIcon />
-              </div>
-              <h2 className="direction__label">EMAIL</h2>
-            </div>
-            <div className="direction__footerBody">
-              <a className="direction__email" href="mailto:support@c2coffeeandcandle.com">
-                support@c2coffeeandcandle.com
+            <div className="direction__card-footer">
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="direction__card-btn direction__card-btn--primary"
+                aria-label="Open C2 Coffee location in Google Maps"
+              >
+                <span>Get Directions</span>
               </a>
             </div>
-          </div>
+          </article>
+
+          {/* Card 2: Hours */}
+          <article className="direction__card direction__card--hours">
+            <div className="direction__card-top">
+              <div className="direction__card-badge">
+                <div className="direction__card-icon direction__card-icon--clock">
+                  <ClockIcon />
+                </div>
+                <span className="direction__card-tag">Hours</span>
+              </div>
+              <span className="direction__card-status-pill">
+                Open Daily
+              </span>
+            </div>
+
+            <div className="direction__card-body">
+              <h3 className="direction__card-title">Brewing Times</h3>
+              <div className="direction__hours-schedule">
+                <div className="direction__hours-row">
+                  <span className="direction__hours-day">Mon &ndash; Thu</span>
+                  <span className="direction__hours-time">7:00am &ndash; 10:00pm</span>
+                </div>
+                <div className="direction__hours-row">
+                  <span className="direction__hours-day">Fri &ndash; Sun</span>
+                  <span className="direction__hours-time">7:00am &ndash; 10:00pm</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          {/* Card 3: Email */}
+          <article className="direction__card direction__card--contact">
+            <div className="direction__card-top">
+              <div className="direction__card-badge">
+                <div className="direction__card-icon direction__card-icon--mail">
+                  <MailIcon />
+                </div>
+                <span className="direction__card-tag">Say Hello</span>
+              </div>
+            </div>
+
+            <div className="direction__card-body">
+              <h3 className="direction__card-title">General Inquiries</h3>
+              <a
+                href="mailto:support@c2coffeeandcandle.com"
+                className="direction__email-link"
+                title="Send email to C2 Coffee"
+              >
+                support@c2coffeeandcandle.com
+              </a>
+              <p className="direction__card-subtext">
+                Questions, wholesale inquiries, or cafe feedback? We’d love to hear from you!
+              </p>
+            </div>
+
+            <div className="direction__card-footer">
+              <div className="direction__email-actions">
+                <a
+                  href="mailto:support@c2coffeeandcandle.com"
+                  className="direction__card-btn direction__card-btn--secondary"
+                >
+                  <span>Send Email</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="direction__card-btn direction__card-btn--ghost"
+                  aria-label="Copy email address"
+                >
+                  {copied ? 'Copied! ✓' : 'Copy'}
+                </button>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>

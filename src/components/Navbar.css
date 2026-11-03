@@ -204,10 +204,10 @@
 
 @media (min-width: 1024px) {
   .c2-nav__bar {
-    padding: 0 132px;
+    padding: 0 clamp(32px, 5vw, 132px);
   }
 
   .c2-nav__desktop {
-    gap: 44px;
+    gap: clamp(18px, 2.2vw, 40px);
   }
 }

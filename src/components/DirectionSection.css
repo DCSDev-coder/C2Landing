@@ -1,24 +1,33 @@
 .direction {
   padding: 5rem 1.5rem;
   background: #E8F2EF;
+  font-family: var(--font-afacad), system-ui, -apple-system, sans-serif;
+  --font-recoleta: 'Recoleta', Georgia, serif;
 }
 
 .direction__inner {
-  max-width: 1180px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .direction__header {
   margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .direction__header {
+    text-align: left;
+  }
 }
 
 .direction__eyebrow {
   margin: 0 0 0.5rem;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
+  font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.25em;
-  color: #6B7280;
+  letter-spacing: 0.22em;
+  color: #2E5E58;
   text-transform: uppercase;
 }
 
@@ -26,200 +35,349 @@
   margin: 0 0 0.75rem;
   color: #1a332f;
   font-family: var(--font-recoleta);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.08;
   letter-spacing: -0.02em;
 }
 
 .direction__titleHighlight {
-  color: #6F9F96;
+  color: #2E5E58;
   font-style: italic;
 }
 
 .direction__lede {
   margin: 0;
-  color: #6B7280;
-  font-family: var(--font-recoleta);
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  line-height: 1.2;
+  color: #556c66;
+  font-family: var(--font-afacad), sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 .direction__mapWrap {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(46, 94, 88, 0.12);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
 }
 
-.direction__mapLink {
-  position: relative;
-  display: block;
-  border-radius: 1.25rem;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(46, 94, 88, 0.1);
+.direction__mapWrap:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 50px rgba(46, 94, 88, 0.16);
 }
 
 .direction__map {
   display: block;
   width: 100%;
-  height: auto;
+  height: 420px;
   object-fit: cover;
-  max-height: 400px;
 }
 
-.direction__mapLink:hover {
-  box-shadow: 0 20px 50px rgba(46, 94, 88, 0.15);
-}
-
-.direction__footer {
+/* ==========================================================================
+   Playful Cafe Bento Info Cards Grid
+   ========================================================================== */
+.direction__cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-  border-top: 1px solid rgba(46, 94, 88, 0.15);
-  padding-top: 3rem;
-}
-
-.direction__footerCol {
-  display: flex;
-  flex-direction: column;
-}
-
-.direction__footerHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.direction__iconWrap {
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  color: #ffffff;
-}
-
-.direction__iconWrap--pin,
-.direction__iconWrap--clock,
-.direction__iconWrap--mail {
-  background: #2E5E58;
-}
-
-.direction__iconSvg {
-  width: 1.28rem;
-  height: 1.28rem;
-}
-
-.direction__label {
-  margin: 0;
-  color: #6B7280;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-}
-
-.direction__footerBody {
-  padding-left: 0;
-}
-
-.direction__value,
-.direction__email,
-.direction__hoursValue {
-  margin: 0;
-  color: #17110d;
-  font-family: var(--font-recoleta);
-  font-size: clamp(1.15rem, 3.7vw, 1.45rem);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.direction__email {
-  display: block;
-  text-decoration: none;
-  margin-bottom: 1.5rem;
-  white-space: normal;
-  word-break: break-word;
-}
-
-.direction__email:hover {
-  text-decoration: underline;
-}
-
-.direction__hoursBlock {
-  margin-bottom: 0;
-}
-
-.direction__hoursDivider {
-  height: 1px;
-  background: rgba(46, 94, 88, 0.15);
-  margin: 1rem 0;
-  width: 60%;
-}
-
-.direction__hoursLabel {
-  margin: 0 0 0.25rem;
-  color: #6B7280;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.95rem;
-}
-
-.direction__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #2E5E58;
-  color: #ffffff;
-  padding: 14px 24px;
-  border-radius: 999px;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
-  margin-bottom: 1.5rem;
-}
-
-.direction__btn:hover {
-  background: #1a332f;
-  transform: translateY(-1px);
-}
-
-.direction__tagline {
-  margin: 0;
-  color: #6B7280;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  font-weight: 700;
+  gap: 1.75rem;
 }
 
 @media (min-width: 768px) {
-  .direction__footer {
+  .direction__cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
-  .direction__footer {
+@media (min-width: 1060px) {
+  .direction__cards-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 4rem;
+    gap: 2rem;
   }
-  
-  .direction__footerCol {
-    position: relative;
-  }
-  
-  .direction__footerCol:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: -2rem;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: rgba(46, 94, 88, 0.15);
-  }
-  
-  .direction__footerBody {
-    padding-left: 4rem;
-  }
+}
+
+/* Individual Bento Card */
+.direction__card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(46, 94, 88, 0.1);
+  box-shadow: 0 12px 32px -8px rgba(46, 94, 88, 0.08), 0 4px 12px rgba(46, 94, 88, 0.03);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.direction__card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 48px -12px rgba(46, 94, 88, 0.18), 0 6px 18px rgba(46, 94, 88, 0.06);
+  border-color: rgba(46, 94, 88, 0.25);
+}
+
+/* Card Top Area */
+.direction__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.direction__card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.direction__card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.direction__card:hover .direction__card-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.direction__card-icon--pin {
+  background: #2E5E58;
+  box-shadow: 0 6px 16px -2px rgba(46, 94, 88, 0.35);
+}
+
+.direction__card-icon--clock {
+  background: #e1b35b;
+  box-shadow: 0 6px 16px -2px rgba(225, 179, 91, 0.45);
+}
+
+.direction__card-icon--mail {
+  background: #1a332f;
+  box-shadow: 0 6px 16px -2px rgba(26, 51, 47, 0.35);
+}
+
+.direction__iconSvg {
+  width: 22px;
+  height: 22px;
+}
+
+.direction__card-tag {
+  font-family: var(--font-afacad), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6a7c76;
+}
+
+/* Pulsing Live Status Pill */
+.direction__card-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(46, 94, 88, 0.1);
+  color: #2E5E58;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: var(--font-afacad), sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.direction__card-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #27ae60;
+  border-radius: 50%;
+  animation: statusDotPulse 1.8s infinite;
+}
+
+
+
+/* Card Body Content */
+.direction__card-body {
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.direction__card-title {
+  margin: 0 0 10px 0;
+  color: #17110d;
+  font-family: var(--font-recoleta);
+  font-size: clamp(1.4rem, 2vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.direction__card-text {
+  margin: 0;
+  color: #3b2a22;
+  font-family: var(--font-recoleta);
+  font-size: 1.15rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+/* Hours Schedule Block */
+.direction__hours-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.direction__hours-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #f8faf9;
+  border: 1px solid rgba(46, 94, 88, 0.08);
+}
+
+.direction__hours-day {
+  font-family: var(--font-afacad), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #556c66;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.direction__hours-time {
+  font-family: var(--font-recoleta);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #1a332f;
+}
+
+.direction__card-note {
+  margin: 0;
+  font-family: var(--font-afacad), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #5b716b;
+  line-height: 1.35;
+}
+
+/* Email text - Never breaks awkwardly */
+.direction__email-link {
+  display: block;
+  font-family: var(--font-recoleta);
+  font-size: clamp(0.98rem, 1.35vw, 1.18rem);
+  font-weight: 700;
+  color: #2E5E58;
+  text-decoration: none;
+  word-break: break-all;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.direction__email-link:hover {
+  color: #173b36;
+  text-decoration: underline;
+}
+
+.direction__card-subtext {
+  margin: 0;
+  font-family: var(--font-afacad), sans-serif;
+  font-size: 0.92rem;
+  color: #637772;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Card Action Buttons */
+.direction__card-footer {
+  margin-top: auto;
+}
+
+.direction__email-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.direction__card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-family: var(--font-afacad), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              box-shadow 0.3s ease,
+              color 0.2s ease;
+}
+
+.direction__card-btn:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+.direction__card-btn--primary {
+  background: #2E5E58;
+  color: #ffffff;
+  width: 100%;
+  box-shadow: 0 4px 14px rgba(46, 94, 88, 0.25);
+}
+
+.direction__card-btn--primary:hover {
+  background: #1f4a44;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(46, 94, 88, 0.4);
+}
+
+.direction__card-btn-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.direction__card-btn--primary:hover .direction__card-btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+.direction__card-btn--secondary {
+  background: #1a332f;
+  color: #ffffff;
+  flex: 1;
+  box-shadow: 0 4px 14px rgba(26, 51, 47, 0.2);
+}
+
+.direction__card-btn--secondary:hover {
+  background: #0f2420;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(26, 51, 47, 0.35);
+}
+
+.direction__card-btn--ghost {
+  background: #f0f5f3;
+  color: #2E5E58;
+  padding: 8px 16px;
+  border: 1px solid rgba(46, 94, 88, 0.2);
+}
+
+.direction__card-btn--ghost:hover {
+  background: #e2ede9;
+  border-color: #2E5E58;
+  transform: translateY(-3px);
 }

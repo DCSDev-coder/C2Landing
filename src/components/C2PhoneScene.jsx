@@ -26,7 +26,7 @@ export default function C2PhoneScene({ poster }) {
     camera.position.set(0, 0.05, 11.6)
 
     const phoneGroup = new THREE.Group()
-    phoneGroup.rotation.set(-0.035, -0.16, 0.025)
+    phoneGroup.rotation.set(0, 0, 0)
     phoneGroup.scale.setScalar(0.84)
     phoneGroup.position.y = -0.15
     scene.add(phoneGroup)
@@ -78,8 +78,10 @@ export default function C2PhoneScene({ poster }) {
     let model = null
     let animationFrame = 0
     let isVisible = false
-    let pointerX = 0
-    let pointerY = 0
+    let targetPointerX = 0
+    let targetPointerY = 0
+    let currentPointerX = 0
+    let currentPointerY = 0
 
     loader.load(
       MODEL_URL,
@@ -109,34 +111,48 @@ export default function C2PhoneScene({ poster }) {
     }
 
     const onPointerMove = (event) => {
-      const bounds = host.getBoundingClientRect()
-      pointerX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1
-      pointerY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1
+      const x = (event.clientX / Math.max(window.innerWidth, 1)) * 2 - 1
+      const y = (event.clientY / Math.max(window.innerHeight, 1)) * 2 - 1
+      targetPointerX = Math.max(-1, Math.min(1, x * 1.25))
+      targetPointerY = Math.max(-1, Math.min(1, y * 1.25))
     }
 
     const onPointerLeave = () => {
-      pointerX = 0
-      pointerY = 0
+      targetPointerX = 0
+      targetPointerY = 0
     }
 
     const render = () => {
       if (!isVisible) return
-      const targetRotationX = -0.035 - pointerY * 0.12
-      const targetRotationY = -0.12 + pointerX * 0.24
-      const targetRotationZ = 0.025 - pointerX * 0.015
-      const targetPositionX = pointerX * 0.12
-      const targetPositionY = -0.15 - pointerY * 0.05
 
-      phoneGroup.rotation.x += (targetRotationX - phoneGroup.rotation.x) * 0.085
-      phoneGroup.rotation.y += (targetRotationY - phoneGroup.rotation.y) * 0.085
-      phoneGroup.rotation.z += (targetRotationZ - phoneGroup.rotation.z) * 0.085
-      phoneGroup.position.x += (targetPositionX - phoneGroup.position.x) * 0.075
-      phoneGroup.position.y += (targetPositionY - phoneGroup.position.y) * 0.075
+      // Smooth double-interpolated mouse tracking
+      currentPointerX += (targetPointerX - currentPointerX) * 0.055
+      currentPointerY += (targetPointerY - currentPointerY) * 0.055
 
-      keyLight.position.x += ((-4 + pointerX * 3.2) - keyLight.position.x) * 0.06
-      keyLight.position.y += ((6 - pointerY * 1.6) - keyLight.position.y) * 0.06
-      rimLight.position.x += ((5 - pointerX * 2) - rimLight.position.x) * 0.06
-      shadow.position.x += ((0.08 + pointerX * 0.2) - shadow.position.x) * 0.07
+      // Elegant idle breathing float
+      const time = performance.now() * 0.0016
+      const idleFloatY = Math.sin(time * 1.5) * 0.03
+      const idleFloatRotZ = Math.cos(time * 1.2) * 0.006
+
+      // Faces directly front at rest, smoothly glides & tilts left-right with cursor
+      const targetRotationX = -currentPointerY * 0.12
+      const targetRotationY = currentPointerX * 0.38
+      const targetRotationZ = -currentPointerX * 0.032 + idleFloatRotZ
+      const targetPositionX = currentPointerX * 0.28
+      const targetPositionY = -0.15 - currentPointerY * 0.04 + idleFloatY
+
+      const damp = 0.06
+      phoneGroup.rotation.x += (targetRotationX - phoneGroup.rotation.x) * damp
+      phoneGroup.rotation.y += (targetRotationY - phoneGroup.rotation.y) * damp
+      phoneGroup.rotation.z += (targetRotationZ - phoneGroup.rotation.z) * damp
+      phoneGroup.position.x += (targetPositionX - phoneGroup.position.x) * damp
+      phoneGroup.position.y += (targetPositionY - phoneGroup.position.y) * damp
+
+      keyLight.position.x += ((-3.5 + currentPointerX * 3.5) - keyLight.position.x) * 0.05
+      keyLight.position.y += ((6 - currentPointerY * 1.8) - keyLight.position.y) * 0.05
+      rimLight.position.x += ((5 - currentPointerX * 2.5) - rimLight.position.x) * 0.05
+      shadow.position.x += ((0.02 + currentPointerX * 0.26) - shadow.position.x) * 0.05
+
       renderer.render(scene, camera)
       animationFrame = window.requestAnimationFrame(render)
     }
@@ -158,15 +174,15 @@ export default function C2PhoneScene({ poster }) {
     const resizeObserver = new ResizeObserver(resize)
     resizeObserver.observe(host)
     observer.observe(host)
-    host.addEventListener('pointermove', onPointerMove)
-    host.addEventListener('pointerleave', onPointerLeave)
+    window.addEventListener('pointermove', onPointerMove, { passive: true })
+    window.addEventListener('mouseout', onPointerLeave)
     resize()
 
     return () => {
       observer.disconnect()
       resizeObserver.disconnect()
-      host.removeEventListener('pointermove', onPointerMove)
-      host.removeEventListener('pointerleave', onPointerLeave)
+      window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('mouseout', onPointerLeave)
       window.cancelAnimationFrame(animationFrame)
       video.pause()
       video.removeEventListener('loadedmetadata', fitVideoToDisplay)

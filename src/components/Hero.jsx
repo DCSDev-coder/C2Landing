@@ -8,6 +8,7 @@ import './Hero.css'
 export default function Hero() {
   const videoEnabled = useVideoBackgroundEnabled()
 
+
   return (
     <section className="hero" id="top" data-nav-hero>
       {videoEnabled ? (
@@ -74,6 +75,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   )

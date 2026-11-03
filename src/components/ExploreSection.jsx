@@ -1,8 +1,6 @@
-import React, { useMemo, useRef, useState } from 'react'
-import datoBg from '../assets/About Us/Explore/image 47.webp'
-import datinBg from '../assets/About Us/Explore/image 45.webp'
-import datoAvatar from '../assets/About Us/Explore/dato 2.webp'
-import datinAvatar from '../assets/About Us/Explore/image 46.webp'
+import React, { useState } from 'react'
+import datoAvatar from '../assets/images/dato.webp'
+import datinAvatar from '../assets/images/datin.webp'
 import almondIcon from '../assets/About Us/Explore/Almond.webp'
 import chocolateIcon from '../assets/About Us/Explore/Chocolate Bar.webp'
 import cocoaIcon from '../assets/About Us/Explore/Cocoa.webp'
@@ -12,29 +10,30 @@ const blends = [
   {
     id: 'dato',
     title: 'Dato Blend',
-    description: 'Bold & Smoky',
-    backgroundImage: datoBg,
+    tagline: 'Bold & Smoky',
+    roast: 'Medium-Dark Roast',
+    badge: 'HOUSE ROAST • 01',
     avatar: datoAvatar,
     tone: 'dato',
+    origin: 'Kenya • Indonesia',
     about:
-      'Dato Blend is a medium-dark roast crafted from beans sourced from Kenya and Indonesia. It delivers a bold, smoky cup with chocolatey depth, nutty warmth, and a strong finish for drinkers who prefer a fuller-bodied profile.',
-    origin: 'Kenya \u2022 Indonesia',
+      'Crafted from Kenya and Indonesian beans, delivering a bold, smoky cup with chocolatey depth, toasted nut warmth, and a lingering body.',
     notes: [
       {
         title: 'SMOKY',
-        description: 'Deep roasted character with a bold, smoky finish.',
+        description: 'Deep roasted character with a bold finish',
         icon: cocoaIcon,
         alt: 'Smoky',
       },
       {
         title: 'CHOCOLATEY',
-        description: 'Rich chocolate notes that round out the cup.',
+        description: 'Rich cocoa notes that round out the cup',
         icon: chocolateIcon,
         alt: 'Chocolatey',
       },
       {
         title: 'NUTTY & BOLD',
-        description: 'Toasted nut character with a strong, lingering body.',
+        description: 'Toasted nut character with full body',
         icon: almondIcon,
         alt: 'Nutty and bold',
       },
@@ -43,23 +42,24 @@ const blends = [
   {
     id: 'datin',
     title: 'Datin Blend',
-    description: 'Chocolatey & Medium Acidity',
-    backgroundImage: datinBg,
+    tagline: 'Chocolatey & Medium Acidity',
+    roast: 'Medium-Light Roast',
+    badge: 'HOUSE ROAST • 02',
     avatar: datinAvatar,
     tone: 'datin',
+    origin: 'Kenya • Papua New Guinea',
     about:
-      'Datin Blend is a medium-light roast made from beans sourced from Kenya and Papua New Guinea. It offers a chocolate-forward profile with a hint of dark grape, balanced by medium acidity and a clean finish.',
-    origin: 'Kenya \u2022 Papua New Guinea',
+      'Made from beans sourced from Kenya and Papua New Guinea. It offers a chocolate-forward profile with dark grape sweetness and a clean finish.',
     notes: [
       {
         title: 'CHOCOLATE',
-        description: 'Smooth chocolate notes at the front of the cup.',
+        description: 'Smooth chocolate at the front of the cup',
         icon: chocolateIcon,
         alt: 'Chocolate',
       },
       {
-        title: 'HINT OF DARK GRAPE',
-        description: 'A subtle dark grape note that adds brightness and depth.',
+        title: 'DARK GRAPE',
+        description: 'Subtle dark grape sweetness and depth',
         svg: (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="9" cy="9" r="3" />
@@ -74,7 +74,7 @@ const blends = [
       },
       {
         title: 'CLEAN',
-        description: 'A tidy finish with medium acidity and good clarity.',
+        description: 'Tidy finish with gentle brightness',
         svg: (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12l4 4L19 6" />
@@ -85,191 +85,95 @@ const blends = [
   },
 ]
 
-function DetailPanel({ blend, isActive, onClose, onTouchStart, onTouchEnd }) {
-  const handlePanelTouchStart = (event) => {
-    if (event.target.closest('.detail-panel__close')) {
-      return
-    }
-
-    onTouchStart?.(event)
-  }
-
-  const handlePanelTouchEnd = (event) => {
-    if (event.target.closest('.detail-panel__close')) {
-      return
-    }
-
-    onTouchEnd?.(event)
-  }
-
+function BlendCard({ blend, isHovered, onHover, onToggle }) {
   return (
-    <div
-      className={`detail-panel ${isActive ? 'is-active' : ''}`}
-      onTouchStart={handlePanelTouchStart}
-      onTouchEnd={handlePanelTouchEnd}
+    <article
+      className={`c2-blend-wide-card c2-blend-wide-card--${blend.tone} ${isHovered ? 'is-hovered' : ''}`}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
+      onClick={onToggle}
+      role="button"
+      tabIndex={0}
+      aria-label={`${blend.title}. Hover or tap to view tasting notes.`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onToggle()
+        }
+      }}
     >
-      {blend && (
-        <div className="detail-panel__content">
-          <button
-            type="button"
-            className="detail-panel__close"
-            onClick={onClose}
-            onMouseDown={(event) => event.stopPropagation()}
-            onTouchStart={(event) => {
-              event.preventDefault()
-              event.stopPropagation()
-            }}
-            onTouchEnd={(event) => {
-              event.preventDefault()
-              event.stopPropagation()
-              onClose(event)
-            }}
-            aria-label="Close details"
-          >
-            {'\u00D7'}
-          </button>
+      {/* Ambient background glow behind avatar */}
+      <div className="c2-blend-wide-card__ambient-glow" aria-hidden="true" />
 
-          <h3 className="detail-panel__title">
-            About <em className="detail-panel__title-highlight">This Blend.</em>
-          </h3>
+      {/* Card Content Layout */}
+      <div className="c2-blend-wide-card__inner">
+        {/* Left Column: Character Persona */}
+        <div className="c2-blend-wide-card__persona">
+          <div className="c2-blend-wide-card__avatar-box">
+            <div className="c2-blend-wide-card__avatar-halo" aria-hidden="true" />
+            <img
+              src={blend.avatar}
+              alt={blend.title}
+              className="c2-blend-wide-card__avatar-img"
+              loading="lazy"
+              draggable={false}
+            />
+          </div>
 
-          <div className="detail-panel__scroll-area">
-            <p className="detail-panel__description">{blend.about}</p>
-
-            <div className="detail-panel__divider" />
-
-            <h4 className="detail-panel__section-title">Tasting Notes</h4>
-
-            <div className="detail-panel__notes-grid">
-              {blend.notes.map((note) => (
-                <div className="tasting-note" key={note.title}>
-                  <div className="tasting-note__icon">
-                    {note.icon ? (
-                      <img src={note.icon} alt={note.alt} className="tasting-note__png" />
-                    ) : (
-                      note.svg
-                    )}
-                  </div>
-                  <div className="tasting-note__info">
-                    <span className="tasting-note__name">{note.title}</span>
-                    <span className="tasting-note__desc">{note.description}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="detail-panel__divider" />
-
-            <h4 className="detail-panel__section-title">Origin</h4>
-            <p className="detail-panel__origin-value">{blend.origin}</p>
+          <div className="c2-blend-wide-card__identity">
+            <span className="c2-blend-wide-card__roast">{blend.roast}</span>
+            <h3 className="c2-blend-wide-card__title">{blend.title}</h3>
+            <p className="c2-blend-wide-card__tagline">{blend.tagline}</p>
           </div>
         </div>
-      )}
-    </div>
-  )
-}
 
-function BlendCard({ blend, isDimmed, onSelect, mobile = false, slideDirection = 'right' }) {
-  return (
-    <button
-      type="button"
-      className={`blend-card blend-card--${blend.tone} ${isDimmed ? 'is-dull' : ''} ${
-        mobile ? `blend-card--mobile blend-card--slide-${slideDirection}` : ''
-      }`}
-      onClick={() => onSelect(blend.id)}
-      style={{ backgroundImage: `url(${blend.backgroundImage})` }}
-      aria-label={`${blend.title}: ${blend.description}`}
-    >
-      <div className="blend-card__avatar-container">
-        <img src={blend.avatar} alt="" className="blend-card__avatar" />
-      </div>
+        {/* Right Column: Flavor Notes & Story with Staggered Slide-In */}
+        <div className="c2-blend-wide-card__flavor">
+          <div className="c2-blend-wide-card__flavor-head">
+            <span className="c2-blend-wide-card__section-label">Flavor Profile</span>
+            <p className="c2-blend-wide-card__story">{blend.about}</p>
+          </div>
 
-      <div className="blend-card__info">
-        <h3 className="blend-card__title">{blend.title}</h3>
-        <p className="blend-card__description">{blend.description}</p>
-        <span className="blend-card__link">{'View Details \u2192'}</span>
+          {/* 3 Staggered Tasting Note Pills */}
+          <div className="c2-blend-wide-card__notes-grid">
+            {blend.notes.map((note, index) => (
+              <div
+                key={note.title}
+                className={`c2-flavor-pill c2-flavor-pill--delay-${index}`}
+              >
+                <div className="c2-flavor-pill__icon">
+                  {note.icon ? (
+                    <img src={note.icon} alt={note.alt} className="c2-flavor-pill__img" />
+                  ) : (
+                    note.svg
+                  )}
+                </div>
+                <div className="c2-flavor-pill__text">
+                  <span className="c2-flavor-pill__title">{note.title}</span>
+                  <span className="c2-flavor-pill__desc">{note.description}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </button>
+    </article>
   )
 }
 
 export default function ExploreSection() {
-  const [selectedBlendId, setSelectedBlendId] = useState(null)
-  const [mobileIndex, setMobileIndex] = useState(0)
-  const [slideDirection, setSlideDirection] = useState('right')
-  const touchStartXRef = useRef(null)
-  const suppressTapRef = useRef(false)
+  const [hoveredMap, setHoveredMap] = useState({})
 
-  const activeMobileBlend = blends[mobileIndex]
-  const selectedBlend = useMemo(
-    () => blends.find((blend) => blend.id === selectedBlendId) ?? null,
-    [selectedBlendId],
-  )
-
-  const handleSelect = (blendId) => {
-    if (suppressTapRef.current) {
-      suppressTapRef.current = false
-      return
-    }
-
-    setSelectedBlendId((current) => (current === blendId ? null : blendId))
+  const handleHover = (id, state) => {
+    setHoveredMap((prev) => ({ ...prev, [id]: state }))
   }
 
-  const handleClose = (event) => {
-    event?.preventDefault?.()
-    event?.stopPropagation?.()
-    setSelectedBlendId(null)
-  }
-
-  const syncMobileBlend = (nextIndex, direction) => {
-    const normalizedIndex = (nextIndex + blends.length) % blends.length
-    const nextBlend = blends[normalizedIndex]
-
-    setSlideDirection(direction)
-    setMobileIndex(normalizedIndex)
-
-    if (selectedBlendId) {
-      setSelectedBlendId(nextBlend.id)
-    }
-  }
-
-  const handleDotSelect = (index) => {
-    if (index === mobileIndex) {
-      return
-    }
-
-    syncMobileBlend(index, index > mobileIndex ? 'right' : 'left')
-  }
-
-  const handleTouchStart = (event) => {
-    touchStartXRef.current = event.changedTouches[0].clientX
-    suppressTapRef.current = false
-  }
-
-  const handleTouchEnd = (event) => {
-    if (touchStartXRef.current === null) {
-      return
-    }
-
-    const deltaX = touchStartXRef.current - event.changedTouches[0].clientX
-    touchStartXRef.current = null
-
-    if (Math.abs(deltaX) < 42) {
-      return
-    }
-
-    suppressTapRef.current = true
-
-    if (deltaX > 0) {
-      syncMobileBlend(mobileIndex + 1, 'right')
-      return
-    }
-
-    syncMobileBlend(mobileIndex - 1, 'left')
+  const handleToggle = (id) => {
+    setHoveredMap((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
   return (
-    <section className="explore-section" id="explore">
+    <section className="explore-section" id="explore" aria-label="Explore Our Blends">
       <div className="explore-header">
         <h2 className="explore-header__title">
           Explore Our <em className="explore-header__title-highlight">Blends</em>
@@ -281,53 +185,17 @@ export default function ExploreSection() {
         </p>
       </div>
 
-      <div className="explore-mobileCarousel">
-        <div className="explore-mobileFrame">
-          <div className="explore-mobileCardWrap" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-            <BlendCard
-              key={activeMobileBlend.id}
-              blend={activeMobileBlend}
-              onSelect={handleSelect}
-              mobile
-              slideDirection={slideDirection}
-            />
-          </div>
-        </div>
-
-        <div className="explore-mobileDots" aria-label="Blend selection">
-          {blends.map((blend, index) => (
-            <button
-              key={blend.id}
-              type="button"
-              className={`explore-mobileDot ${index === mobileIndex ? 'is-active' : ''}`}
-              onClick={() => handleDotSelect(index)}
-              aria-label={`Show blend ${index + 1}`}
-              aria-pressed={index === mobileIndex}
-            />
-          ))}
-        </div>
-
-        <DetailPanel
-          key={selectedBlend?.id ?? 'mobile-empty'}
-          blend={selectedBlend}
-          isActive={Boolean(selectedBlend)}
-          onClose={handleClose}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        />
-      </div>
-
-      <div className={`explore-grid ${selectedBlend ? 'has-selection' : ''}`}>
-        <BlendCard blend={blends[0]} isDimmed={selectedBlendId === 'datin'} onSelect={handleSelect} />
-
-        <DetailPanel
-          key={selectedBlend?.id ?? 'desktop-empty'}
-          blend={selectedBlend}
-          isActive={Boolean(selectedBlend)}
-          onClose={handleClose}
-        />
-
-        <BlendCard blend={blends[1]} isDimmed={selectedBlendId === 'dato'} onSelect={handleSelect} />
+      {/* Spacious, screen-filling wide cards in Clean Cafe Duo styling */}
+      <div className="explore-cards-wide-container">
+        {blends.map((blend) => (
+          <BlendCard
+            key={blend.id}
+            blend={blend}
+            isHovered={Boolean(hoveredMap[blend.id])}
+            onHover={(state) => handleHover(blend.id, state)}
+            onToggle={() => handleToggle(blend.id)}
+          />
+        ))}
       </div>
     </section>
   )

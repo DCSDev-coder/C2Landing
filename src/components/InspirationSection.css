@@ -16,8 +16,8 @@
 .craft-strip__track {
   display: flex;
   align-items: center;
-  gap: 25px;
-  min-height: 91px;
+  gap: 20px;
+  min-height: 52px;
   width: max-content;
   padding: 0 24px;
   animation: craft-strip-scroll 35s linear infinite;
@@ -26,7 +26,7 @@
 .craft-strip__item {
   color: #fff;
   font-family: var(--font-recoleta);
-  font-size: clamp(1rem, 1.65vw, 1.875rem);
+  font-size: clamp(0.85rem, 1.15vw, 1.05rem);
   font-weight: 700;
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -35,8 +35,7 @@
 .craft-strip__star {
   color: #F9D676;
   font-family: var(--font-recoleta);
-  font-size: 0.85rem;
-  line-height: 1;
+  font-size: 0.72rem;
 }
 
 @keyframes craft-strip-scroll {

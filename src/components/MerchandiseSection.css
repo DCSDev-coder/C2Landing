@@ -1,0 +1,445 @@
+/* C2 Merchandise Section - Refined Minimalist Cafe Cards */
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+
+.merch-section {
+  position: relative;
+  background-color: #faf6f0;
+  color: #28130d;
+  padding: 72px 0 96px 0;
+  overflow: hidden;
+  font-family: var(--font-afacad), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-afacad: 'Afacad', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-recoleta: 'Recoleta', Georgia, serif;
+}
+
+.merch-container {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .merch-container {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .merch-container {
+    padding: 0 40px;
+  }
+}
+
+/* Header Area */
+.merch-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 52px auto;
+}
+
+.merch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  background: rgba(46, 94, 88, 0.08);
+  border: 1px solid rgba(46, 94, 88, 0.2);
+  color: #2e5e58;
+  font-family: var(--font-afacad);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.merch-title {
+  font-family: var(--font-recoleta);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  font-weight: 700;
+  color: #28130d;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.merch-title-highlight {
+  font-style: italic;
+  color: #2e5e58;
+}
+
+.merch-subtitle {
+  font-family: var(--font-afacad);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.5;
+  color: #6a574f;
+  margin: 0 auto;
+  max-width: 620px;
+  font-weight: 500;
+}
+
+/* Product Grid */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 28px 24px;
+  margin-bottom: 64px;
+}
+
+@media (min-width: 640px) {
+  .merch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .merch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .merch-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Product Item & Card - Clean Minimalist Card */
+.merch-item {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.merch-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border-radius: 28px;
+  padding: 28px 20px 24px 20px;
+  background: #ffffff;
+  border: 1.5px solid #ebd9c8;
+  box-shadow: 0 8px 24px -6px rgba(40, 19, 13, 0.06), 0 2px 6px -2px rgba(40, 19, 13, 0.04);
+  overflow: hidden;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms ease, border-color 280ms ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Stretched overlay ensures 100% of card surface registers clicks effortlessly */
+.merch-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 28px;
+}
+
+.merch-card:hover {
+  transform: translateY(-6px);
+  border-color: #28130d;
+  box-shadow: 0 18px 34px -8px rgba(40, 19, 13, 0.12), 0 6px 14px -2px rgba(40, 19, 13, 0.06);
+}
+
+/* Child elements pass through to the full-bleed card hit area */
+.merch-card__visual,
+.merch-cup-img,
+.merch-card__info,
+.merch-card__title,
+.merch-card__desc {
+  pointer-events: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Centered Cup Visual */
+.merch-card__visual {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0 24px 0;
+  z-index: 1;
+}
+
+.merch-cup-img {
+  max-height: 195px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 12px rgba(40, 19, 13, 0.14));
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), filter 320ms ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.merch-card:hover .merch-cup-img {
+  transform: translateY(-6px) scale(1.05);
+  filter: drop-shadow(0 20px 16px rgba(40, 19, 13, 0.18));
+}
+
+/* Information Area Inside Card */
+.merch-card__info {
+  width: 100%;
+  padding-top: 14px;
+  border-top: 1px solid #f2e7dc;
+  z-index: 2;
+}
+
+.merch-card__title {
+  font-family: var(--font-recoleta);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #28130d;
+  margin: 0 0 6px 0;
+  transition: color 180ms ease;
+}
+
+.merch-card:hover .merch-card__title {
+  color: #8c5b14;
+}
+
+.merch-card__desc {
+  font-family: var(--font-afacad);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #79665c;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Two-Column Split Perk Showcase: Elongated Stamp + Landscape Photo
+   ========================================================================== */
+.merch-perk-split {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+@media (min-width: 860px) {
+  .merch-perk-split {
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+    height: 320px;
+    max-height: 320px;
+  }
+}
+
+/* Left Sage Green Card - Elongated Postage Stamp */
+.merch-perk-left {
+  position: relative;
+  background-color: #6a8f6a;
+  color: #ffffff;
+  border-radius: 28px;
+  padding: 34px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 16px 36px -12px rgba(40, 19, 13, 0.12), 0 4px 12px -2px rgba(40, 19, 13, 0.04);
+  box-sizing: border-box;
+}
+
+/* Inner dashed stamp border */
+.merch-perk-left::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (min-width: 860px) {
+  .merch-perk-left {
+    height: 100%;
+    padding: 38px 46px;
+  }
+}
+
+/* Authentic Postage Stamp Serrated Teeth */
+.merch-perk-teeth {
+  display: block;
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -8px;
+  height: 16px;
+  width: calc(100% - 32px);
+  background: radial-gradient(circle at 8px 8px, #faf6f0 5px, transparent 5.5px);
+  background-size: 16px 16px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@media (min-width: 860px) {
+  .merch-perk-teeth {
+    left: auto;
+    bottom: auto;
+    top: 14px;
+    right: -8px;
+    width: 16px;
+    height: calc(100% - 28px);
+    background: radial-gradient(circle at 8px 8px, #faf6f0 5px, transparent 5.5px);
+    background-size: 16px 16px;
+    background-repeat: repeat-y;
+  }
+}
+
+
+
+.merch-perk-left__body {
+  position: relative;
+  z-index: 2;
+}
+
+.merch-perk-title {
+  font-family: var(--font-recoleta);
+  font-size: clamp(1.85rem, 2.4vw, 2.35rem);
+  line-height: 1.12;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Squiggle Wavy Line matching reference image */
+.merch-squiggle {
+  display: block;
+  width: 68px;
+  height: 12px;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  opacity: 0.9;
+}
+
+.merch-perk-text {
+  font-family: var(--font-afacad);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #f3f8f4;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+  max-width: 460px;
+}
+
+.merch-perk-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.merch-perk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-family: var(--font-afacad);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: all 180ms ease;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+.merch-perk-btn--primary {
+  background: #ffffff;
+  color: #3b5e3b;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.merch-perk-btn--primary:hover {
+  background: #f7faf7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+.merch-perk-btn--outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+}
+
+.merch-perk-btn--outline:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Right Photo Card - Landscape (longer, not 1:1, wider than cup cards) */
+.merch-perk-right {
+  position: relative;
+  background: #f4ede3;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1.5px solid #ebd9c8;
+  box-shadow: 0 16px 36px -10px rgba(40, 19, 13, 0.1), 0 4px 12px -2px rgba(40, 19, 13, 0.04);
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  box-sizing: border-box;
+}
+
+@media (min-width: 860px) {
+  .merch-perk-right {
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    max-height: 320px;
+    min-height: 300px;
+    aspect-ratio: auto;
+    margin: 0;
+  }
+}
+
+.merch-perk-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 10% 38%;
+  transform: scale(1.38);
+  transform-origin: 14% 40%;
+  display: block;
+}
+
+.merch-perk-image-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(40, 19, 13, 0.72);
+  backdrop-filter: blur(8px);
+  color: #faf6f0;
+  font-family: var(--font-afacad);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

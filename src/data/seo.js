@@ -25,7 +25,7 @@ export const pageSeo = {
       },
       geo: { '@type': 'GeoCoordinates', latitude: '2.9238', longitude: '101.8797' },
       openingHoursSpecification: [
-        { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '07:00', closes: '20:00' },
+        { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '07:00', closes: '22:00' },
         { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Friday', 'Saturday', 'Sunday'], opens: '07:00', closes: '22:00' },
       ],
       email: 'support@c2coffeeandcandle.com',
@@ -40,6 +40,7 @@ export const pageSeo = {
   '/download/counterdownload': { title: 'C2 Store Android Download | C2 Coffee + Candle', description: 'Internal Android installer for authorised C2 Coffee outlet devices.', robots: 'noindex, nofollow' },
   '/get-in-touch': { title: 'Get In Touch & Visit Us | C2 Coffee + Candle Eco Forest Semenyih', description: 'Find directions, opening hours, and contact details for C2 Coffee + Candle in Eco Forest, Semenyih, Selangor. Dine in or take away today.', robots: 'index, follow' },
   '/collaborations': { title: 'Collaborations & Events | C2 Coffee + Candle Partner Programs', description: 'Partner with C2 Coffee + Candle for popups, brand collaborations, creative events, and sensory coffee + candle activations.', robots: 'index, follow' },
+  '/merchandise': { title: 'Official C2 Merchandise | Insulated Pastel Cups & Reusable Tumblers', description: 'Discover the official C2 Coffee + Candle reusable tumblers and cups in vibrant pastel colors. Double-wall insulated, eco-friendly, and perfect for your daily coffee rituals.', robots: 'index, follow' },
   '/tiers': { title: 'C2 Loyalty Tiers & Rewards | Member Perks & Exclusive Benefits', description: 'Explore C2 Coffee member tiers from Bronze to Black Diamond. Enjoy complimentary coffee tokens, birthday perks, and member-only specials.', robots: 'index, follow' },
   '/privacy-policy': { title: 'Privacy Policy | C2 Coffee + Candle', description: 'Privacy Policy and data practices for C2 Coffee + Candle website and mobile app users.', robots: 'index, follow' },
   '/terms-of-service': { title: 'Terms of Service | C2 Coffee + Candle', description: 'Terms of Service for C2 Coffee + Candle website, services, and mobile ordering.', robots: 'index, follow' },

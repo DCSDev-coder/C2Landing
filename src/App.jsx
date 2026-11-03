@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import GetInTouch from './pages/GetInTouch'
 import Collaboration from './pages/Collaboration'
+import Merchandise from './pages/Merchandise'
 import Tier from './pages/Tier'
 import Download from './pages/Download'
 import CounterDownload from './pages/CounterDownload'
@@ -11,6 +12,7 @@ import TermsOfService from './pages/TermsOfService'
 import DeleteAccount from './pages/DeleteAccount'
 import NotFound from './pages/NotFound'
 import { notFoundSeo, pageSeo, siteUrl } from './data/seo'
+import useScrollReveal from './hooks/useScrollReveal'
 
 function scrollToSection(sectionId) {
   if (!sectionId) {
@@ -34,6 +36,7 @@ function App() {
     hash: window.location.hash,
   })
   const [location, setLocation] = useState(getCurrentLocation)
+  useScrollReveal(location.pathname)
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -101,6 +104,7 @@ function App() {
   const routes = {
     '/get-in-touch': <GetInTouch />,
     '/collaborations': <Collaboration />,
+    '/merchandise': <Merchandise />,
     '/tiers': <Tier />,
     '/download': <Download />,
     '/download/counterdownload': <CounterDownload />,

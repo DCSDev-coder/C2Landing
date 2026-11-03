@@ -163,7 +163,7 @@
   align-items: center;
   justify-content: center;
   min-height: 3.35rem;
-  padding: 0.95rem 1.4rem;
+  padding: 0.95rem 1.6rem;
   border: 1px solid transparent;
   border-radius: 999px;
   font-family: var(--font-recoleta);
@@ -171,29 +171,87 @@
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.25s ease,
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease,
+              border-color 0.25s ease;
 }
 
 .c2-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.c2-button:active {
+  transform: translateY(-1px) scale(0.98);
+  transition-duration: 0.1s;
 }
 
 .c2-button--primary {
   background: #2e5e58;
   color: #ffffff;
+  box-shadow: 0 8px 20px -6px rgba(46, 94, 88, 0.45);
 }
 
 .c2-button--primary:hover {
-  background: #1f4a44;
+  background: #234c46;
+  box-shadow: 0 16px 32px -6px rgba(46, 94, 88, 0.65);
 }
 
 .c2-button--secondary {
   border-color: rgba(255, 255, 255, 0.6);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   color: #ffffff;
+  backdrop-filter: blur(4px);
 }
 
 .c2-button--secondary:hover {
-  border-color: rgba(255, 255, 255, 0.88);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   Smooth Scroll-Reveal System (Fail-Safe)
+   ========================================================================== */
+.c2-reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Only applied by JavaScript to elements confirmed to start below the screen */
+.c2-reveal--pending {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+}
+
+/* Restored gracefully upon scrolling into view */
+.c2-reveal--visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Footers and header navigation are always 100% static, solid and flush */
+footer,
+.site-footer {
+  opacity: 1 !important;
+  transform: none !important;
+  margin: 0 !important;
+  will-change: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c2-reveal,
+  .c2-reveal--pending,
+  .c2-reveal--visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
